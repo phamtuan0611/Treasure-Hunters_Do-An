@@ -705,7 +705,6 @@ MonoBehaviour:
   theRB: {fileID: 1475241809}
   jumpForce: 8
   runSpeed: 8
-  isGrounded: 0
   groundCheckPoint: {fileID: 796385127}
   groundCheckRadius: 0.2
   whatIsGround:

@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
 
     private int countAttack = 0;
+    private int countAirAttack = 0;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -81,8 +84,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //Air Attack
+        if (Input.GetKeyDown(KeyCode.X) && isGrounded == false)
+        {
+            countAirAttack++;
+            if (countAirAttack == 1)
+            {
+                anim.SetTrigger("airAttack01");
+            }
+            else
+            {
+                anim.SetTrigger("airAttack02");
+
+                countAirAttack = 0;
+            }
+
+        }
+
         //Throw Sword
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             anim.SetTrigger("throwSword");
         }
