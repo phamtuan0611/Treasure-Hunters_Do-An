@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //ChangeDirection
-                if (theRB.velocity.x >= 0)
+                if (theRB.velocity.x > 0)
                 {
                     transform.localScale = Vector3.one;
                 }
@@ -157,6 +157,8 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
             anim.SetBool("isGround", isGrounded);
             anim.SetFloat("ySpeed", theRB.velocity.y);
+
+            
         }
     }
 
@@ -169,6 +171,13 @@ public class PlayerController : MonoBehaviour
     {
         theRB.velocity = new Vector2(0f, jumpForce * 0.65f);
         anim.SetTrigger("hit");
+        knockbackCounter = knockbackLength;
+    }
+
+    public void isDead()
+    {
+        theRB.velocity = new Vector2(0f, jumpForce * 0.65f);
+        anim.SetTrigger("dead");
         knockbackCounter = knockbackLength;
     }
 }

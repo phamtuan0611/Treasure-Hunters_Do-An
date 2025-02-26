@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 33
+  maxHealth: 1
   anim: {fileID: 1475241813}
   invincibilityLength: 1
 --- !u!1 &1588045223

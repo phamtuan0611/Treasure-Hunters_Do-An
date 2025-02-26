@@ -19,6 +19,7 @@ public class PlayerHealthController : MonoBehaviour
     private float invincibilityCounter;
 
     private PlayerController thePlayer;
+    private Rigidbody2D theRB;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth = maxHealth;
 
         thePlayer = GetComponent<PlayerController>();
+
+        theRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,7 @@ public class PlayerHealthController : MonoBehaviour
             //    anim.SetTrigger("hit");
             //}
         }
+
     }
 
     public void DamagePLayer()
@@ -55,6 +59,8 @@ public class PlayerHealthController : MonoBehaviour
                 currentHealth = 0;
                 //gameObject.SetActive(false);
                 //LifeController.instance.Respawn();
+
+                thePlayer.isDead();
             }
             else
             {
@@ -68,7 +74,6 @@ public class PlayerHealthController : MonoBehaviour
 
             //UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
         }
-
     }
 
     public void AddHealth(int amountToAdd)
