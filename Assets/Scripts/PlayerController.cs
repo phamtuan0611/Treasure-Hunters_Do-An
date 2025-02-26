@@ -22,12 +22,12 @@ public class PlayerController : MonoBehaviour
     private int countAttack = 0;
     private int countAirAttack = 0;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -68,37 +68,47 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             countAttack++;
+            anim.SetBool("ATTACK", true);
             if (countAttack == 1)
             {
-                anim.SetTrigger("attack01");
+                anim.SetFloat("attack", 0);
             }
             else if (countAttack == 2)
             {
-                anim.SetTrigger("attack02");
+                anim.SetFloat("attack", 0.5f);
             }
             else if (countAttack == 3)
             {
-                anim.SetTrigger("attack03");
+                anim.SetFloat("attack", 1f);
 
                 countAttack = 0;
             }
+
+        }
+        else
+        {
+            anim.SetBool("ATTACK", false);
         }
 
         //Air Attack
         if (Input.GetKeyDown(KeyCode.X) && isGrounded == false)
         {
             countAirAttack++;
+            anim.SetBool("AIRATTACK", true);
             if (countAirAttack == 1)
             {
-                anim.SetTrigger("airAttack01");
+                anim.SetFloat("airAttack", 0);
             }
-            else
+            else if (countAirAttack == 2)
             {
-                anim.SetTrigger("airAttack02");
+                anim.SetFloat("airAttack", 1);
 
                 countAirAttack = 0;
             }
-
+        }
+        else
+        {
+            anim.SetBool("AIRATTACK", false);
         }
 
         //Throw Sword
