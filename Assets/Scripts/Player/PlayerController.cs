@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,13 +11,14 @@ public class PlayerController : MonoBehaviour
     private float activeSpeed;
 
     private bool isGrounded;
+    private bool wasFalling = false;
 
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask whatIsGround;
     private bool canDoubleJump;
 
-    [SerializeField] private Animator anim;
+    [SerializeField] private Animator anim, animEffect;
 
     private int countAttack = 0;
     private int countAirAttack = 0;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float knockbackLength, knockbackSpeed;
     private float knockbackCounter;
+
+    [SerializeField] private GameObject effectPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale < 0f)
+            return;
         if (Time.timeScale > 0f)
         {
             //Check Ground
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                 }
+
                 //Run
                 activeSpeed = moveSpeed;
                 if (Input.GetKey(KeyCode.LeftShift))
@@ -67,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
                 //Move
                 theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
+                //if (theRB.velocity.x > 0f && isGrounded)
+                //    SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
 
                 //Jump and Double Jump
                 if (Input.GetButtonDown("Jump"))
@@ -76,12 +84,15 @@ public class PlayerController : MonoBehaviour
                         Jump();
                         canDoubleJump = true;
                         anim.SetBool("isDoubleJump", false);
+                        SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+
                     }
                     else if (canDoubleJump == true)
                     {
                         Jump();
                         canDoubleJump = false;
                         anim.SetTrigger("isDoubleJump");
+                        SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
                     }
                 }
 
@@ -147,6 +158,18 @@ public class PlayerController : MonoBehaviour
                 {
                     transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
+
+                if (theRB.velocity.y < -0.1f && !isGrounded)
+                {
+                    wasFalling = true;
+                }
+
+                if (isGrounded && wasFalling)
+                {
+                    SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+                    Debug.Log("1234567 " + wasFalling);
+                    wasFalling = false;
+                }
             }
             else
             {
@@ -158,7 +181,15 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isGround", isGrounded);
             anim.SetFloat("ySpeed", theRB.velocity.y);
 
-            
+            //if (theRB.velocity.y < 0 && isGrounded == true)
+            //    //SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+            //    Debug.Log("Touch Ground");
+
+            //animEffect.SetFloat("speedEffect", Mathf.Abs(theRB.velocity.x));
+            //animEffect.SetBool("isGroundEffect", isGrounded);
+            //animEffect.SetFloat("ySpeedEffect", theRB.velocity.y);
+
+            //Destroy(effectPlayer);
         }
     }
 
@@ -179,5 +210,43 @@ public class PlayerController : MonoBehaviour
         theRB.velocity = new Vector2(0f, jumpForce * 0.65f);
         anim.SetTrigger("dead");
         knockbackCounter = knockbackLength;
+    }
+
+    public void SpawnEffect(GameObject effectPrefab, Vector3 effectPlace)
+    {
+        if (effectPrefab != null)
+        {
+            GameObject effect = MyPoolManager.instance.Get(effectPrefab, effectPlace);
+
+            StartCoroutine(ReturnEffectToPool(effect, 0.35f));
+        }
+    }
+    private IEnumerator ReturnEffectToPool(GameObject effect, float delay)
+    {
+        yield return null;
+        Animator anim = effect.GetComponent<Animator>();
+        if (!isGrounded)
+        {
+            Debug.Log("1");
+            anim.SetBool("isGroundEffect", isGrounded);
+        }
+
+        else if (Mathf.Abs(theRB.velocity.x) > 0f && isGrounded)
+        {
+            Debug.Log("2");
+            anim.SetFloat("speedEffect", Mathf.Abs(theRB.velocity.x));
+        }
+        else if (isGrounded && !wasFalling)
+        {
+            Debug.Log("3");
+            anim.SetBool("touchGround", wasFalling);
+            
+            //anim.SetFloat("ySpeedEffect", theRB.velocity.y);
+
+        }
+
+        yield return new WaitForSeconds(delay);
+
+        effect.SetActive(false);
     }
 }
