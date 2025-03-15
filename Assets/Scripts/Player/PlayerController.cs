@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
 
     public void isKnock()
     {
-        theRB.velocity = new Vector2(0f, jumpForce * 0.65f);
+        theRB.velocity = new Vector2(0f, jumpForce * 0.45f);
         anim.SetTrigger("hit");
         knockbackCounter = knockbackLength;
     }
