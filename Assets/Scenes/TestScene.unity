@@ -3766,6 +3766,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1166260275700362040
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596942721517170406, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424242314934191415, guid: bfce6241696c8c648bcbf81827513053, type: 3}
+      propertyPath: m_Name
+      value: Plant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfce6241696c8c648bcbf81827513053, type: 3}
 --- !u!1001 &1930117153448440550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3818,6 +3875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 2025501580866398857, guid: 0385c5ce00d5df44b81b4bf76c63b5a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3835,3 +3896,4 @@ SceneRoots:
   - {fileID: 1475241810}
   - {fileID: 865693065}
   - {fileID: 1930117153448440550}
+  - {fileID: 1166260275700362040}
