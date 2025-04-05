@@ -30,10 +30,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject effectPlayer;
 
+    [SerializeField] public GameObject attackArea;
+
     // Start is called before the first frame update
     void Start()
     {
         changePhase = 0;
+        attackArea.SetActive(false);
     }
 
     // Update is called once per frame
@@ -101,6 +104,8 @@ public class PlayerController : MonoBehaviour
                 {
                     countAttack++;
                     anim.SetBool("ATTACK", true);
+
+                    attackArea.SetActive(true);
                     if (countAttack == 1)
                     {
                         anim.SetFloat("attack", 0);
@@ -116,10 +121,13 @@ public class PlayerController : MonoBehaviour
                         countAttack = 0;
                     }
 
+                    StartCoroutine(AttackDisable());
                 }
                 else
                 {
                     anim.SetBool("ATTACK", false);
+
+                    //attackArea.SetActive(false);
                 }
 
                 //Air Attack
@@ -248,5 +256,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         effect.SetActive(false);
+    }
+
+    private IEnumerator AttackDisable()
+    {
+        yield return new WaitForSeconds(0.3f);
+        attackArea.SetActive(false);
     }
 }
