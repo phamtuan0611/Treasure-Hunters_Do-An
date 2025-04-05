@@ -21,20 +21,16 @@ public class EnemyController : EnemyMoving
         {
             waitToDestroy -= Time.deltaTime;
 
-            //foreach (Transform t in patrolPoints)
-            //{
-            //    t.SetParent(transform);
-            //}
-
             if (waitToDestroy <= 0)
             {
                 Destroy(gameObject);
-                //Destroy(patrolPoints[0].gameObject);
-                //Destroy(patrolPoints[1].gameObject);
-                
+
                 //AudioManager.instance.allSFXPlay(5);
             }
         }
+
+        Debug.Log("SwordController instance: " + SwordController.instance);
+        Debug.Log("AttackArea instance: " + AttackArea.instance);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -53,12 +49,41 @@ public class EnemyController : EnemyMoving
         if (other.CompareTag("Player"))
         {
             FindFirstObjectByType<PlayerController>().Jump();
-
+            Debug.Log("Setting trigger for animation");
             anim.SetTrigger("isHitting");
 
-            isDefeated = true;
-            
+            StartCoroutine(WaitAndDestroy());
+
             //AudioManager.instance.allSFXPlay(6);
         }
+
+        if (AttackArea.instance.attack)
+        {
+            Debug.Log("Setting trigger for animation");
+            anim.SetTrigger("isHitting");
+
+            StartCoroutine(WaitAndDestroy());
+
+            //AudioManager.instance.allSFXPlay(6);
+        }
+
+        if (SwordController.instance != null)
+        {
+            if (SwordController.instance.isAttack)
+            {
+                Debug.Log("Setting trigger for animation");
+                anim.SetTrigger("isHitting");
+
+                StartCoroutine(WaitAndDestroy());
+
+                //AudioManager.instance.allSFXPlay(6);
+            }
+        }
+    }
+
+    private IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isDefeated = true;
     }
 }

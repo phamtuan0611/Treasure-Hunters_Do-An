@@ -66,7 +66,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -6, y: -0.25}
+  m_Offset: {x: -2.9108896, y: -0.11001003}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12, y: 1.5}
+  m_Size: {x: 5.8217793, y: 1.0706975}
   m_EdgeRadius: 0
 --- !u!50 &8704246102113329119
 Rigidbody2D:
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5331266979569830945}
   - component: {fileID: 8296376904253032605}
   - component: {fileID: 3904472375519714448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12689936, y: 0.63919735}
+  m_Offset: {x: 0.102787614, y: 0.3498548}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.311806, y: 0.42540932}
+  m_Size: {x: 0.29910684, y: 0.13606662}
   m_EdgeRadius: 0
 --- !u!70 &8296376904253032605
 CapsuleCollider2D:
@@ -337,8 +337,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22283673, y: -0.4887979}
-  m_Size: {x: 1.5732818, y: 1.6474061}
+  m_Offset: {x: 0.12378037, y: -0.21364129}
+  m_Size: {x: 0.670768, y: 0.9430051}
   m_Direction: 0
 --- !u!114 &3904472375519714448
 MonoBehaviour:
@@ -355,7 +355,6 @@ MonoBehaviour:
   patrolPoints: []
   moveSpeed: 0
   timeAtPoint: 0
-  theEnemy: {fileID: 0}
   anim: {fileID: 0}
   isDefeated: 0
   waitToDestroy: 0

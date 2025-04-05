@@ -31,14 +31,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject effectPlayer;
 
     [SerializeField] public GameObject attackArea;
+    private Collider2D attackCollider;
 
     private bool isAttacking = false;
+
+    [SerializeField] private GameObject swordPrefab;
+    [SerializeField] private float throwForce = 8f;
+    private float throwTimer = 0f;
+
+    private void Awake()
+    {
+        attackCollider = attackArea.GetComponent<Collider2D>();
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         changePhase = 0;
-        attackArea.SetActive(false);
+        throwTimer = 2f;
+
+        attackCollider.enabled = false;
+        //attackArea.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +64,8 @@ public class PlayerController : MonoBehaviour
         {
             //Check Ground
             isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
+
+            throwTimer += Time.deltaTime;
 
             if (knockbackCounter <= 0)
             {
@@ -158,7 +174,8 @@ public class PlayerController : MonoBehaviour
             countAttack++;
             anim.SetBool("ATTACK", true);
 
-            attackArea.SetActive(true);
+            //attackArea.SetActive(true);
+            attackCollider.enabled = true;
 
             if (countAttack == 1)
             {
@@ -206,10 +223,35 @@ public class PlayerController : MonoBehaviour
         }
 
         //Throw Sword
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && throwTimer >= 2f)
         {
             anim.SetTrigger("throwSword");
+            ThrowSword();
         }
+    }
+
+    public void ThrowSword()
+    {
+        GameObject thrownSword = Instantiate(swordPrefab, transform.position, Quaternion.identity);
+
+        Rigidbody2D rb = thrownSword.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            float direction = transform.localScale.x;
+            rb.velocity = new Vector2(direction * throwForce, 0f);
+
+            if (direction > 0)
+            {
+                thrownSword.transform.localScale = new Vector3(1f, 1f, 1f); 
+            }
+            else
+            {
+                thrownSword.transform.localScale = new Vector3(-1f, 1f, 1f); 
+            }
+        }
+
+        Destroy(thrownSword, 2f);
+        throwTimer = 0f;
     }
 
     public void ChangeDirection()
@@ -283,8 +325,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator AttackDisable()
     {
-        yield return new WaitForSeconds(0.2f); 
-        attackArea.SetActive(false);
+        yield return new WaitForSeconds(0.1f); 
+        //attackArea.SetActive(false);
+        attackCollider.enabled = false;
         anim.SetBool("ATTACK", false); 
         isAttacking = false;
     }
