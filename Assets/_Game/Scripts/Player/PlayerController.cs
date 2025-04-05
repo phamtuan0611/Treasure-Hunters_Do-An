@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public GameObject attackArea;
 
+    private bool isAttacking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,20 +54,7 @@ public class PlayerController : MonoBehaviour
             if (knockbackCounter <= 0)
             {
                 //Change Phase
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    changePhase++;
-                    if (changePhase == 1)
-                    {
-                        anim.SetFloat("ChangePhase", 1);
-                    }
-                    else if (changePhase == 2)
-                    {
-                        anim.SetFloat("ChangePhase", 0);
-                        changePhase = 0;
-                    }
-
-                }
+                ChangePhase();
 
                 //Run
                 activeSpeed = moveSpeed;
@@ -80,97 +69,13 @@ public class PlayerController : MonoBehaviour
                 //    SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
 
                 //Jump and Double Jump
-                if (Input.GetButtonDown("Jump"))
-                {
-                    if (isGrounded == true)
-                    {
-                        Jump();
-                        canDoubleJump = true;
-                        anim.SetBool("isDoubleJump", false);
-                        SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+                PlayerJump();
 
-                    }
-                    else if (canDoubleJump == true)
-                    {
-                        Jump();
-                        canDoubleJump = false;
-                        anim.SetTrigger("isDoubleJump");
-                        SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-                    }
-                }
-
-                //Attack
-                if (Input.GetKeyDown(KeyCode.Z) && changePhase == 1)
-                {
-                    countAttack++;
-                    anim.SetBool("ATTACK", true);
-
-                    attackArea.SetActive(true);
-                    if (countAttack == 1)
-                    {
-                        anim.SetFloat("attack", 0);
-                    }
-                    else if (countAttack == 2)
-                    {
-                        anim.SetFloat("attack", 0.5f);
-                    }
-                    else if (countAttack == 3)
-                    {
-                        anim.SetFloat("attack", 1f);
-
-                        countAttack = 0;
-                    }
-
-                    StartCoroutine(AttackDisable());
-                }
-                else
-                {
-                    anim.SetBool("ATTACK", false);
-
-                    //attackArea.SetActive(false);
-                }
-
-                //Air Attack
-                if (Input.GetKeyDown(KeyCode.X) && isGrounded == false && changePhase == 1)
-                {
-                    countAirAttack++;
-                    anim.SetBool("AIRATTACK", true);
-                    if (countAirAttack == 1)
-                    {
-                        anim.SetFloat("airAttack", 0);
-                    }
-                    else if (countAirAttack == 2)
-                    {
-                        anim.SetFloat("airAttack", 1);
-
-                        countAirAttack = 0;
-                    }
-                }
-                else
-                {
-                    anim.SetBool("AIRATTACK", false);
-                }
-
-                //Throw Sword
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    anim.SetTrigger("throwSword");
-                }
+                //PLayer Attack
+                PlayerAttack();
 
                 //ChangeDirection
-                if (theRB.velocity.x > 0)
-                {
-                    transform.localScale = Vector3.one;
-                }
-                if (theRB.velocity.x < 0)
-                {
-                    transform.localScale = new Vector3(-1f, 1f, 1f);
-                }
-
-                if (theRB.velocity.y < -0.1f && !isGrounded)
-                {
-                    wasFalling = true;
-                }
+                ChangeDirection();
 
                 if (isGrounded && wasFalling)
                 {
@@ -201,9 +106,127 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ChangePhase()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            changePhase++;
+            if (changePhase == 1)
+            {
+                anim.SetFloat("ChangePhase", 1);
+            }
+            else if (changePhase == 2)
+            {
+                anim.SetFloat("ChangePhase", 0);
+                changePhase = 0;
+            }
+        }
+    }
     public void Jump()
     {
         theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+    }
+
+    public void PlayerJump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded == true)
+            {
+                Jump();
+                canDoubleJump = true;
+                anim.SetBool("isDoubleJump", false);
+                SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+
+            }
+            else if (canDoubleJump == true)
+            {
+                Jump();
+                canDoubleJump = false;
+                anim.SetTrigger("isDoubleJump");
+                SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+            }
+        }
+    }
+
+    public void PlayerAttack()
+    {
+        //Attack
+        if (Input.GetKeyDown(KeyCode.Z) && changePhase == 1 && !isAttacking)
+        {
+            isAttacking = true;
+            countAttack++;
+            anim.SetBool("ATTACK", true);
+
+            attackArea.SetActive(true);
+
+            if (countAttack == 1)
+            {
+                anim.SetFloat("attack", 0);
+            }
+            else if (countAttack == 2)
+            {
+                anim.SetFloat("attack", 0.5f);
+            }
+            else if (countAttack == 3)
+            {
+                anim.SetFloat("attack", 1f);
+
+                countAttack = 0;
+            }
+
+            StartCoroutine(AttackDisable());
+        }
+        else
+        {
+            anim.SetBool("ATTACK", false);
+
+            //attackArea.SetActive(false);
+        }
+
+        //Air Attack
+        if (Input.GetKeyDown(KeyCode.X) && isGrounded == false && changePhase == 1)
+        {
+            countAirAttack++;
+            anim.SetBool("AIRATTACK", true);
+            if (countAirAttack == 1)
+            {
+                anim.SetFloat("airAttack", 0);
+            }
+            else if (countAirAttack == 2)
+            {
+                anim.SetFloat("airAttack", 1);
+
+                countAirAttack = 0;
+            }
+        }
+        else
+        {
+            anim.SetBool("AIRATTACK", false);
+        }
+
+        //Throw Sword
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            anim.SetTrigger("throwSword");
+        }
+    }
+
+    public void ChangeDirection()
+    {
+        if (theRB.velocity.x > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
+        if (theRB.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+
+        if (theRB.velocity.y < -0.1f && !isGrounded)
+        {
+            wasFalling = true;
+        }
     }
 
     public void isKnock()
@@ -260,7 +283,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator AttackDisable()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f); 
         attackArea.SetActive(false);
+        anim.SetBool("ATTACK", false); 
+        isAttacking = false;
     }
 }
