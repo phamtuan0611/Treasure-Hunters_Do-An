@@ -29,6 +29,8 @@ public class PlayerHealthController : MonoBehaviour
         thePlayer = GetComponent<PlayerController>();
 
         theRB = GetComponent<Rigidbody2D>();
+
+        UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -72,7 +74,7 @@ public class PlayerHealthController : MonoBehaviour
                 //AudioManager.instance.allSFXPlay(13);
             }
 
-            //UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
+            UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
         }
     }
 
@@ -85,6 +87,6 @@ public class PlayerHealthController : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        //UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
+        UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
     }
 }
