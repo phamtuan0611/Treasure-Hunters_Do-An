@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float throwForce = 8f;
     private float throwTimer = 0f;
 
+    private float timeChangePhase;
+
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         changePhase = 0;
+        timeChangePhase = 2f;
+
         throwTimer = 2f;
 
         attackCollider.enabled = false;
@@ -66,6 +70,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
 
             throwTimer += Time.deltaTime;
+            timeChangePhase += Time.deltaTime;
 
             if (knockbackCounter <= 0)
             {
@@ -124,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangePhase()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && timeChangePhase >= 2f)
         {
             changePhase++;
             if (changePhase == 1)
@@ -226,14 +231,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && throwTimer >= 2f)
         {
             anim.SetTrigger("throwSword");
-            ThrowSword();
+            StartCoroutine(ThrowSword());
         }
     }
 
-    public void ThrowSword()
+    public IEnumerator ThrowSword()
     {
         GameObject thrownSword = Instantiate(swordPrefab, transform.position, Quaternion.identity);
-
+        anim.SetFloat("ChangePhase", 0);
         Rigidbody2D rb = thrownSword.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -252,6 +257,10 @@ public class PlayerController : MonoBehaviour
 
         Destroy(thrownSword, 2f);
         throwTimer = 0f;
+        timeChangePhase = 0f;
+
+        yield return new WaitForSeconds(2f);
+        anim.SetFloat("ChangePhase", 1);
     }
 
     public void ChangeDirection()
