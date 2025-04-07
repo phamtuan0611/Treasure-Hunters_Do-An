@@ -28,9 +28,6 @@ public class EnemyController : EnemyMoving
                 //AudioManager.instance.allSFXPlay(5);
             }
         }
-
-        Debug.Log("SwordController instance: " + SwordController.instance);
-        Debug.Log("AttackArea instance: " + AttackArea.instance);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -49,7 +46,6 @@ public class EnemyController : EnemyMoving
         if (other.CompareTag("Player"))
         {
             FindFirstObjectByType<PlayerController>().Jump();
-            Debug.Log("Setting trigger for animation");
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
@@ -59,7 +55,6 @@ public class EnemyController : EnemyMoving
 
         if (AttackArea.instance.attack)
         {
-            Debug.Log("Setting trigger for animation");
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
@@ -71,7 +66,6 @@ public class EnemyController : EnemyMoving
         {
             if (SwordController.instance.isAttack)
             {
-                Debug.Log("Setting trigger for animation");
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());

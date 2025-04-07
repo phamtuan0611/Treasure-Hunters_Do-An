@@ -37,7 +37,6 @@ public class AttackArea : MonoBehaviour
             {
                 hitTargets.Add(other.gameObject);
                 attack = true;
-                Debug.Log("Hit enemy: " + other.name);
             }
         }
         else

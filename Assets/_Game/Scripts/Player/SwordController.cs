@@ -48,8 +48,6 @@ public class SwordController : MonoBehaviour
                 isAttack = true;
 
                 Destroy(gameObject);
-                Debug.Log("Sword enemy");
-
             }
         }
     }

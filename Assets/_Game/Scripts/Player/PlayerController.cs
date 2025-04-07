@@ -101,7 +101,6 @@ public class PlayerController : MonoBehaviour
                 if (isGrounded && wasFalling)
                 {
                     SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-                    Debug.Log("1234567 " + wasFalling);
                     wasFalling = false;
                 }
             }
@@ -228,7 +227,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Throw Sword
-        if (Input.GetKeyDown(KeyCode.C) && throwTimer >= 2f)
+        if (Input.GetKeyDown(KeyCode.C) && throwTimer >= 2f && anim.GetFloat("ChangePhase") != 0)
         {
             anim.SetTrigger("throwSword");
             StartCoroutine(ThrowSword());
@@ -309,18 +308,15 @@ public class PlayerController : MonoBehaviour
         Animator anim = effect.GetComponent<Animator>();
         if (!isGrounded)
         {
-            Debug.Log("1");
             anim.SetBool("isGroundEffect", isGrounded);
         }
 
         else if (Mathf.Abs(theRB.velocity.x) > 0f && isGrounded)
         {
-            Debug.Log("2");
             anim.SetFloat("speedEffect", Mathf.Abs(theRB.velocity.x));
         }
         else if (isGrounded && !wasFalling)
         {
-            Debug.Log("3");
             anim.SetBool("touchGround", wasFalling);
             
             //anim.SetFloat("ySpeedEffect", theRB.velocity.y);

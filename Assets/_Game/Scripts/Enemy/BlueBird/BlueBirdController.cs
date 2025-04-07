@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class BlueBirdController : MonoBehaviour
 {
-    [SerializeField] private bool isAttack;
+    [SerializeField] protected bool isAttack;
     [SerializeField] public GameObject blueBrid, thePlayer, patrolPoint;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] protected float speed = 5f;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         patrolPoint.transform.SetParent(null);
         isAttack = false;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (isAttack == true)
         {
