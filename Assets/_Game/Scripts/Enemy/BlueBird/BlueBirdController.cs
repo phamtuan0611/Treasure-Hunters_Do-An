@@ -41,9 +41,15 @@ public class BlueBirdController : MonoBehaviour
             {
                 blueBrid.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
+
+            if (Vector3.Distance(blueBrid.transform.position, patrolPoint.transform.position) <= 0.01f)
+            {
+                OnReachedPatrolPoint();
+            }
         }   
     }
 
+    protected virtual void OnReachedPatrolPoint() { }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

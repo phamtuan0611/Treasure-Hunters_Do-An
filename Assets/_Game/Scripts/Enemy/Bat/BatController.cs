@@ -5,7 +5,7 @@ using UnityEngine;
 public class BatController : BlueBirdController
 {
     [SerializeField] public Animator anim;
-
+    private Coroutine attackCoroutine;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -17,17 +17,22 @@ public class BatController : BlueBirdController
     protected override void Update()
     {
         base.Update();
+
+        
+    }
+    protected override void OnReachedPatrolPoint()
+    {
+        anim.SetBool("isAttack", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            isAttack = true;
             anim.SetBool("isAttack", true);
 
-            //StartCoroutine(DelayCelling());
-            isAttack = true;
-            Debug.Log("Bat: " + isAttack);
+            //attackCoroutine = StartCoroutine(DelayCelling());
         }
     }
 
@@ -35,10 +40,18 @@ public class BatController : BlueBirdController
     {
         if (other.CompareTag("Player"))
         {
-            //anim.SetBool("isAttack", true);
+            if (attackCoroutine != null)
+            {
+                StopCoroutine(attackCoroutine);
+                attackCoroutine = null;
+            }
 
             isAttack = false;
-            Debug.Log("Bat Attack: " + isAttack);
+
+            if (Vector3.Distance(blueBrid.transform.position, patrolPoint.transform.position) <= 0.01f)
+            {
+                anim.SetBool("isAttack", false);
+            }
         }
     }
 
