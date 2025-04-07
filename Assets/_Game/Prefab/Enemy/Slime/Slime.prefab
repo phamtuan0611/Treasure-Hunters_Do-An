@@ -14,13 +14,13 @@ GameObject:
   - component: {fileID: 589466854532080553}
   - component: {fileID: 4751311549566675989}
   - component: {fileID: 3517733684996796606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2164335720644780030
 Transform:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8625846662236638254, guid: 80ab1d417eec35e43a8ac810121ef5df, type: 3}
+  m_Sprite: {fileID: 4320010084133899996, guid: 52d40d1d463a123498d838dd108b712a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   - {fileID: 1647166498825943315}
   moveSpeed: 3
   timeAtPoint: 2
-  anim: {fileID: 0}
+  anim: {fileID: 3517733684996796606}
   isDefeated: 0
   waitToDestroy: 0.1
 --- !u!95 &3517733684996796606
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1647166498825943315}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3393311681775488674}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
