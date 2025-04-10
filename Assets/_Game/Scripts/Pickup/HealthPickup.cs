@@ -25,7 +25,7 @@ public class HealthPickup : MonoBehaviour
 
                 Destroy(gameObject);
                 GameObject effect = Instantiate(pickEffect, transform.position, transform.rotation);
-                Destroy(effect, 0.3f);
+                Destroy(effect, 0.5f);
                 //AudioManager.instance.allSFXPlay(10);
             }
         }

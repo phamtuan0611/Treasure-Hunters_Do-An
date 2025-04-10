@@ -11,7 +11,7 @@ public class FruitPickup : MonoBehaviour
         {
             Destroy(gameObject);
             GameObject effect = Instantiate(effectFruit, transform.position, Quaternion.identity);
-            Destroy(effect, 0.3f);
+            Destroy(effect, 0.5f);
             //AudioManager.instance.allSFXPlayPitched(9);
         }
     }
