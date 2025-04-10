@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3793732272797663677
+--- !u!1 &4868390161011521910
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9000915006818728456}
-  - component: {fileID: 472996745595896526}
-  - component: {fileID: 618370653533386293}
-  - component: {fileID: 4762524708259657411}
-  - component: {fileID: 1318305509325848578}
+  - component: {fileID: 9132359324006303239}
+  - component: {fileID: 4671553418155844336}
+  - component: {fileID: 3248480325868531582}
+  - component: {fileID: 5657769170005291863}
+  - component: {fileID: 8435795000579940824}
   m_Layer: 0
-  m_Name: HealthPickup
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9000915006818728456
+--- !u!4 &9132359324006303239
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793732272797663677}
+  m_GameObject: {fileID: 4868390161011521910}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.27, y: 1.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02000022, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &472996745595896526
+--- !u!212 &4671553418155844336
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793732272797663677}
+  m_GameObject: {fileID: 4868390161011521910}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,28 +76,28 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 698531468, guid: 24444fb77b6dadd4ebd3bda36b64c4b3, type: 3}
+  m_Sprite: {fileID: 7293598183456022363, guid: 1ddc9afd21fec77489b1248d18f31b68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &618370653533386293
+--- !u!95 &3248480325868531582
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793732272797663677}
+  m_GameObject: {fileID: 4868390161011521910}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1af4af2de2ebd4e4eb6025252d87f0fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58a312d756575a74a87f7980aa3939ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,13 +108,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &4762524708259657411
+--- !u!58 &5657769170005291863
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793732272797663677}
+  m_GameObject: {fileID: 4868390161011521910}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -140,21 +140,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.010580152}
   serializedVersion: 2
-  m_Radius: 0.2
---- !u!114 &1318305509325848578
+  m_Radius: 0.24
+--- !u!114 &8435795000579940824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793732272797663677}
+  m_GameObject: {fileID: 4868390161011521910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e9926ba213eab498f06b2a284a3668, type: 3}
+  m_Script: {fileID: 11500000, guid: 02571cb853166694d918248ee096b5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPickup: 1
-  pickEffect: {fileID: 2159161022216544166, guid: 88c024cae45bc0f499a41bf54326afc8, type: 3}
-  fullHealth: 0
+  effectFruit: {fileID: 2159161022216544166, guid: 88c024cae45bc0f499a41bf54326afc8, type: 3}
