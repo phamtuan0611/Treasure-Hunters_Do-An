@@ -14,13 +14,13 @@ GameObject:
   - component: {fileID: 8341008018333493648}
   - component: {fileID: 6168368649913424477}
   - component: {fileID: 8624763329148094594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AngryPig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8505069410018746927
 Transform:
   m_ObjectHideFlags: 0
@@ -122,8 +122,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006738383, y: -0.105559036}
-  m_Size: {x: 0.9588062, y: 0.69828826}
+  m_Offset: {x: 0.038097486, y: -0.17611912}
+  m_Size: {x: 2.0877762, y: 1.4561647}
   m_Direction: 1
 --- !u!61 &8341008018333493648
 BoxCollider2D:
@@ -157,18 +157,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0134756565, y: 0.29646048}
+  m_Offset: {x: 0.044835687, y: 0.6309687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.125, y: 0.9375}
+    oldSize: {x: 2.25, y: 1.875}
     newSize: {x: 0.36, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.40630817, y: 0.09303677}
+  m_Size: {x: 1.0753248, y: 0.14530373}
   m_EdgeRadius: 0
 --- !u!95 &6168368649913424477
 Animator:
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5567675930429515060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 775751189457314247}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

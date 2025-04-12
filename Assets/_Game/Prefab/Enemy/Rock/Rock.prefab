@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4550507431917344504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1929732555155606122}
   - component: {fileID: 811113902732216418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918927346309860746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 7420741170283698592}
   - component: {fileID: 2440178524460451548}
   - component: {fileID: 1475754026238318793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,8 +218,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0027781853, y: -0.10391836}
-  m_Size: {x: 1.0996815, y: 0.8434817}
+  m_Offset: {x: -0.0027780784, y: -0.20845327}
+  m_Size: {x: 2.218201, y: 1.7320307}
   m_Direction: 1
 --- !u!95 &7438476375576665299
 Animator:
@@ -326,18 +326,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00846076, y: 0.36044312}
+  m_Offset: {x: -0.037207544, y: 0.77596515}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1875, y: 1.0625}
+    oldSize: {x: 2.375, y: 2.125}
     newSize: {x: 1.1875, y: 1.0625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45999813, y: 0.09741211}
+  m_Size: {x: 0.9774405, y: 0.21762621}
   m_EdgeRadius: 0
 --- !u!114 &1475754026238318793
 MonoBehaviour:
@@ -356,10 +356,9 @@ MonoBehaviour:
   - {fileID: 977306659499855455}
   moveSpeed: 1.25
   timeAtPoint: 2.5
-  theEnemy: {fileID: 1475754026238318793}
   anim: {fileID: 7438476375576665299}
   isDefeated: 0
-  waitToDestroy: 0.5
+  waitToDestroy: 0.1
 --- !u!1 &8918309545186285771
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977306659499855455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}

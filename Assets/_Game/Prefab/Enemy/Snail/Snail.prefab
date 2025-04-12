@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78217118268349733}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3382933204713703978}
   - component: {fileID: 8485792023607469574}
   - component: {fileID: 5119588992329014467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShellSnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1875, y: 0.75}
+    oldSize: {x: 2.375, y: 1.5}
     newSize: {x: 1.1875, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -265,7 +265,6 @@ MonoBehaviour:
   - {fileID: 78217118268349733}
   moveSpeed: 5
   timeAtPoint: 0
-  theEnemy: {fileID: 0}
   anim: {fileID: 5023448488242314852}
   isDefeated: 0
   waitToDestroy: 0.1
@@ -279,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 36042854502495089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -317,7 +316,7 @@ GameObject:
   - component: {fileID: 336597196935612507}
   - component: {fileID: 443052145926424276}
   - component: {fileID: 7007827280966754823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Snail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,18 +446,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21649697, y: 0.22059989}
+  m_Offset: {x: 0.39420444, y: 0.5420414}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1875, y: 0.75}
+    oldSize: {x: 2.375, y: 1.5}
     newSize: {x: 1.1875, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.650703, y: 0.13804102}
+  m_Size: {x: 0.6820631, y: 0.10145426}
   m_EdgeRadius: 0
 --- !u!70 &9149510667848921252
 CapsuleCollider2D:
@@ -492,8 +491,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06874829, y: -0.11688509}
-  m_Size: {x: 0.9921627, y: 0.53318536}
+  m_Offset: {x: 0.09226691, y: -0.13517871}
+  m_Size: {x: 2.1995347, y: 1.2387948}
   m_Direction: 1
 --- !u!50 &336597196935612507
 Rigidbody2D:
@@ -554,7 +553,6 @@ MonoBehaviour:
   - {fileID: 78217118268349733}
   moveSpeed: 1.5
   timeAtPoint: 2
-  theEnemy: {fileID: 7007827280966754823}
   anim: {fileID: 427335126122395967}
   isDefeated: 0
   waitToDestroy: 0.1

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 943952580171197662}
   - component: {fileID: 708055298517966288}
   - component: {fileID: 2601323318650033543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,18 +144,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019674063, y: 0.011259556}
+  m_Offset: {x: 0.008346021, y: 0.028772205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.47460413, y: 0.06502676}
+  m_Size: {x: 0.9089142, y: 0.15609175}
   m_EdgeRadius: 0
 --- !u!70 &943952580171197662
 CapsuleCollider2D:
@@ -189,8 +189,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0096211145, y: -0.2518872}
-  m_Size: {x: 0.7479668, y: 0.3954386}
+  m_Offset: {x: -0.013124291, y: -0.52157915}
+  m_Size: {x: 1.6656258, y: 0.9348283}
   m_Direction: 1
 --- !u!50 &708055298517966288
 Rigidbody2D:
@@ -248,7 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4611839198310646202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -264,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 3995082763035043896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737184754577035123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PatrolPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -295,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 4926517478624042384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
