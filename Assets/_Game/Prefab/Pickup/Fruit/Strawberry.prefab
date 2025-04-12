@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794200421387493024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.010580152}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.4
 --- !u!95 &4490332723568925003
 Animator:
   serializedVersion: 5
@@ -156,3 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectFruit: {fileID: 2159161022216544166, guid: 88c024cae45bc0f499a41bf54326afc8, type: 3}
+  amount: 1

@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118379173849776274, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ae0c3dfa8dd7bb4480a87155f3e4248, type: 3}
     - target: {fileID: 662910808112453345, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.0599267
       objectReference: {fileID: 0}
     - target: {fileID: 662910808112453345, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52,6 +56,10 @@ PrefabInstance:
       propertyPath: amount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5916290267841344038, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b941c0cde624ab84d8de37e3c534dbd2, type: 2}
     - target: {fileID: 6942371640913399001, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: m_Name
       value: RedDiamond Variant
