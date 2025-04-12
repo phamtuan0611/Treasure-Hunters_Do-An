@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Image[] heartIcons;
     [SerializeField] private Sprite healthFull, healthEmpty;
-    [SerializeField] private TMP_Text liveText;
+    [SerializeField] private TMP_Text liveText, fruitText, diamondText;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +53,15 @@ public class UIController : MonoBehaviour
     public void UpdateLiveDisplay(int currentLive)
     {
         liveText.text = currentLive.ToString();
+    }
+
+    public void UpdateFruitDisplay(int currentFruit)
+    {
+        fruitText.text = currentFruit.ToString();
+    }
+
+    public void UpdateDiamondDisplay(int currentDiamond)
+    {
+        diamondText.text = currentDiamond.ToString();
     }
 }
