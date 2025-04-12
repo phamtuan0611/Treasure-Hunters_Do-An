@@ -85,9 +85,9 @@ public class LifeController : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        //if (UIController.instance != null)
-        //{
-        //    UIController.instance.UpdateLiveDisplay(currentLive);
-        //}
+        if (UIController.instance != null)
+        {
+            UIController.instance.UpdateLiveDisplay(currentLive);
+        }
     }
 }

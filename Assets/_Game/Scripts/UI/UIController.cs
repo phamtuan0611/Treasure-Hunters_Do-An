@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Image[] heartIcons;
     [SerializeField] private Sprite healthFull, healthEmpty;
+    [SerializeField] private TMP_Text liveText;
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +48,10 @@ public class UIController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateLiveDisplay(int currentLive)
+    {
+        liveText.text = currentLive.ToString();
     }
 }

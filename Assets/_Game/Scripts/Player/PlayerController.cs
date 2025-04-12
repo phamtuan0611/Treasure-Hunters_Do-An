@@ -281,14 +281,14 @@ public class PlayerController : MonoBehaviour
 
     public void isKnock()
     {
-        theRB.velocity = new Vector2(0f, jumpForce * 0.45f);
+        theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
         anim.SetTrigger("hit");
         knockbackCounter = knockbackLength;
     }
 
     public void isDead()
     {
-        theRB.velocity = new Vector2(0f, jumpForce * 0.65f);
+        theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
         anim.SetTrigger("dead");
         knockbackCounter = knockbackLength;
     }

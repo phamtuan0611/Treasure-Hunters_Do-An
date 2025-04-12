@@ -60,9 +60,9 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
                 //gameObject.SetActive(false);
-                //LifeController.instance.Respawn();
-
                 thePlayer.isDead();
+
+                StartCoroutine(Respawn());
             }
             else
             {
@@ -88,5 +88,11 @@ public class PlayerHealthController : MonoBehaviour
         }
 
         UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1f);
+        LifeController.instance.Respawn();
     }
 }
