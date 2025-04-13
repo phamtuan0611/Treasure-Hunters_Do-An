@@ -88,7 +88,7 @@ public class BossBattleController : MonoBehaviour
                 foreach (Transform bm in miniBoss)
                 {
                     bm.gameObject.SetActive(true);
-                    bm.localScale = Vector3.MoveTowards(bm.localScale, Vector3.one, bossGrowSpeed * Time.deltaTime);
+                    bm.localScale = Vector3.MoveTowards(bm.localScale, new Vector3(0.5f, 0.5f, 0f), (bossGrowSpeed / 2f) * Time.deltaTime);
                 }
             }
             //theBoss.localScale == Vector3.one && 
@@ -216,7 +216,7 @@ public class BossBattleController : MonoBehaviour
     {
         bossAnim.SetTrigger("isWeak");
         isWeak = true;
-        Debug.Log(currentPhase);
+        //Debug.Log(currentPhase);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -241,6 +241,37 @@ public class BossBattleController : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Sword"))
+        {
+            if (isWeak == true)
+            {
+                if (AttackArea.instance != null)
+                {
+                    Debug.Log("Lmao"); 
+                    if (AttackArea.instance.attack)
+                    {
+                        Debug.Log("Attack Area Boss");
+                        bossAnim.SetTrigger("Hit");
+                        MoveToNextPhase();
+                        //AudioManager.instance.allSFXPlay(6);
+                    }
+                }
+
+                if (SwordController.instance != null)
+                {
+                    if (SwordController.instance.isAttack)
+                    {
+                        Debug.Log("Sword Controller Boss");
+                        bossAnim.SetTrigger("Hit");
+                        MoveToNextPhase();
+                        //AudioManager.instance.allSFXPlay(6);
+                    }
+                }
+            }
+        }
+    }
     void bossMiniDisable()
     {
         Debug.Log("Mini Boss destroy");
@@ -295,7 +326,7 @@ public class BossBattleController : MonoBehaviour
 
             //AudioManager.instance.allSFXPlay(1);
 
-            Debug.Log("Mang 3");
+            //Debug.Log("Mang 3");
         }
         else if (currentPhase >= 0)
         {

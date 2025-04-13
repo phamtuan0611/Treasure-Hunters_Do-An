@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6910433537626772841}
   - component: {fileID: 8312065132984531778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orange Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1509531648012035141}
   - component: {fileID: 5467504757444110096}
   - component: {fileID: 6359031928228643606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.24
 --- !u!114 &6359031928228643606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d810c0baf4cc940a769652239560f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7

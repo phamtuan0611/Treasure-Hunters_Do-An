@@ -32,5 +32,20 @@ public class BossProjectile : MonoBehaviour
             PlayerHealthController.instance.DamagePLayer();
             Destroy(gameObject);
         }
+
+        if (AttackArea.instance.attack)
+        {
+            Destroy(gameObject);
+            //AudioManager.instance.allSFXPlay(6);
+        }
+
+        if (SwordController.instance != null)
+        {
+            if (SwordController.instance.isAttack)
+            {
+                Destroy(gameObject);
+                //AudioManager.instance.allSFXPlay(6);
+            }
+        }
     }
 }
