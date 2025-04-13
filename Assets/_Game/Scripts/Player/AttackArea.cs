@@ -33,15 +33,25 @@ public class AttackArea : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //Destroy(other.gameObject);
+            Debug.Log("Why");
             if (!hitTargets.Contains(other.gameObject))
             {
+                Debug.Log("123456");
                 hitTargets.Add(other.gameObject);
                 attack = true;
+                Debug.Log("ATTACKATTACK: " + attack);
             }
         }
         else
         {
-            attack = false;
+            //attack = false;
+            StartCoroutine(DelayAttackReset());
         }
+    }
+    private IEnumerator DelayAttackReset()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        attack = false;
     }
 }

@@ -33,18 +33,27 @@ public class BossProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (AttackArea.instance.attack)
+        if (other.CompareTag("Sword"))
         {
-            Destroy(gameObject);
-            //AudioManager.instance.allSFXPlay(6);
-        }
-
-        if (SwordController.instance != null)
-        {
-            if (SwordController.instance.isAttack)
+            Debug.Log("Attack Area Destroy");
+            Debug.Log(AttackArea.instance.attack);
+            if (!AttackArea.instance.attack)
             {
-                Destroy(gameObject);
+                Debug.Log("Bullet Attack Destroy");
+                //Destroy(gameObject);
                 //AudioManager.instance.allSFXPlay(6);
+                direction = -direction;
+                speed *= 1.5f;
+            }
+
+            if (SwordController.instance != null)
+            {
+                if (SwordController.instance.isAttack)
+                {
+                    Debug.Log("Sword Bullet");
+                    Destroy(gameObject);
+                    //AudioManager.instance.allSFXPlay(6);
+                }
             }
         }
     }
