@@ -257,9 +257,11 @@ public class PlayerController : MonoBehaviour
         Destroy(thrownSword, 2f);
         throwTimer = 0f;
         timeChangePhase = 0f;
+        changePhase = 0;
 
         yield return new WaitForSeconds(2f);
         anim.SetFloat("ChangePhase", 1);
+        changePhase = 1;
     }
 
     public void ChangeDirection()
