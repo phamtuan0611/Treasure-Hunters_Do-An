@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class SkullGate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject effectSkull;
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
+        if (other.CompareTag("Player"))
+        {
+            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            if (inventory != null)
+            {
+                inventory.CollectStone();
+            }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            Destroy(gameObject);
+            GameObject effect = Instantiate(effectSkull, transform.position, Quaternion.identity);
+            Destroy(effect, 0.5f);
+        }
     }
 }

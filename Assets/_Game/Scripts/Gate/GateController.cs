@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    [Header("Các phần cổng đang đóng")]
+    [Header("Gate Close")]
     public GameObject[] closeParts;
 
-    [Header("Các phần cổng mở ra")]
+    [Header("Gate Open")]
     public GameObject[] openParts;
 
-    [Header("Di chuyển khi đủ đá")]
-    public float moveDistance = 2f;
+    [Header("Move Gate")]
+    public float moveDistance = 3f;
     public float moveSpeed = 2f;
 
     private bool gateFullyOpened = false;
@@ -19,10 +19,8 @@ public class GateController : MonoBehaviour
 
     void Start()
     {
-        // Tính vị trí cổng sẽ di chuyển xuống
         targetPosition = transform.position + Vector3.down * moveDistance;
 
-        // Ban đầu: bật Close, tắt Open
         for (int i = 0; i < 3; i++)
         {
             if (closeParts[i]) closeParts[i].SetActive(true);

@@ -9,6 +9,5 @@ public class PlayerInventory : MonoBehaviour
     public void CollectStone()
     {
         stoneCount++;
-        Debug.Log("Đã thu thập: " + stoneCount + " viên đá.");
     }
 }
