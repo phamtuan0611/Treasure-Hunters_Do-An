@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     public Rigidbody2D theRB;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float runSpeed;
-    private float activeSpeed;
+    [SerializeField] private float normalSpeed;
+    public float activeSpeed;
 
     private bool isGrounded;
     private bool wasFalling = false;
@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private float timeChangePhase;
 
+    public float timePotion;
+    private bool potionActive;
+
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -55,7 +58,12 @@ public class PlayerController : MonoBehaviour
 
         throwTimer = 2f;
 
+        timePotion = 30f;
+        potionActive = false;
+
         attackCollider.enabled = false;
+
+        normalSpeed = moveSpeed;
         //attackArea.SetActive(false);
     }
 
@@ -79,10 +87,10 @@ public class PlayerController : MonoBehaviour
 
                 //Run
                 activeSpeed = moveSpeed;
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    activeSpeed = runSpeed;
-                }
+                //if (Input.GetKey(KeyCode.LeftShift))
+                //{
+                //    activeSpeed = normalSpeed;
+                //}
 
                 //Move
                 theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
@@ -123,6 +131,17 @@ public class PlayerController : MonoBehaviour
             //animEffect.SetFloat("ySpeedEffect", theRB.velocity.y);
 
             //Destroy(effectPlayer);
+
+            if (potionActive == true)
+            {
+                timePotion -= Time.deltaTime;
+                Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
+                if (timePotion <= 0)
+                {
+                    potionActive = false;
+                    moveSpeed = normalSpeed;
+                }
+            }
         }
     }
 
@@ -337,5 +356,28 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = false;
         anim.SetBool("ATTACK", false); 
         isAttacking = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("HighSpeedPotion"))
+        {
+            timePotion = 30f;
+
+            float highSpeed = moveSpeed;
+            moveSpeed = highSpeed * 2;
+
+            potionActive = true;
+        }
+
+        if (other.CompareTag("LowSpeedPotion"))
+        {
+            timePotion = 30f;
+
+            float lowSpeed = moveSpeed;
+            moveSpeed = lowSpeed / 2;
+
+            potionActive = true;
+        }
     }
 }

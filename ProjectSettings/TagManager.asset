@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Snail
   - Sword
+  - HighSpeedPotion
+  - LowSpeedPotion
   layers:
   - Default
   - TransparentFX

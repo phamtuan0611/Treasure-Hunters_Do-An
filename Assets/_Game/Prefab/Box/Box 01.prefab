@@ -145,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.12, y: 0.96}
+    oldSize: {x: 1.4, y: 1.2}
     newSize: {x: 0.28, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -190,7 +190,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.12, y: 0.96}
+    oldSize: {x: 1.4, y: 1.2}
     newSize: {x: 0.28, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -198,10 +198,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.33, y: 0.45}
-      - {x: -0.33, y: 0.45}
-      - {x: -0.33, y: 0.35}
-      - {x: 0.33, y: 0.35}
+    - - {x: 0.15, y: 0.45}
+      - {x: -0.15, y: 0.45}
+      - {x: -0.15, y: 0.35}
+      - {x: 0.15, y: 0.35}
   m_UseDelaunayMesh: 0
 --- !u!114 &2522113602049404950
 MonoBehaviour:
@@ -216,3 +216,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1118263020919213200}
+  item: {fileID: 0}
