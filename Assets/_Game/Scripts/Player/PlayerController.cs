@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if (potionActive == true)
             {
                 timePotion -= Time.deltaTime;
-                Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
+                //Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
                 if (timePotion <= 0)
                 {
                     potionActive = false;

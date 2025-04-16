@@ -22,6 +22,8 @@ public class PlayerHealthController : MonoBehaviour
     private Rigidbody2D theRB;
 
     private PlayerInventory thePlayerInventory;
+    public GameObject bubbleProtected;
+    public float timeProtected;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +31,11 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth = maxHealth;
 
         thePlayer = GetComponent<PlayerController>();
-
         theRB = GetComponent<Rigidbody2D>();
+        thePlayerInventory = GetComponent<PlayerInventory>();
+
+        bubbleProtected.SetActive(false);
+        timeProtected = 10f;
 
         UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);
     }
@@ -50,7 +55,20 @@ public class PlayerHealthController : MonoBehaviour
 
         if (thePlayerInventory.bubbleCount >= 1)
         {
-            thePlayerInventory.bubbleCount = 0;
+            Debug.Log("Bubble Count: " + thePlayerInventory.bubbleCount);
+            bubbleProtected.SetActive(true);
+            timeProtected -= Time.deltaTime;
+            Debug.Log("Time protected: " + Mathf.CeilToInt(timeProtected));
+
+            invincibilityCounter = 1f;
+
+            if (timeProtected <= 0)
+            {
+                thePlayerInventory.bubbleCount = 0;
+                timeProtected = 10f;
+                invincibilityCounter = 0f;
+                bubbleProtected.SetActive(false);
+            }
         }
 
     }

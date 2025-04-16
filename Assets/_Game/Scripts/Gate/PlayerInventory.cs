@@ -23,5 +23,7 @@ public class PlayerInventory : MonoBehaviour
     public void CollectBubble()
     {
         bubbleCount++;
+        PlayerHealthController.instance.timeProtected = 10f;
+        Debug.Log("Bubble Count Inventory: " + bubbleCount);
     }
 }
