@@ -21,6 +21,8 @@ public class PlayerHealthController : MonoBehaviour
     private PlayerController thePlayer;
     private Rigidbody2D theRB;
 
+    private PlayerInventory thePlayerInventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,11 @@ public class PlayerHealthController : MonoBehaviour
             //{
             //    anim.SetTrigger("hit");
             //}
+        }
+
+        if (thePlayerInventory.bubbleCount >= 1)
+        {
+            thePlayerInventory.bubbleCount = 0;
         }
 
     }

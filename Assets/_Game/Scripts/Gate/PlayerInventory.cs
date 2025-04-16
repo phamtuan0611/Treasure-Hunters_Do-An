@@ -8,6 +8,8 @@ public class PlayerInventory : MonoBehaviour
 
     public int keyCount = 0;
 
+    public int bubbleCount = 0;
+
     public void CollectStone()
     {
         stoneCount++;
@@ -16,5 +18,10 @@ public class PlayerInventory : MonoBehaviour
     public void CollectKey()
     {
         keyCount++;
+    }
+
+    public void CollectBubble()
+    {
+        bubbleCount++;
     }
 }
