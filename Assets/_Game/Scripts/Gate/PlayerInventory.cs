@@ -6,8 +6,15 @@ public class PlayerInventory : MonoBehaviour
 {
     public int stoneCount = 0;
 
+    public int keyCount = 0;
+
     public void CollectStone()
     {
         stoneCount++;
+    }
+
+    public void CollectKey()
+    {
+        keyCount++;
     }
 }
