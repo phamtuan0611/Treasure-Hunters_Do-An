@@ -10,7 +10,17 @@ public class DiamondPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CollectiblesManager.instance.GetCollectibleDiamond(amount);
+            bool isDiamond = FindFirstObjectByType<PlayerController>().diamondPotion;
+
+            if (isDiamond)
+            {
+                CollectiblesManager.instance.GetCollectibleDiamond(amount * 2);
+            }
+            else
+            {
+                CollectiblesManager.instance.GetCollectibleDiamond(amount);
+            }
+
             Destroy(gameObject);
             GameObject effect = Instantiate(effectDiamond, transform.position, Quaternion.identity);
             Destroy(effect, 0.5f);

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiamondPotion Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1464416009696775380, guid: a8b4f8aa71103354c90b0056056d64a7, type: 3}
+      propertyPath: m_TagString
+      value: DiamondPotion
+      objectReference: {fileID: 0}
     - target: {fileID: 5842323866462713203, guid: a8b4f8aa71103354c90b0056056d64a7, type: 3}
       propertyPath: m_Controller
       value: 

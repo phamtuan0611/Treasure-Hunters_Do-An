@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - HighSpeedPotion
   - LowSpeedPotion
+  - DiamondPotion
   layers:
   - Default
   - TransparentFX

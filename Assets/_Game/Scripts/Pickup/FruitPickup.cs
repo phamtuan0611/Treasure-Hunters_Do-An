@@ -10,7 +10,17 @@ public class FruitPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CollectiblesManager.instance.GetCollectibleFruit(amount);
+            bool isFruit = FindFirstObjectByType<PlayerController>().diamondPotion;
+
+            if (isFruit)
+            {
+                CollectiblesManager.instance.GetCollectibleFruit(amount * 2);
+            }
+            else
+            {
+                CollectiblesManager.instance.GetCollectibleFruit(amount);
+            }
+
             Destroy(gameObject);
             GameObject effect = Instantiate(effectFruit, transform.position, Quaternion.identity);
             Destroy(effect, 0.5f);

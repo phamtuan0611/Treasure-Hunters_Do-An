@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public float timePotion;
     private bool potionActive;
 
+    private float timeDiamondPotion;
+    public bool diamondPotion;
+
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -58,8 +61,11 @@ public class PlayerController : MonoBehaviour
 
         throwTimer = 2f;
 
-        timePotion = 30f;
+        timePotion = 10f;
         potionActive = false;
+
+        timeDiamondPotion = 10f;
+        diamondPotion = false;
 
         attackCollider.enabled = false;
 
@@ -135,11 +141,21 @@ public class PlayerController : MonoBehaviour
             if (potionActive == true)
             {
                 timePotion -= Time.deltaTime;
-                //Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
+                Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
                 if (timePotion <= 0)
                 {
                     potionActive = false;
                     moveSpeed = normalSpeed;
+                }
+            }
+
+            if (diamondPotion == true)
+            {
+                timeDiamondPotion -= Time.deltaTime;
+                Debug.Log("Time Diamond Potion: " + Mathf.CeilToInt(timeDiamondPotion));
+                if (timeDiamondPotion <= 0)
+                {
+                    diamondPotion = false;
                 }
             }
         }
@@ -362,7 +378,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("HighSpeedPotion"))
         {
-            timePotion = 30f;
+            timePotion = 10f;
 
             float highSpeed = moveSpeed;
             moveSpeed = highSpeed * 2;
@@ -372,12 +388,17 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("LowSpeedPotion"))
         {
-            timePotion = 30f;
+            timePotion = 10f;
 
             float lowSpeed = moveSpeed;
             moveSpeed = lowSpeed / 2;
 
             potionActive = true;
+        }
+
+        if (other.CompareTag("DiamondPotion"))
+        {
+            diamondPotion = true;
         }
     }
 }
