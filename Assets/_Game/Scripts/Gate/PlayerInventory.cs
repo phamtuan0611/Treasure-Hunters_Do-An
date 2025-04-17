@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour
     public void CollectStone()
     {
         stoneCount++;
+        UIController.instance.UpdateSkullGate(stoneCount);
     }
 
     public void CollectKey()

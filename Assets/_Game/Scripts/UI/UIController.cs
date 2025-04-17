@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] private Image[] heartIcons;
+    [SerializeField] private Image[] heartIcons, skullGates;
     [SerializeField] private Sprite healthFull, healthEmpty;
     [SerializeField] private TMP_Text liveText, fruitText, diamondText;
 
@@ -46,6 +46,17 @@ public class UIController : MonoBehaviour
                     heartIcons[i].enabled = false;
                 }
             }
+        }
+    }
+
+    public void UpdateSkullGate(int amount)
+    {
+        for (int i = 0; i < skullGates.Length; i++)
+        {
+            skullGates[i].color = new Color(1, 1, 1, 1);
+
+            if (i >= amount - 1)
+                return;
         }
     }
 
