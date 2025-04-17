@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     public Rigidbody2D theRB;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float normalSpeed;
+    [SerializeField] private float normalSpeed, normalJump;
     public float activeSpeed;
 
     private bool isGrounded;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private float timeChangePhase;
 
     public float timePotion;
-    private bool potionActive;
+    private bool potionActive, highSpeedPotion, lowSpeedPotion;
 
     private float timeDiamondPotion;
     public bool diamondPotion;
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         timePotion = 10f;
         potionActive = false;
+        highSpeedPotion = false; lowSpeedPotion = false;
 
         timeDiamondPotion = 10f;
         diamondPotion = false;
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = false;
 
         normalSpeed = moveSpeed;
+        normalJump = jumpForce;
         //attackArea.SetActive(false);
     }
 
@@ -140,22 +142,42 @@ public class PlayerController : MonoBehaviour
 
             if (potionActive == true)
             {
+                if (highSpeedPotion == true)
+                {
+                    UIController.instance.UpdateHighSpeed(timePotion);
+                    UIController.instance.lowSpeed.SetActive(false);
+                }
+                else if (lowSpeedPotion == true)
+                {
+                    UIController.instance.UpdateLowSpeed(timePotion);
+                    UIController.instance.highSpeed.SetActive(false);
+                }
+
                 timePotion -= Time.deltaTime;
-                Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
+                //Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
                 if (timePotion <= 0)
                 {
                     potionActive = false;
+                    highSpeedPotion = false;
+                    lowSpeedPotion = false;
+
                     moveSpeed = normalSpeed;
+                    jumpForce = normalJump;
+
+                    UIController.instance.highSpeed.SetActive(false);
+                    UIController.instance.lowSpeed.SetActive(false);
                 }
             }
 
             if (diamondPotion == true)
             {
+                UIController.instance.UpdateMultiplyScore(timeDiamondPotion);
                 timeDiamondPotion -= Time.deltaTime;
-                Debug.Log("Time Diamond Potion: " + Mathf.CeilToInt(timeDiamondPotion));
+                //Debug.Log("Time Diamond Potion: " + Mathf.CeilToInt(timeDiamondPotion));
                 if (timeDiamondPotion <= 0)
                 {
                     diamondPotion = false;
+                    UIController.instance.multiplyScore.SetActive(false);
                 }
             }
         }
@@ -281,11 +303,11 @@ public class PlayerController : MonoBehaviour
 
             if (direction > 0)
             {
-                thrownSword.transform.localScale = new Vector3(1f, 1f, 1f); 
+                thrownSword.transform.localScale = new Vector3(1f, 1f, 1f);
             }
             else
             {
-                thrownSword.transform.localScale = new Vector3(-1f, 1f, 1f); 
+                thrownSword.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
 
@@ -355,7 +377,7 @@ public class PlayerController : MonoBehaviour
         else if (isGrounded && !wasFalling)
         {
             anim.SetBool("touchGround", wasFalling);
-            
+
             //anim.SetFloat("ySpeedEffect", theRB.velocity.y);
 
         }
@@ -367,10 +389,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator AttackDisable()
     {
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.1f);
         //attackArea.SetActive(false);
         attackCollider.enabled = false;
-        anim.SetBool("ATTACK", false); 
+        anim.SetBool("ATTACK", false);
         isAttacking = false;
     }
 
@@ -381,9 +403,14 @@ public class PlayerController : MonoBehaviour
             timePotion = 10f;
 
             float highSpeed = moveSpeed;
-            moveSpeed = highSpeed * 2;
+            moveSpeed = highSpeed * 1.5f;
+
+            float highJump = jumpForce;
+            jumpForce = highJump * 1.2f;
 
             potionActive = true;
+            highSpeedPotion = true;
+            lowSpeedPotion = false;
         }
 
         if (other.CompareTag("LowSpeedPotion"))
@@ -391,9 +418,14 @@ public class PlayerController : MonoBehaviour
             timePotion = 10f;
 
             float lowSpeed = moveSpeed;
-            moveSpeed = lowSpeed / 2;
+            moveSpeed = lowSpeed / 1.5f;
+
+            float highJump = jumpForce;
+            jumpForce = highJump / 1.2f;
 
             potionActive = true;
+            highSpeedPotion = false;
+            lowSpeedPotion = true;
         }
 
         if (other.CompareTag("DiamondPotion"))
