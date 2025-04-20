@@ -2151,6 +2151,22 @@ PrefabInstance:
       propertyPath: skullGates.Array.data[2]
       value: 
       objectReference: {fileID: 385619791}
+    - target: {fileID: 5276493633444222667, guid: 70d602e090410564eaa79bdd1872efff, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 1.6128789
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276493633444222667, guid: 70d602e090410564eaa79bdd1872efff, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 0.98502195
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276493633444222667, guid: 70d602e090410564eaa79bdd1872efff, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 1.6340382
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276493633444222667, guid: 70d602e090410564eaa79bdd1872efff, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -0.8328178
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

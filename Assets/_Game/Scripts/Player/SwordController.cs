@@ -36,6 +36,12 @@ public class SwordController : MonoBehaviour
             anim.SetBool("isGrounded", true);
         }
 
+        if (other.CompareTag("Turtle"))
+        {
+            float speed = FindFirstObjectByType<PlayerController>().throwForce;
+            rb.velocity = new Vector2(speed * (-1f), 0);
+        }
+
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //Destroy(other.gameObject);

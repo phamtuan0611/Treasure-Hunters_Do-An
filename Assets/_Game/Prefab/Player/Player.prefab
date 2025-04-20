@@ -212,6 +212,7 @@ MonoBehaviour:
   theRB: {fileID: 1220069393150272199}
   jumpForce: 6
   normalSpeed: 0
+  normalJump: 0
   activeSpeed: 0
   groundCheckPoint: {fileID: 4615991944700522890}
   groundCheckRadius: 0.2
@@ -227,6 +228,7 @@ MonoBehaviour:
   swordPrefab: {fileID: 417781287783986944, guid: 79c4b4935e3ed0443a4e3d8233a3d7dd, type: 3}
   throwForce: 10
   timePotion: 0
+  diamondPotion: 0
 --- !u!95 &1043746501257093355
 Animator:
   serializedVersion: 5
@@ -315,7 +317,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 3
   anim: {fileID: 1043746501257093355}
-  invincibilityLength: 2
+  invincibilityLength: 1.5
   bubbleProtected: {fileID: 0}
   timeProtected: 0
 --- !u!1 &6998365545445606470

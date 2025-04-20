@@ -9,6 +9,7 @@ TagManager:
   - HighSpeedPotion
   - LowSpeedPotion
   - DiamondPotion
+  - Turtle
   layers:
   - Default
   - TransparentFX

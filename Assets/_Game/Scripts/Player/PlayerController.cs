@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
 
     [SerializeField] private GameObject swordPrefab;
-    [SerializeField] private float throwForce = 8f;
+    [SerializeField] public float throwForce = 8f;
     private float throwTimer = 0f;
 
     private float timeChangePhase;
