@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 6287531038101152846}
   - component: {fileID: 516885900896972005}
   - component: {fileID: 6460009424622108278}
+  - component: {fileID: 3809637713570014978}
   m_Layer: 0
   m_Name: Chain
   m_TagString: Untagged
@@ -201,6 +202,20 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &3809637713570014978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733590001716045619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7810ae489f82cbe41930df85efa759c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleRange: 60
+  speed: 20
 --- !u!1 &1788166669469837619
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +311,6 @@ GameObject:
   - component: {fileID: 7957799180436098750}
   - component: {fileID: 1663570942250564885}
   - component: {fileID: 3404673579176051699}
-  - component: {fileID: 8666422396655120968}
   - component: {fileID: 2005444251297898937}
   m_Layer: 0
   m_Name: Spiked Ball
@@ -401,25 +415,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.55
---- !u!114 &8666422396655120968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947365094970798242}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7810ae489f82cbe41930df85efa759c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialForce: 5
 --- !u!114 &2005444251297898937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947365094970798242}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc8b4c56a69daf64c8a65a7bb9b260c5, type: 3}
   m_Name: 

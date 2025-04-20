@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class SpikeBallController : MonoBehaviour
 {
-    [SerializeField] private float initialForce = 5f;
+    public float angleRange = 45f;      
+    public float speed = 1f;            
+
+    private float startAngle;
 
     void Start()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(initialForce, 0), ForceMode2D.Impulse);
+        startAngle = -angleRange;
+    }
+
+    void Update()
+    {
+        float angle = Mathf.PingPong(Time.time * speed * 2f, angleRange * 2f) - angleRange;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
