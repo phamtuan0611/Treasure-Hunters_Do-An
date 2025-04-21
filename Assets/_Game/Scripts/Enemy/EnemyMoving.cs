@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyMoving : MonoBehaviour
 {
-    [SerializeField] public Transform[] patrolPoints;
+    [SerializeField] protected Transform[] patrolPoints;
     protected int currentPoint;
-    [SerializeField] protected float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] protected float timeAtPoint;
     protected float waitCounter;
     //public EnemyController theEnemy;
