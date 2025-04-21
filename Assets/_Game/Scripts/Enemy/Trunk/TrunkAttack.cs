@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantAttack : MonoBehaviour
+public class TrunkAttack : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
@@ -15,7 +15,6 @@ public class PlantAttack : MonoBehaviour
     private float playerIn, playerOut;
     [SerializeField] private float timePeriod;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim.GetComponent<Animator>();
@@ -30,7 +29,6 @@ public class PlantAttack : MonoBehaviour
         if (isAttack == true)
         {
             playerIn -= Time.deltaTime;
-            //anim.SetBool("isAttack", false);
 
             if (playerIn <= 0)
             {
@@ -38,12 +36,8 @@ public class PlantAttack : MonoBehaviour
 
                 if (timer > 0.45f)
                 {
-                    //anim.SetBool("isAttack", true);
-                    //timer = 0;
-                    //Shoot();
-                    //Debug.Log(timer);
                     StartCoroutine(DelayTimeShoot());
-                    
+
                     Shoot();
                 }
 
@@ -55,8 +49,8 @@ public class PlantAttack : MonoBehaviour
         {
             playerOut -= Time.deltaTime;
 
-            if (playerOut <= 0)
-                anim.SetBool("isAttack", false);
+            //if (playerOut <= 0)
+                //anim.SetBool("isAttack", false);
         }
     }
 
@@ -79,10 +73,10 @@ public class PlantAttack : MonoBehaviour
 
     IEnumerator DelayTimeShoot()
     {
-        anim.SetBool("isAttack", true);
+        //anim.SetBool("isAttack", true);
         timer = 0;
         yield return new WaitForSeconds(0.4f);
-        
+
     }
 
     IEnumerator DelayTime()
@@ -93,7 +87,7 @@ public class PlantAttack : MonoBehaviour
 
     void Shoot()
     {
-        GameObject spawnedBullet = Instantiate(bullet, new Vector3(bulletPos.position.x, bulletPos.position.y + 0.25f, bulletPos.position.z), Quaternion.identity);
+        GameObject spawnedBullet = Instantiate(bullet, new Vector3(bulletPos.position.x, bulletPos.position.y - 0.2f, bulletPos.position.z), Quaternion.identity);
         StartCoroutine(DestroyBullet(spawnedBullet));
     }
 
