@@ -54,9 +54,16 @@ public class EnemyMoving : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (Transform t in patrolPoints)
+        if (gameObject == null)
         {
-            Destroy(t.gameObject);
+            return;
+        }
+        else
+        {
+            foreach (Transform t in patrolPoints)
+            {
+                Destroy(t.gameObject);
+            }
         }
     }
 }
