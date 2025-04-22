@@ -63,9 +63,7 @@ public class TotemPiece : MonoBehaviour
 
     IEnumerator DelayTotemTop()
     {
-        Debug.Log("TotemMMM");
         yield return new WaitForSeconds(0.05f);
-        Debug.Log("Totem");
         if (pieceTop != null)
         {
             pieceTop.FallTo(piecePosition);

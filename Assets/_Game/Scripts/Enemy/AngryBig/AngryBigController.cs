@@ -81,6 +81,23 @@ public class AngryBigController : EnemyMoving
                 //AudioManager.instance.allSFXPlay(6);
                 changePhase = 1;
             }
+
+            if (AttackArea.instance.attack)
+            {
+                changePhase = 1;
+
+                //AudioManager.instance.allSFXPlay(6);
+            }
+
+            if (SwordController.instance != null)
+            {
+                if (SwordController.instance.isAttack)
+                {
+                    changePhase = 1;
+
+                    //AudioManager.instance.allSFXPlay(6);
+                }
+            }
         }
         else if (changePhase == 1)
         {
@@ -91,8 +108,35 @@ public class AngryBigController : EnemyMoving
 
                 anim.SetTrigger("isHitting");
 
-                isDefeated = true;
+                StartCoroutine(WaitAndDestroy());
+            }
+
+            if (AttackArea.instance.attack)
+            {
+                anim.SetTrigger("isHitting");
+
+                StartCoroutine(WaitAndDestroy());
+
+                //AudioManager.instance.allSFXPlay(6);
+            }
+
+            if (SwordController.instance != null)
+            {
+                if (SwordController.instance.isAttack)
+                {
+                    anim.SetTrigger("isHitting");
+
+                    StartCoroutine(WaitAndDestroy());
+
+                    //AudioManager.instance.allSFXPlay(6);
+                }
             }
         }
+    }
+
+    private IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isDefeated = true;
     }
 }

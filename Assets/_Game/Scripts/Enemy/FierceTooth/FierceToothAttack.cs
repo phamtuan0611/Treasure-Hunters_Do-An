@@ -41,7 +41,7 @@ public class FierceToothAttack : MonoBehaviour
         else
         {
             GetComponentInParent<EnemyController>().moveSpeed = originSpeed;
-            anim.SetBool("isMoving", true);
+            //anim.SetBool("isMoving", true);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

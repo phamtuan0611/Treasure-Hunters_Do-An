@@ -39,7 +39,8 @@ public class SwordController : MonoBehaviour
         if (other.CompareTag("Turtle"))
         {
             float speed = FindFirstObjectByType<PlayerController>().throwForce;
-            rb.velocity = new Vector2(speed * (-1f), 0);
+            Transform player = FindFirstObjectByType<PlayerController>().transform;
+            rb.velocity = new Vector2(speed * (-1f) * player.lossyScale.x, 0);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
