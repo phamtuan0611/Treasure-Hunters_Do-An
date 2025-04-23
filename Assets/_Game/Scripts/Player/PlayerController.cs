@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     private bool canDoubleJump;
 
-    [SerializeField] private Animator anim, animEffect;
+    [SerializeField] private Animator anim;
 
     private int countAttack = 0;
     private int countAirAttack = 0;
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockbackLength, knockbackSpeed;
     private float knockbackCounter;
 
-    [SerializeField] private GameObject effectPlayer;
+    [SerializeField] private GameObject effectPlayerJump, effectPlayerFall, effectPlayerRun;
+    private bool checkFall, checkRun;
 
     [SerializeField] public GameObject attackArea;
     private Collider2D attackCollider;
@@ -50,7 +52,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
-
     }
 
     // Start is called before the first frame update
@@ -72,7 +73,9 @@ public class PlayerController : MonoBehaviour
 
         normalSpeed = moveSpeed;
         normalJump = jumpForce;
-        //attackArea.SetActive(false);
+
+        checkFall = false;
+        checkRun = true;
     }
 
     // Update is called once per frame
@@ -102,8 +105,6 @@ public class PlayerController : MonoBehaviour
 
                 //Move
                 theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
-                //if (theRB.velocity.x > 0f && isGrounded)
-                //    SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
 
                 //Jump and Double Jump
                 PlayerJump();
@@ -113,12 +114,6 @@ public class PlayerController : MonoBehaviour
 
                 //ChangeDirection
                 ChangeDirection();
-
-                if (isGrounded && wasFalling)
-                {
-                    SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-                    wasFalling = false;
-                }
             }
             else
             {
@@ -126,19 +121,22 @@ public class PlayerController : MonoBehaviour
                 theRB.velocity = new Vector2(knockbackSpeed * -transform.localScale.x, theRB.velocity.y);
             }
 
+            //Effect Run
+            if (Mathf.Abs(theRB.velocity.x) != 0)
+            {
+                effectPlayerRun.SetActive(true);
+                
+                checkRun = false;
+            }
+            if (checkRun == false && (Mathf.Abs(theRB.velocity.x) == 0 || isGrounded == false))
+            {
+                effectPlayerRun.SetActive(false);
+                checkRun = true;
+            }
+
             anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
             anim.SetBool("isGround", isGrounded);
             anim.SetFloat("ySpeed", theRB.velocity.y);
-
-            //if (theRB.velocity.y < 0 && isGrounded == true)
-            //    //SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-            //    Debug.Log("Touch Ground");
-
-            //animEffect.SetFloat("speedEffect", Mathf.Abs(theRB.velocity.x));
-            //animEffect.SetBool("isGroundEffect", isGrounded);
-            //animEffect.SetFloat("ySpeedEffect", theRB.velocity.y);
-
-            //Destroy(effectPlayer);
 
             if (potionActive == true)
             {
@@ -154,7 +152,6 @@ public class PlayerController : MonoBehaviour
                 }
 
                 timePotion -= Time.deltaTime;
-                //Debug.Log("Time Potion: " + Mathf.CeilToInt(timePotion));
                 if (timePotion <= 0)
                 {
                     potionActive = false;
@@ -173,12 +170,20 @@ public class PlayerController : MonoBehaviour
             {
                 UIController.instance.UpdateMultiplyScore(timeDiamondPotion);
                 timeDiamondPotion -= Time.deltaTime;
-                //Debug.Log("Time Diamond Potion: " + Mathf.CeilToInt(timeDiamondPotion));
                 if (timeDiamondPotion <= 0)
                 {
                     diamondPotion = false;
                     UIController.instance.multiplyScore.SetActive(false);
                 }
+            }
+
+            //Effect Fall
+            if (theRB.velocity.y == 0 && checkFall == true)
+            {
+                GameObject effectFall = Instantiate(effectPlayerFall, new Vector3(transform.position.x, transform.position.y - 0.35f, transform.position.z), Quaternion.identity);
+                Destroy(effectFall, 0.3f);
+
+                checkFall = false;
             }
         }
     }
@@ -213,15 +218,17 @@ public class PlayerController : MonoBehaviour
                 Jump();
                 canDoubleJump = true;
                 anim.SetBool("isDoubleJump", false);
-                SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
-
+                
+                SpawnEffect();
+                checkFall = true;
             }
             else if (canDoubleJump == true)
             {
                 Jump();
                 canDoubleJump = false;
                 anim.SetTrigger("isDoubleJump");
-                SpawnEffect(effectPlayer, new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z));
+                
+                SpawnEffect();
             }
         }
     }
@@ -235,7 +242,6 @@ public class PlayerController : MonoBehaviour
             countAttack++;
             anim.SetBool("ATTACK", true);
 
-            //attackArea.SetActive(true);
             attackCollider.enabled = true;
 
             if (countAttack == 1)
@@ -258,8 +264,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("ATTACK", false);
-
-            //attackArea.SetActive(false);
         }
 
         //Air Attack
@@ -352,45 +356,15 @@ public class PlayerController : MonoBehaviour
         knockbackCounter = knockbackLength;
     }
 
-    public void SpawnEffect(GameObject effectPrefab, Vector3 effectPlace)
+    //Effect Jump
+    public void SpawnEffect()
     {
-        if (effectPrefab != null)
-        {
-            GameObject effect = MyPoolManager.instance.Get(effectPrefab, effectPlace);
-
-            StartCoroutine(ReturnEffectToPool(effect, 0.35f));
-        }
+        GameObject effectJump = Instantiate(effectPlayerJump, new Vector3(transform.position.x, transform.position.y - 0.35f, transform.position.z), Quaternion.identity);
+        Destroy(effectJump, 0.3f);
     }
-    private IEnumerator ReturnEffectToPool(GameObject effect, float delay)
-    {
-        yield return null;
-        Animator anim = effect.GetComponent<Animator>();
-        if (!isGrounded)
-        {
-            anim.SetBool("isGroundEffect", isGrounded);
-        }
-
-        else if (Mathf.Abs(theRB.velocity.x) > 0f && isGrounded)
-        {
-            anim.SetFloat("speedEffect", Mathf.Abs(theRB.velocity.x));
-        }
-        else if (isGrounded && !wasFalling)
-        {
-            anim.SetBool("touchGround", wasFalling);
-
-            //anim.SetFloat("ySpeedEffect", theRB.velocity.y);
-
-        }
-
-        yield return new WaitForSeconds(delay);
-
-        effect.SetActive(false);
-    }
-
     private IEnumerator AttackDisable()
     {
         yield return new WaitForSeconds(0.1f);
-        //attackArea.SetActive(false);
         attackCollider.enabled = false;
         anim.SetBool("ATTACK", false);
         isAttacking = false;

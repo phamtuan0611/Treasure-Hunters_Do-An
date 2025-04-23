@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7216733293415568846}
   - component: {fileID: 3572109774793617679}
   m_Layer: 0
-  m_Name: PlayerEffects
+  m_Name: PlayerEffectsRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
