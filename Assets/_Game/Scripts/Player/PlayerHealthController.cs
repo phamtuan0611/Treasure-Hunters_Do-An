@@ -55,10 +55,8 @@ public class PlayerHealthController : MonoBehaviour
 
         if (thePlayerInventory.bubbleCount >= 1)
         {
-            Debug.Log("Bubble Count: " + thePlayerInventory.bubbleCount);
             bubbleProtected.SetActive(true);
             timeProtected -= Time.deltaTime;
-            Debug.Log("Time protected: " + Mathf.CeilToInt(timeProtected));
 
             invincibilityCounter = 1f;
 
