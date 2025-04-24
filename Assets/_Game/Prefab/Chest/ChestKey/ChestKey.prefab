@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7435723850073854439}
   - component: {fileID: 2935369818781821409}
   - component: {fileID: 3209038471657482938}
-  m_Layer: 0
+  - component: {fileID: 8728005491837924453}
+  m_Layer: 3
   m_Name: ChestKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,3 +168,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7435723850073854439}
   key: {fileID: 0}
+  pickUp: {fileID: 0}
+--- !u!70 &8728005491837924453
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215828831079373013}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.015402412, y: -0.2156404}
+  m_Size: {x: 1.876781, y: 1.5071245}
+  m_Direction: 1

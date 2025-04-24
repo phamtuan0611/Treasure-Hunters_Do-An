@@ -7,10 +7,12 @@ public class ChestKeyController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject key, pickUp;
     private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
 
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -18,13 +20,15 @@ public class ChestKeyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
-            Destroy(key.gameObject);
+            
 
             if (inventory != null && inventory.keyCount >= 1)
             {
                 anim.SetTrigger("isHaveKey");
+                
+                Destroy(key.gameObject);
                 boxCollider.enabled = false;
-
+                inventory.keyCount = 0;
 
                 StartCoroutine(MoveUp());
             }
@@ -45,11 +49,24 @@ public class ChestKeyController : MonoBehaviour
 
         while (elapsed < duration)
         {
-            treasure.transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
-            elapsed += Time.deltaTime; 
-            yield return null;
+            if (treasure != null)
+            {
+                treasure.transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                capsuleCollider.enabled = false;
+                yield break;
+            }
         }
 
         treasure.transform.position = endPos;
+
+        if (treasure.transform.position == endPos)
+        {
+            capsuleCollider.enabled = false;
+        }
     }
 }
