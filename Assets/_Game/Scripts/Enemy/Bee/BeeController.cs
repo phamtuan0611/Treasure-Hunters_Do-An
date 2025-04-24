@@ -40,7 +40,6 @@ public class BeeController : MonoBehaviour
 
             StartCoroutine(SpawnBullet());
 
-            Debug.Log("Bee Attack");
             timeAttack = 3f;
         }
     }
