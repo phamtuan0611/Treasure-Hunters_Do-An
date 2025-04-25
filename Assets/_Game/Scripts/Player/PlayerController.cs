@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private float timeChangePhase;
 
-    public float timePotion;
-    private bool potionActive, highSpeedPotion, lowSpeedPotion;
+    public float timePotionSpeed, timePotionJump;
+    private bool potionActiveSpeed, potionActiveJump, highSpeedPotion, highJumpPotion;
 
     private float timeDiamondPotion;
     public bool diamondPotion;
@@ -62,9 +62,12 @@ public class PlayerController : MonoBehaviour
 
         throwTimer = 2f;
 
-        timePotion = 10f;
-        potionActive = false;
-        highSpeedPotion = false; lowSpeedPotion = false;
+        timePotionSpeed = 10f;
+        timePotionJump = 10f;
+        potionActiveSpeed = false;
+        potionActiveJump = false;
+
+        highSpeedPotion = false; highJumpPotion = false;
 
         timeDiamondPotion = 10f;
         diamondPotion = false;
@@ -138,31 +141,41 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isGround", isGrounded);
             anim.SetFloat("ySpeed", theRB.velocity.y);
 
-            if (potionActive == true)
+            if (potionActiveSpeed == true)
             {
                 if (highSpeedPotion == true)
                 {
-                    UIController.instance.UpdateHighSpeed(timePotion);
-                    UIController.instance.lowSpeed.SetActive(false);
+                    UIController.instance.UpdateHighSpeed(timePotionSpeed);
+
+                    timePotionSpeed -= Time.deltaTime;
+                    if (timePotionSpeed <= 0)
+                    {
+                        potionActiveSpeed = false;
+                        highSpeedPotion = false;
+
+                        moveSpeed = normalSpeed;
+
+                        UIController.instance.highSpeed.SetActive(false);
+                    }
                 }
-                else if (lowSpeedPotion == true)
+            }
+
+            if (potionActiveJump == true)
+            {
+                if (highJumpPotion == true)
                 {
-                    UIController.instance.UpdateLowSpeed(timePotion);
-                    UIController.instance.highSpeed.SetActive(false);
-                }
+                    UIController.instance.UpdateLowSpeed(timePotionJump);
 
-                timePotion -= Time.deltaTime;
-                if (timePotion <= 0)
-                {
-                    potionActive = false;
-                    highSpeedPotion = false;
-                    lowSpeedPotion = false;
+                    timePotionJump -= Time.deltaTime;
+                    if (timePotionJump <= 0)
+                    {
+                        potionActiveJump = false;
+                        highJumpPotion = false;
 
-                    moveSpeed = normalSpeed;
-                    jumpForce = normalJump;
+                        jumpForce = normalJump;
 
-                    UIController.instance.highSpeed.SetActive(false);
-                    UIController.instance.lowSpeed.SetActive(false);
+                        UIController.instance.lowSpeed.SetActive(false);
+                    }
                 }
             }
 
@@ -374,32 +387,24 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("HighSpeedPotion"))
         {
-            timePotion = 10f;
+            timePotionSpeed = 10f;
 
             float highSpeed = moveSpeed;
-            moveSpeed = highSpeed * 1.5f;
+            moveSpeed = highSpeed * 2f;
 
-            float highJump = jumpForce;
-            jumpForce = highJump * 1.2f;
-
-            potionActive = true;
+            potionActiveSpeed = true;
             highSpeedPotion = true;
-            lowSpeedPotion = false;
         }
 
-        if (other.CompareTag("LowSpeedPotion"))
+        if (other.CompareTag("HighJumpPotion"))
         {
-            timePotion = 10f;
-
-            float lowSpeed = moveSpeed;
-            moveSpeed = lowSpeed / 1.5f;
+            timePotionJump = 10f;
 
             float highJump = jumpForce;
-            jumpForce = highJump / 1.2f;
+            jumpForce = highJump * 1.5f;
 
-            potionActive = true;
-            highSpeedPotion = false;
-            lowSpeedPotion = true;
+            potionActiveJump = true;
+            highJumpPotion = true;
         }
 
         if (other.CompareTag("DiamondPotion"))
