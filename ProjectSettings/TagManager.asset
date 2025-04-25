@@ -7,9 +7,9 @@ TagManager:
   - Snail
   - Sword
   - HighSpeedPotion
-  - LowSpeedPotion
   - DiamondPotion
   - Turtle
+  - HighJumpPotion
   layers:
   - Default
   - TransparentFX
