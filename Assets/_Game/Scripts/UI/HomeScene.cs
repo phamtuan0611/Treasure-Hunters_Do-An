@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class HomeScene : MonoBehaviour
 {
+    public static HomeScene instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    public bool isSetting;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isSetting = false;
     }
 
     // Update is called once per frame
@@ -26,9 +41,13 @@ public class HomeScene : MonoBehaviour
         Debug.Log("Shop");
     }
 
-    public void ButtonSetting()
+    public void ButtonSettingOpen()
     {
-        Debug.Log("Setting");
+        isSetting = true;
+    }
+    public void ButtonSettingClose()
+    {
+        isSetting = false;
     }
 
     public void ButtonQuit()

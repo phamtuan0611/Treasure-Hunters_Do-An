@@ -10,7 +10,14 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     [SerializeField] private Image[] heartIcons, skullGates;
