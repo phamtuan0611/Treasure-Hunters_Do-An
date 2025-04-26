@@ -20,11 +20,13 @@ public class HomeScene : MonoBehaviour
     public bool isInventory, isSetting, isShopping;
     public GameObject coins;
 
+    public bool isPlaying;
     // Start is called before the first frame update
     void Start()
     {
         isSetting = false;
         isShopping = false;
+        isPlaying = false;
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class HomeScene : MonoBehaviour
     public void ButtonPlay()
     {
         Debug.Log("Play");
+        isPlaying = true;
     }
 
     public void ButtonShopOpen()
