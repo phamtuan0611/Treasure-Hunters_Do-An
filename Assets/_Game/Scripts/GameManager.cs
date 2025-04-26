@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         if (HomeScene.instance != null && HomeScene.instance.isPlaying == true)
         {
             endSceneTransition.SetActive(true);
+
             HomeScene.instance.isPlaying = false;
 
             StartCoroutine(DisableEndScene());

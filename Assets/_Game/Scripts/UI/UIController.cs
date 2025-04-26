@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -98,5 +99,10 @@ public class UIController : MonoBehaviour
     {
         multiplyScore.SetActive(true);
         multiplyScoreText.text = Mathf.CeilToInt(timeMultiplyScore).ToString();
+    }
+
+    public void LoadHomeScene()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 }
