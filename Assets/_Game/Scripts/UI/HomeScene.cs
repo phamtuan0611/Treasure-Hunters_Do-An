@@ -17,7 +17,7 @@ public class HomeScene : MonoBehaviour
         }
     }
 
-    public bool isSetting, isShopping;
+    public bool isInventory, isSetting, isShopping;
     public GameObject coins;
 
     // Start is called before the first frame update
@@ -53,6 +53,15 @@ public class HomeScene : MonoBehaviour
     public void ButtonSettingClose()
     {
         isSetting = false;
+    }
+
+    public void ButtonInventoryOpen()
+    {
+        isInventory = true;
+    }
+    public void ButtonInventoryClose()
+    {
+        isInventory = false;
     }
 
     public void ButtonQuit()
