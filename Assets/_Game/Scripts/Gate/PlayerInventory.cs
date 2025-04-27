@@ -10,10 +10,17 @@ public class PlayerInventory : MonoBehaviour
 
     public int bubbleCount = 0;
 
+    public int smallMapCount = 0;
     public void CollectStone()
     {
         stoneCount++;
         UIController.instance.UpdateSkullGate(stoneCount);
+    }
+
+    public void CollectSmallMap()
+    {
+        smallMapCount++;
+        Debug.Log("Collect Small Map " + smallMapCount);
     }
 
     public void CollectKey()
