@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HomeScene : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class HomeScene : MonoBehaviour
         {
             instance = this;
         }
+
+        DOTween.Init();
+
     }
 
     public bool isInventory, isSetting, isShopping;
