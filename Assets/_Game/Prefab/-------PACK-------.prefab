@@ -1791,6 +1791,22 @@ PrefabInstance:
       propertyPath: multiplyScoreText
       value: 
       objectReference: {fileID: 6905739562619448734}
+    - target: {fileID: 7166322865907619316, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
+      propertyPath: skullGates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166322865907619316, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
+      propertyPath: skullGates.Array.data[0]
+      value: 
+      objectReference: {fileID: 1334584505882222760}
+    - target: {fileID: 7166322865907619316, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
+      propertyPath: skullGates.Array.data[1]
+      value: 
+      objectReference: {fileID: 1563360906205328351}
+    - target: {fileID: 7166322865907619316, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
+      propertyPath: skullGates.Array.data[2]
+      value: 
+      objectReference: {fileID: 2154723839983339167}
     - target: {fileID: 7499767758203090015, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1931,6 +1947,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1488747013548099838}
     m_Modifications:
+    - target: {fileID: 1399433998742490358, guid: 4d0d8106fbdd5cc41b2cd16d6b3f7937, type: 3}
+      propertyPath: moveDistance
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5637657825658289249, guid: 4d0d8106fbdd5cc41b2cd16d6b3f7937, type: 3}
       propertyPath: m_Name
       value: Gate
@@ -2373,11 +2393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220069393150272199, guid: 2c764d8bb2f8e744c964ff0452dc203c, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1722310038812593595, guid: 2c764d8bb2f8e744c964ff0452dc203c, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1722310038812593595, guid: 2c764d8bb2f8e744c964ff0452dc203c, type: 3}
       propertyPath: moveSpeed

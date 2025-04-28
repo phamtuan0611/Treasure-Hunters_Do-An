@@ -14,12 +14,22 @@ public class BoxController : MonoBehaviour
             anim.SetTrigger("isHitting");
             FindFirstObjectByType<PlayerController>().Jump();
 
+            StartCoroutine(DelaySpawn());
             Destroy(gameObject, 0.2f);
         }
     }
 
-    private void OnDestroy()
+    IEnumerator DelaySpawn()
     {
+        yield return new WaitForSeconds(0.1f);
         Instantiate(item, transform.position, Quaternion.identity);
     }
+
+    //private void OnDestroy()
+    //{
+    //    if (!Application.isPlaying) return;
+
+    //    if (gameObject != null)
+
+    //}
 }

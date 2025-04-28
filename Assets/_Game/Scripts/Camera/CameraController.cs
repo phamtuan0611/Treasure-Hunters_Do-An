@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     //Vi the su dung LateUpdate de dam bao chac chan la Camera se duoc goi sau Player
     void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y + 3f, transform.position.z);
+        transform.position = new Vector3(target.position.x, target.position.y + 1.5f, transform.position.z);
 
         if (freezeVertical == true)
         {
@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
         if (freezeHorizontal == true)
         {
             //Lay vi tri x ban dau, con y va z se theo target
-            transform.position = new Vector3(positionStore.x, target.position.y + 3f, transform.position.z);
+            transform.position = new Vector3(positionStore.x, target.position.y + 1.5f, transform.position.z);
         }
 
         if (clampPosition == true)
