@@ -401,7 +401,7 @@ public class PlayerController : MonoBehaviour
             timePotionJump = 10f;
 
             float highJump = jumpForce;
-            jumpForce = highJump * 1.5f;
+            jumpForce = highJump * 1.3f;
 
             potionActiveJump = true;
             highJumpPotion = true;

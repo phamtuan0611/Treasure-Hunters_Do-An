@@ -22,14 +22,6 @@ public class BoxController : MonoBehaviour
     IEnumerator DelaySpawn()
     {
         yield return new WaitForSeconds(0.1f);
-        Instantiate(item, transform.position, Quaternion.identity);
+        Instantiate(item, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.identity);
     }
-
-    //private void OnDestroy()
-    //{
-    //    if (!Application.isPlaying) return;
-
-    //    if (gameObject != null)
-
-    //}
 }

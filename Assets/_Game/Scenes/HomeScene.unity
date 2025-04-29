@@ -20428,7 +20428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x1.5 Jump
+  m_text: x1.3 Jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
   m_sharedMaterial: {fileID: -350809208511366978, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
@@ -37189,9 +37189,9 @@ MonoBehaviour:
   anim: {fileID: 6818983010818629748}
   knockbackLength: 0.5
   knockbackSpeed: 3
-  effectPlayerJump: {fileID: 0}
-  effectPlayerFall: {fileID: 0}
-  effectPlayerRun: {fileID: 0}
+  effectPlayerJump: {fileID: 1902824885538830342, guid: 06cc82d0dc328e54492232c4daf23646, type: 3}
+  effectPlayerFall: {fileID: 4061732275970435429, guid: 4907a9d741044b84b8e93b45b0d44d4b, type: 3}
+  effectPlayerRun: {fileID: 783761312652538561, guid: fbd5040ec47d0024f93a549d1bb1ad36, type: 3}
   attackArea: {fileID: 7081300282611679938}
   swordPrefab: {fileID: 417781287783986944, guid: 79c4b4935e3ed0443a4e3d8233a3d7dd, type: 3}
   throwForce: 10
