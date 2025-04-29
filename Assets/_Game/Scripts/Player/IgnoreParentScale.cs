@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class IgnoreParentScale : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class IgnoreParentScale : MonoBehaviour
     private Transform parent;
     private CanvasGroup canvasGroup;
 
+    [Header("UI Components")]
+    [SerializeField] private TMP_Text chatText;
+
     [Header("Fade Settings")]
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private float displayTime = 3f;
 
     private Coroutine fadeCoroutine;
 
@@ -32,18 +35,14 @@ public class IgnoreParentScale : MonoBehaviour
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
-
-        ShowAndHide(); // tự động hiện lên khi bắt đầu
     }
 
     void LateUpdate()
     {
         if (parent == null) return;
 
-        // Vị trí: luôn giữ khoảng cách ban đầu với parent
         transform.position = parent.position + initialOffsetFromParent;
 
-        // Scale: giữ nguyên scale ban đầu (bỏ ảnh hưởng của việc lật - scale X âm)
         Vector3 currentParentScale = parent.lossyScale;
         transform.localScale = new Vector3(
             initialLocalScale.x * (initialParentScale.x / currentParentScale.x),
@@ -52,17 +51,22 @@ public class IgnoreParentScale : MonoBehaviour
         );
     }
 
-    public void ShowAndHide()
+    public void ShowMessage(string message)
     {
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        fadeCoroutine = StartCoroutine(FadeInOut());
+        chatText.text = message;
+        Show();
     }
 
-    private IEnumerator FadeInOut()
+    public void Show()
     {
-        yield return FadeTo(1f);
-        yield return new WaitForSeconds(displayTime);
-        yield return FadeTo(0f);
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeTo(1f));
+    }
+
+    public void Hide()
+    {
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeTo(0f));
     }
 
     private IEnumerator FadeTo(float targetAlpha)

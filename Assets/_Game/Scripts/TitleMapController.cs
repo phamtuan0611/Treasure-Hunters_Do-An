@@ -26,7 +26,6 @@ public class TitleMapController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player in");
             FadeFromBlack();
         }
     }
@@ -35,7 +34,6 @@ public class TitleMapController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player out");
             FadeToBlack();
         }
     }
