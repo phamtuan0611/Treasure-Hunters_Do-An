@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float activeSpeed;
 
     private bool isGrounded;
-    private bool wasFalling = false;
+    //private bool wasFalling = false;
 
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
@@ -349,10 +349,10 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
 
-        if (theRB.velocity.y < -0.1f && !isGrounded)
-        {
-            wasFalling = true;
-        }
+        //if (theRB.velocity.y < -0.1f && !isGrounded)
+        //{
+        //    wasFalling = true;
+        //}
     }
 
     public void isKnock()

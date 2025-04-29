@@ -64,7 +64,6 @@ public class PlantAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Attack");
             isAttack = true;
         }
     }
