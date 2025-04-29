@@ -123,6 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1445446520948274227}
   isAttack: 0
+  textPickUp: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
+  textSword: Viuuuuu
 --- !u!58 &2312237819961168790
 CircleCollider2D:
   m_ObjectHideFlags: 0
