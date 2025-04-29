@@ -59,12 +59,14 @@ public class IgnoreParentScale : MonoBehaviour
 
     public void Show()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeTo(1f));
     }
 
     public void Hide()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeTo(0f));
     }

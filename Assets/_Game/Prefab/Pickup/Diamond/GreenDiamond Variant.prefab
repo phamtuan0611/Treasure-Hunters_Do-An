@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: amount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3248788554782242255, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
+      propertyPath: textPickup
+      value: 
+      objectReference: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
+    - target: {fileID: 3248788554782242255, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
+      propertyPath: textDiamond
+      value: Diamond
+      objectReference: {fileID: 0}
     - target: {fileID: 5916290267841344038, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: m_Controller
       value: 

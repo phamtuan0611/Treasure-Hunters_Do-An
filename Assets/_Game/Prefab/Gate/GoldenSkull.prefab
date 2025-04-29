@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectSkull: {fileID: 5201621998254141117, guid: 4dcac0ad30e106749ad3552e0d8c4d86, type: 3}
+  textPickUp: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
+  textSkull: Skull
 --- !u!58 &9006922255763676611
 CircleCollider2D:
   m_ObjectHideFlags: 0

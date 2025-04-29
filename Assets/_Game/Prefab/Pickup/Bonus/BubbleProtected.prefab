@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e744ed75861936749b5809a47c42ceb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPickUp: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
+  textBubble: Bubble

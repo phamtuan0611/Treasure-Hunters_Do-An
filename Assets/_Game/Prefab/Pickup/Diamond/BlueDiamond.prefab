@@ -156,4 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDiamond: {fileID: 4988013687877122250, guid: 6dad5ac9febaaff40b21379a55262cf2, type: 3}
+  textPickup: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
   amount: 1
+  textDiamond: Diamond

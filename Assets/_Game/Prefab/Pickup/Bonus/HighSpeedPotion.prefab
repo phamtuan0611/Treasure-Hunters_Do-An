@@ -166,3 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPotion: {fileID: 5007723263491888903, guid: bc46eeebf915b2b4882355e8fea14c4d, type: 3}
+  textPickUp: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
+  textPotion: x2 Speed

@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 58f76a825d73bb94db28b400babd9981, type: 2}
+    - target: {fileID: 6125894031711917920, guid: a8b4f8aa71103354c90b0056056d64a7, type: 3}
+      propertyPath: textPotion
+      value: x2 Pickup
+      objectReference: {fileID: 0}
     - target: {fileID: 7016646505161568215, guid: a8b4f8aa71103354c90b0056056d64a7, type: 3}
       propertyPath: m_Size.x
       value: 0.6907208
