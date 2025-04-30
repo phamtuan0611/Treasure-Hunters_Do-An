@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class IgnoreParentScale : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class IgnoreParentScale : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.5f;
 
     private Coroutine fadeCoroutine;
+
+    public Action OnHidden;
 
     void Start()
     {
@@ -86,5 +89,10 @@ public class IgnoreParentScale : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
         canvasGroup.interactable = targetAlpha > 0f;
         canvasGroup.blocksRaycasts = targetAlpha > 0f;
+
+        if (targetAlpha == 0f)
+        {
+            OnHidden?.Invoke();
+        }
     }
 }

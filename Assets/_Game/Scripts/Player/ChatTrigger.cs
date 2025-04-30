@@ -27,6 +27,11 @@ public class ChatTrigger : MonoBehaviour
             if (boxChat != null)
             {
                 boxChat.Hide();
+                boxChat.OnHidden += () =>
+                {
+                    Destroy(gameObject);
+                    boxChat.OnHidden = null; 
+                };
             } 
         }
     }
