@@ -149,7 +149,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.5
-  m_GravityScale: 1.5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f5500fbfbafec4d928e72c58086a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   theRB: {fileID: 1220069393150272199}
-  jumpForce: 6
+  jumpForce: 15
   normalSpeed: 0
   normalJump: 0
   activeSpeed: 0
@@ -220,14 +220,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   anim: {fileID: 1043746501257093355}
-  animEffect: {fileID: 3572109774793617679, guid: fbd5040ec47d0024f93a549d1bb1ad36, type: 3}
   knockbackLength: 0.5
   knockbackSpeed: 3
-  effectPlayer: {fileID: 783761312652538561, guid: fbd5040ec47d0024f93a549d1bb1ad36, type: 3}
+  effectPlayerJump: {fileID: 0}
+  effectPlayerFall: {fileID: 0}
+  effectPlayerRun: {fileID: 0}
   attackArea: {fileID: 3645681578577330781}
   swordPrefab: {fileID: 417781287783986944, guid: 79c4b4935e3ed0443a4e3d8233a3d7dd, type: 3}
   throwForce: 10
-  timePotion: 0
+  timePotionSpeed: 0
+  timePotionJump: 0
   diamondPotion: 0
 --- !u!95 &1043746501257093355
 Animator:
