@@ -158,4 +158,4 @@ MonoBehaviour:
   effectFruit: {fileID: 2159161022216544166, guid: 88c024cae45bc0f499a41bf54326afc8, type: 3}
   textPickUp: {fileID: 3283992948293027399, guid: 4f0c03a82e2ea3846a7fa9428d5a25dd, type: 3}
   amount: 1
-  textFruit: Fruit
+  textFruit: Cherries
