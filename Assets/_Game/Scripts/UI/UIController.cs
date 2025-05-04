@@ -28,8 +28,10 @@ public class UIController : MonoBehaviour
     public GameObject highSpeed, lowSpeed, multiplyScore;
     [SerializeField] private TMP_Text highSpeedText, lowSpeedText, multiplyScoreText;
 
-    [SerializeField] private GameObject waitScreen, bigMap;
+    [SerializeField] private GameObject waitScreen;
     private CanvasGroup waitCanvasGroup;
+
+    public bool isBigMap;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class UIController : MonoBehaviour
         waitScreen.SetActive(false);
         StartCoroutine(WaitScreen());
 
-        bigMap.SetActive(false);
+        isBigMap = false;
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -118,12 +120,12 @@ public class UIController : MonoBehaviour
 
     public void OpenBigMap()
     {
-        bigMap.SetActive(true);
+        isBigMap = true;
     }
 
     public void CloseBigMap()
     {
-        bigMap.SetActive(false);
+        isBigMap = false;
     }
 
     IEnumerator WaitScreen()
