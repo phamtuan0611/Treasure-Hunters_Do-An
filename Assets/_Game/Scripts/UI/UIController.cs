@@ -116,10 +116,14 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("HomeScene");
     }
 
-    public void BigMap()
+    public void OpenBigMap()
     {
-        Debug.Log("BigMap");
         bigMap.SetActive(true);
+    }
+
+    public void CloseBigMap()
+    {
+        bigMap.SetActive(false);
     }
 
     IEnumerator WaitScreen()
