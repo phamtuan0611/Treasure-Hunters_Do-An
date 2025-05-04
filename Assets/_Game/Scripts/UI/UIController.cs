@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
     public GameObject highSpeed, lowSpeed, multiplyScore;
     [SerializeField] private TMP_Text highSpeedText, lowSpeedText, multiplyScoreText;
 
-    [SerializeField] private GameObject waitScreen;
+    [SerializeField] private GameObject waitScreen, bigMap;
     private CanvasGroup waitCanvasGroup;
 
     // Start is called before the first frame update
@@ -42,6 +42,8 @@ public class UIController : MonoBehaviour
         waitCanvasGroup.alpha = 0f;
         waitScreen.SetActive(false);
         StartCoroutine(WaitScreen());
+
+        bigMap.SetActive(false);
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -112,6 +114,12 @@ public class UIController : MonoBehaviour
     public void LoadHomeScene()
     {
         SceneManager.LoadScene("HomeScene");
+    }
+
+    public void BigMap()
+    {
+        Debug.Log("BigMap");
+        bigMap.SetActive(true);
     }
 
     IEnumerator WaitScreen()
