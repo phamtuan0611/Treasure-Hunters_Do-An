@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject waitScreen;
     private CanvasGroup waitCanvasGroup;
 
-    public bool isBigMap;
+    public bool isBigMap, isPause;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class UIController : MonoBehaviour
         StartCoroutine(WaitScreen());
 
         isBigMap = false;
+        isPause = false;
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -100,7 +102,7 @@ public class UIController : MonoBehaviour
         highSpeed.SetActive(true);
         highSpeedText.text = Mathf.CeilToInt(timeHighSpeed).ToString();
     }
-    
+
     public void UpdateLowSpeed(float timeLowSpeed)
     {
         lowSpeed.SetActive(true);
@@ -128,12 +130,40 @@ public class UIController : MonoBehaviour
         isBigMap = false;
     }
 
+    public void OpenPausePopup()
+    {
+        isPause = true;
+        Time.timeScale = 0f;
+    }
+
+    public void ClosePausePopup()
+    {
+        isPause = false;
+        Time.timeScale = 1f;
+    }
+
+    public void ReStartLevel()
+    {
+        StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
+    }
+
+    public void LoadLevelSelect()
+    {
+        Time.timeScale = 1f;
+        //StartCoroutine(RestartAfterTween("LevelSelect"));
+    }
+    IEnumerator RestartAfterTween(string loadScene)
+    {
+        Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(0.18f);
+        SceneManager.LoadScene(loadScene);
+    }
     IEnumerator WaitScreen()
     {
         waitScreen.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.9f);
-        
+
         waitScreen.SetActive(true);
 
         float duration = 1f;
