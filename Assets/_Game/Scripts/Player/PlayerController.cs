@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private int countAttack = 0;
     private int countAirAttack = 0;
 
-    private int changePhase;
+    public int changePhase;
+    [SerializeField] private GameObject btnThrowSword;
 
     [SerializeField] private float knockbackLength, knockbackSpeed;
     private float knockbackCounter;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         changePhase = 0;
         timeChangePhase = 2f;
+        btnThrowSword.SetActive(false);
 
         throwTimer = 2f;
 
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
             if (knockbackCounter <= 0)
             {
                 //Change Phase
-                ChangePhase();
+                ChangePhaseControl();
 
                 //Run
                 activeSpeed = moveSpeed;
@@ -201,7 +203,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ChangePhase()
+    public void ChangePhaseControl()
     {
         if (Input.GetKeyDown(KeyCode.F) && timeChangePhase >= 2f)
         {
@@ -209,12 +211,41 @@ public class PlayerController : MonoBehaviour
             if (changePhase == 1)
             {
                 anim.SetFloat("ChangePhase", 1);
+                btnThrowSword.SetActive(true);
             }
             else if (changePhase == 2)
             {
                 anim.SetFloat("ChangePhase", 0);
+                btnThrowSword.SetActive(false);
+
                 changePhase = 0;
             }
+        }
+    }
+
+    public void ChangePhaseButton()
+    {
+        if (timeChangePhase >= 2f)
+        {
+            
+            timeChangePhase = 0f;
+        }SwitchPhase();
+    }
+
+    private void SwitchPhase()
+    {
+        changePhase++;
+        if (changePhase == 1)
+        {
+            anim.SetFloat("ChangePhase", 1);
+            btnThrowSword.SetActive(true);
+        }
+        else if (changePhase == 2)
+        {
+            anim.SetFloat("ChangePhase", 0);
+            btnThrowSword.SetActive(false);
+
+            changePhase = 0;
         }
     }
     public void Jump()
