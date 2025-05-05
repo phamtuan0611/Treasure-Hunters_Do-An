@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -50,6 +51,12 @@ public class PlayerController : MonoBehaviour
     private float timeDiamondPotion;
     public bool diamondPotion;
 
+    public bool buttonAttack;
+
+    public Button left, right;
+    private bool moveLeft, moveRight;
+    private float horizontalMove;
+
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -81,6 +88,43 @@ public class PlayerController : MonoBehaviour
 
         checkFall = false;
         checkRun = true;
+
+        buttonAttack = false;
+
+        moveLeft = false;
+        moveRight = false;
+    }
+
+    public void PointerDownLeft()
+    {
+        moveLeft = true;
+        Debug.Log("Trai nhan");
+    }
+
+    public void PointerUpLeft()
+    {
+        moveLeft = false;
+        Debug.Log("Trai tha");
+
+    }
+
+    public void PointerDownRight()
+    {
+        moveRight = true;
+        Debug.Log("Phai nhan");
+
+    }
+
+    public void PointerUpRight()
+    {
+        moveRight = false;
+        Debug.Log("Phai tha");
+
+    }
+
+    private void FixedUpdate()
+    {
+        theRB.velocity = new Vector2(horizontalMove, theRB.velocity.y);
     }
 
     // Update is called once per frame
@@ -109,13 +153,19 @@ public class PlayerController : MonoBehaviour
                 //}
 
                 //Move
-                theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
+                //theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
+                MovePlayer();
 
                 //Jump and Double Jump
                 PlayerJump();
 
                 //PLayer Attack
                 PlayerAttack();
+
+                if (buttonAttack == true)
+                {
+                    ButtonAttack();
+                }
 
                 //ChangeDirection
                 ChangeDirection();
@@ -130,7 +180,7 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(theRB.velocity.x) != 0)
             {
                 effectPlayerRun.SetActive(true);
-                
+
                 checkRun = false;
             }
             if (checkRun == false && (Mathf.Abs(theRB.velocity.x) == 0 || isGrounded == false))
@@ -227,9 +277,10 @@ public class PlayerController : MonoBehaviour
     {
         if (timeChangePhase >= 2f)
         {
-            
+
             timeChangePhase = 0f;
-        }SwitchPhase();
+        }
+        SwitchPhase();
     }
 
     private void SwitchPhase()
@@ -262,7 +313,7 @@ public class PlayerController : MonoBehaviour
                 Jump();
                 canDoubleJump = true;
                 anim.SetBool("isDoubleJump", false);
-                
+
                 SpawnEffect();
                 checkFall = true;
             }
@@ -271,12 +322,31 @@ public class PlayerController : MonoBehaviour
                 Jump();
                 canDoubleJump = false;
                 anim.SetTrigger("isDoubleJump");
-                
+
                 SpawnEffect();
             }
         }
     }
+    public void ButtonPlayerJump()
+    {
+        if (isGrounded == true)
+        {
+            Jump();
+            canDoubleJump = true;
+            anim.SetBool("isDoubleJump", false);
 
+            SpawnEffect();
+            checkFall = true;
+        }
+        else if (canDoubleJump == true)
+        {
+            Jump();
+            canDoubleJump = false;
+            anim.SetTrigger("isDoubleJump");
+
+            SpawnEffect();
+        }
+    }
     public void PlayerAttack()
     {
         //Attack
@@ -339,6 +409,55 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Attack()
+    {
+        if (changePhase == 1)
+            buttonAttack = true;
+    }
+
+    public void ButtonAttack()
+    {
+        if (changePhase == 1 && !isAttacking)
+        {
+            buttonAttack = false;
+            isAttacking = true;
+            countAttack++;
+            anim.SetBool("ATTACK", true);
+
+            attackCollider.enabled = true;
+
+            if (countAttack == 1)
+            {
+                anim.SetFloat("attack", 0);
+            }
+            else if (countAttack == 2)
+            {
+                anim.SetFloat("attack", 0.5f);
+            }
+            else if (countAttack == 3)
+            {
+                anim.SetFloat("attack", 1f);
+
+                countAttack = 0;
+            }
+
+            StartCoroutine(AttackDisable());
+        }
+        else
+        {
+            anim.SetBool("ATTACK", false);
+        }
+    }
+
+    public void ButtonThrowSword()
+    {
+        if (throwTimer >= 2f && anim.GetFloat("ChangePhase") != 0)
+        {
+            anim.SetTrigger("throwSword");
+            StartCoroutine(ThrowSword());
+        }
+    }
+
     public IEnumerator ThrowSword()
     {
         GameObject thrownSword = Instantiate(swordPrefab, transform.position, Quaternion.identity);
@@ -385,7 +504,21 @@ public class PlayerController : MonoBehaviour
         //    wasFalling = true;
         //}
     }
-
+    private void MovePlayer()
+    {
+        if (moveLeft)
+        {
+            horizontalMove = -activeSpeed;
+        }
+        else if (moveRight)
+        {
+            horizontalMove = activeSpeed;
+        }
+        else
+        {
+            horizontalMove = 0f;
+        }
+    }
     public void isKnock()
     {
         theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
