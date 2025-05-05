@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private int countAirAttack = 0;
 
     public int changePhase;
-    [SerializeField] private GameObject btnThrowSword;
+    [SerializeField] private GameObject btnThrowSword, btnAttack;
 
     [SerializeField] private float knockbackLength, knockbackSpeed;
     private float knockbackCounter;
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         changePhase = 0;
         timeChangePhase = 2f;
         btnThrowSword.SetActive(false);
+        btnAttack.SetActive(false);
 
         throwTimer = 2f;
 
@@ -98,33 +99,29 @@ public class PlayerController : MonoBehaviour
     public void PointerDownLeft()
     {
         moveLeft = true;
-        Debug.Log("Trai nhan");
     }
 
     public void PointerUpLeft()
     {
         moveLeft = false;
-        Debug.Log("Trai tha");
 
     }
 
     public void PointerDownRight()
     {
         moveRight = true;
-        Debug.Log("Phai nhan");
 
     }
 
     public void PointerUpRight()
     {
         moveRight = false;
-        Debug.Log("Phai tha");
 
     }
 
     private void FixedUpdate()
     {
-        theRB.velocity = new Vector2(horizontalMove, theRB.velocity.y);
+        //theRB.velocity = new Vector2(horizontalMove, theRB.velocity.y);
     }
 
     // Update is called once per frame
@@ -153,8 +150,8 @@ public class PlayerController : MonoBehaviour
                 //}
 
                 //Move
-                //theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
-                MovePlayer();
+                theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
+                //MovePlayer();
 
                 //Jump and Double Jump
                 PlayerJump();
@@ -290,11 +287,13 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetFloat("ChangePhase", 1);
             btnThrowSword.SetActive(true);
+            btnAttack.SetActive(true);
         }
         else if (changePhase == 2)
         {
             anim.SetFloat("ChangePhase", 0);
             btnThrowSword.SetActive(false);
+            btnAttack.SetActive(false);
 
             changePhase = 0;
         }

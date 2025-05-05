@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private GameObject btnThrowSword;
-    private bool changePhase;
+    [SerializeField] private GameObject boardPotionBonus;
+
+    [SerializeField] private GameObject[] iconPotion;
+    private bool isOpen = true;
+
+    private Vector3 originalPosition;
     // Start is called before the first frame update
     void Start()
     {
-        DOTween.Init();
+        iconPotion[0].SetActive(isOpen);
+        iconPotion[1].SetActive(!isOpen);
 
-        btnThrowSword.SetActive(false);
-        changePhase = false;
+        originalPosition = boardPotionBonus.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -21,20 +25,17 @@ public class ButtonController : MonoBehaviour
     {
         
     }
-
-    public void ChangePhase()
+    public void ButtonPotionBoard()
     {
-        changePhase = !changePhase;
+        isOpen = !isOpen;
 
-        if (changePhase)
-        {
-            btnThrowSword.SetActive(true);
-        }
-        else
-        {
-            btnThrowSword.SetActive(false);
-        }
+        iconPotion[0].SetActive(isOpen);
+        iconPotion[1].SetActive(!isOpen);
+
+        Vector3 targetPosition = isOpen
+            ? originalPosition
+            : originalPosition + new Vector3(0, 250f, 0);
+
+        boardPotionBonus.transform.DOLocalMove(targetPosition, 0.5f).SetEase(Ease.OutQuad);
     }
-
-
 }

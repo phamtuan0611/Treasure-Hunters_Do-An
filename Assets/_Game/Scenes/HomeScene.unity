@@ -25195,6 +25195,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525838163}
   m_CullTransparentMesh: 1
+--- !u!1 &1532534261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532534262}
+  m_Layer: 0
+  m_Name: Nothing (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1532534262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532534261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3653496478048131495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536579226
 GameObject:
   m_ObjectHideFlags: 0
@@ -30387,6 +30418,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951546806}
   m_CullTransparentMesh: 1
+--- !u!1 &1954285230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954285231}
+  m_Layer: 0
+  m_Name: Nothing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954285231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954285230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3653496478048131495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1971228988
 GameObject:
   m_ObjectHideFlags: 0
@@ -34920,6 +34982,8 @@ Transform:
   - {fileID: 2140850192646648788}
   - {fileID: 1940956901253107022}
   - {fileID: 243926437}
+  - {fileID: 1954285231}
+  - {fileID: 1532534262}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3653496478048131496
@@ -37879,7 +37943,8 @@ MonoBehaviour:
     m_Bits: 8
   anim: {fileID: 6818983010818629748}
   changePhase: 0
-  btnThrowSword: {fileID: 0}
+  btnThrowSword: {fileID: 1954285230}
+  btnAttack: {fileID: 1532534261}
   knockbackLength: 0.5
   knockbackSpeed: 3
   effectPlayerJump: {fileID: 1902824885538830342, guid: 06cc82d0dc328e54492232c4daf23646, type: 3}
@@ -37891,6 +37956,9 @@ MonoBehaviour:
   timePotionSpeed: 0
   timePotionJump: 0
   diamondPotion: 0
+  buttonAttack: 0
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!4 &5252500544167384686
 Transform:
   m_ObjectHideFlags: 0
