@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerEffectsFall Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 783761312652538561, guid: fbd5040ec47d0024f93a549d1bb1ad36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3572109774793617679, guid: fbd5040ec47d0024f93a549d1bb1ad36, type: 3}
       propertyPath: m_Controller
       value: 
