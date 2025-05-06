@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3248788554782242255, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: amount
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3248788554782242255, guid: 39682bbee3069bb4194dc520d3ef7839, type: 3}
       propertyPath: textPickup

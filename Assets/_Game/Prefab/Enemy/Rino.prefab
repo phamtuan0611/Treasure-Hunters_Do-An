@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1932506671523048052}
   - component: {fileID: 2419304491158126443}
   - component: {fileID: 5304771027860632041}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ZoneAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
