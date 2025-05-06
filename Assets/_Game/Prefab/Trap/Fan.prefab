@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 2301169143151716959}
   - component: {fileID: 4785901904478781255}
   - component: {fileID: 499935208626836991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}

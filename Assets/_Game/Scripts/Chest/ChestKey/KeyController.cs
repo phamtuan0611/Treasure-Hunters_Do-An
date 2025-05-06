@@ -53,9 +53,9 @@ public class KeyController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        GameObject effect = Instantiate(effectKey, lastPosition, Quaternion.identity);
-        Destroy(effect, 0.5f);
-    }
+    //private void OnDestroy()
+    //{
+    //    GameObject effect = Instantiate(effectKey, lastPosition, Quaternion.identity);
+    //    Destroy(effect, 0.5f);
+    //}
 }

@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fcdca096046d84682dc5e052f48dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectSmallMap: {fileID: 0}
+  effectSmallMap: {fileID: 6167032775674020146, guid: 001dd7ccdbd8f984692ac547aad119c4, type: 3}

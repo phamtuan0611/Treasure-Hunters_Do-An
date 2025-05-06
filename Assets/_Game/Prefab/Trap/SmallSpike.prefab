@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6954727685480299639}
   - component: {fileID: 5732779204985954188}
   - component: {fileID: 8724981648357135556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmallSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}

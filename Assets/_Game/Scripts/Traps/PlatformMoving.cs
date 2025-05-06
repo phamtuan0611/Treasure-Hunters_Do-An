@@ -24,27 +24,6 @@ public class PlatformMoving : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    //public virtual void Update()
-    //{
-    //    transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, moveSpeed * Time.deltaTime);
-
-    //    if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001f)
-    //    {
-    //        waitCounter -= Time.deltaTime;
-
-    //        if (waitCounter <= 0)
-    //        {
-    //            currentPoint++;
-    //            if (currentPoint >= patrolPoints.Length)
-    //            {
-    //                currentPoint = 0;
-    //            }
-    //            waitCounter = timeAtPoint;
-    //        }
-    //    }
-    //}
-
     public virtual void FixedUpdate()
     {
         Vector2 targetPosition = patrolPoints[currentPoint].position;

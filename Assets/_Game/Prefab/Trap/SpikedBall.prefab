@@ -442,7 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3797380382481502124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpikedBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

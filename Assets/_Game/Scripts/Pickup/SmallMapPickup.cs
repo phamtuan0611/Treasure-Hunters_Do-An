@@ -17,7 +17,7 @@ public class SmallMapPickup : MonoBehaviour
 
             Destroy(gameObject);
             GameObject effect = Instantiate(effectSmallMap, transform.position, Quaternion.identity);
-            Destroy(effect, 0.5f);
+            Destroy(effect, 0.15f);
         }
     }
 }

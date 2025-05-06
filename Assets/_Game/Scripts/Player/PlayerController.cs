@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //Effect Fall
-            if (theRB.velocity.y == 0 && checkFall == true)
+            if (theRB.velocity.y == 0 && checkFall == true && isGrounded == true)
             {
                 GameObject effectFall = Instantiate(effectPlayerFall, new Vector3(transform.position.x, transform.position.y - 0.35f, transform.position.z), Quaternion.identity);
                 Destroy(effectFall, 0.3f);
