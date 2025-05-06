@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7810ae489f82cbe41930df85efa759c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleRange: 60
-  speed: 20
+  angleRange: 45
+  speed: 15
 --- !u!1 &1788166669469837619
 GameObject:
   m_ObjectHideFlags: 0
