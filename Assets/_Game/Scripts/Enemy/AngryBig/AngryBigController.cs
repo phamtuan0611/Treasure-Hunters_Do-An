@@ -42,7 +42,6 @@ public class AngryBigController : EnemyMoving
         if (changePhase == 0)
         {
             anim.SetFloat("ChangePhase", 0);
-            Debug.Log("Pig 1");
         }
         else if (changePhase == 1)
         {
@@ -50,8 +49,6 @@ public class AngryBigController : EnemyMoving
 
             moveSpeed = 6f;
             timeAtPoint = 0;
-
-            Debug.Log("Pig 2");
         }
     }
 
@@ -73,7 +70,6 @@ public class AngryBigController : EnemyMoving
             if (other.CompareTag("Player"))
             {
 
-                Debug.Log("Change Phase: " + changePhase);
                 FindFirstObjectByType<PlayerController>().Jump();
 
                 //anim.SetBool("isRunning", true);
@@ -103,7 +99,6 @@ public class AngryBigController : EnemyMoving
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Change Phase 1: " + changePhase);
                 FindFirstObjectByType<PlayerController>().Jump();
 
                 anim.SetTrigger("isHitting");

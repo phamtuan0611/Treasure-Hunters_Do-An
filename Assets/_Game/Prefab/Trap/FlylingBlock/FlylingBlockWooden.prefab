@@ -125,10 +125,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2260694313352208204}
   - component: {fileID: 5779151040232039420}
-  - component: {fileID: 1957982743154207288}
   - component: {fileID: 8363814726957630846}
   - component: {fileID: 2238512696884203771}
   - component: {fileID: 8113287894664746979}
+  - component: {fileID: 5412654554048548699}
   m_Layer: 3
   m_Name: FlylingBlockWooden
   m_TagString: Untagged
@@ -198,25 +198,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.009426, y: 0.31348825}
   m_EdgeRadius: 0
---- !u!251 &1957982743154207288
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503444003150638575}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!114 &8363814726957630846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +256,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!251 &5412654554048548699
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503444003150638575}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &5582911789694495287
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,13 +92,6 @@ public class PlantAttack : MonoBehaviour
 
     void Shoot()
     {
-        GameObject spawnedBullet = Instantiate(bullet, new Vector3(bulletPos.position.x, bulletPos.position.y + 0.25f, bulletPos.position.z), Quaternion.identity);
-        StartCoroutine(DestroyBullet(spawnedBullet));
-    }
-
-    IEnumerator DestroyBullet(GameObject bullet)
-    {
-        yield return new WaitForSeconds(2f);
-        Destroy(bullet);
+        Instantiate(bullet, new Vector3(bulletPos.position.x, bulletPos.position.y + 0.25f, bulletPos.position.z), Quaternion.identity);
     }
 }

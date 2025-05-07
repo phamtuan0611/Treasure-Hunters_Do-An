@@ -10,7 +10,7 @@ public class ParentPlayerToPlatform : MonoBehaviour
         {
             other.transform.SetParent(transform);
 
-            //other.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.None;
+            other.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.None;
         }
     }
 
@@ -20,7 +20,7 @@ public class ParentPlayerToPlatform : MonoBehaviour
         {
             other.transform.SetParent(null);
 
-            //other.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
+            other.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
         }
     }
 }

@@ -23,7 +23,8 @@ public class EnemyMoving : MonoBehaviour
         waitCounter = timeAtPoint;
 
         anim = GetComponent<Animator>();
-        anim.SetBool("isMoving", true);
+        //anim.SetBool("isMoving", true);
+        SetAnimBoolSafe("isMoving", true);
     }
 
     // Update is called once per frame
@@ -33,7 +34,8 @@ public class EnemyMoving : MonoBehaviour
 
         if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001f)
         {
-            anim.SetBool("isMoving", false);
+            //anim.SetBool("isMoving", false);
+            SetAnimBoolSafe("isMoving", true);
             waitCounter -= Time.deltaTime;
 
             if (waitCounter <= 0)
@@ -44,8 +46,8 @@ public class EnemyMoving : MonoBehaviour
                     currentPoint = 0;
                 }
                 waitCounter = timeAtPoint;
-                anim.SetBool("isMoving", true);
-
+                //anim.SetBool("isMoving", true);
+                SetAnimBoolSafe("isMoving", true);
                 //Dao huong
                 transform.localScale = new Vector3(transform.localScale.x * (-1f), transform.localScale.y, transform.localScale.z);
             }
@@ -64,5 +66,22 @@ public class EnemyMoving : MonoBehaviour
                 Destroy(t.gameObject);
             }
         }
+    }
+
+    protected void SetAnimBoolSafe(string param, bool value)
+    {
+        if (anim != null && HasParameter(anim, param))
+        {
+            anim.SetBool(param, value);
+        }
+    }
+
+    private bool HasParameter(Animator animator, string paramName)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName) return true;
+        }
+        return false;
     }
 }

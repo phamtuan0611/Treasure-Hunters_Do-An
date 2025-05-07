@@ -12,6 +12,12 @@ public class SpikeHeadPatrol : MonoBehaviour
     [SerializeField] private float waitTime, timeAtPoint;
     [SerializeField] private GameObject particleObject;
 
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool isGrounded;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +35,9 @@ public class SpikeHeadPatrol : MonoBehaviour
         if (isAttack == true)
         {
             currentPoint = 1;
-
+            isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
             anim.SetBool("isAttack", isAttack);
+            anim.SetBool("isGround", isGrounded);
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, speed * Time.deltaTime);
             
             if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < 0.001f && isAudio == false)
