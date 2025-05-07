@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5171134321423103168}
   - component: {fileID: 3305323852337236123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DotEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
