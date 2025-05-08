@@ -35,7 +35,7 @@ public class EnemyMoving : MonoBehaviour
         if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001f)
         {
             //anim.SetBool("isMoving", false);
-            SetAnimBoolSafe("isMoving", true);
+            SetAnimBoolSafe("isMoving", false);
             waitCounter -= Time.deltaTime;
 
             if (waitCounter <= 0)
