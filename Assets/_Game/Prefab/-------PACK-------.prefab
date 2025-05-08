@@ -9342,7 +9342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e2836906bbe9f4dbfbe4154106e934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatText: {fileID: 0}
+  chatText: {fileID: 7129440581261376706}
   fadeDuration: 0.5
 --- !u!225 &5283747338496444540
 CanvasGroup:

@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     private bool moveLeft, moveRight;
     private float horizontalMove;
 
+    public bool isControl;
+
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
         moveLeft = false;
         moveRight = false;
+
+        isControl = false;
     }
 
     public void PointerDownLeft()
@@ -121,7 +125,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //theRB.velocity = new Vector2(horizontalMove, theRB.velocity.y);
+        if (isControl)
+            theRB.velocity = new Vector2(horizontalMove, theRB.velocity.y);
     }
 
     // Update is called once per frame
@@ -145,13 +150,15 @@ public class PlayerController : MonoBehaviour
                 //Run
                 activeSpeed = moveSpeed;
                 //if (Input.GetKey(KeyCode.LeftShift))
-                //{
+                //{s
                 //    activeSpeed = normalSpeed;
                 //}
 
                 //Move
-                theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
-                //MovePlayer();
+                if (!isControl)
+                    theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * activeSpeed, theRB.velocity.y);
+                else
+                    MovePlayer();
 
                 //Jump and Double Jump
                 PlayerJump();
