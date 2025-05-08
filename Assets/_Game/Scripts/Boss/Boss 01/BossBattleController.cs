@@ -11,6 +11,10 @@ public class BossBattleController : MonoBehaviour
     private CameraController camController;
     public float cameraMoveSpeed;
 
+    private float originalCameraSize; 
+    public float bossCameraSize = 7.5f;
+    public float sizeChangeSpeed = 2f;
+
     public Transform theBoss;
     public float bossGrowSpeed;
 
@@ -40,21 +44,25 @@ public class BossBattleController : MonoBehaviour
 
     private int currentPhase;
 
-    public GameObject deathEffect; //blueBird;
-    //private float timeWaitBird = 0.75f;
-    //private bool blueBirdSpawned;
+    public GameObject deathEffect; 
 
-    //public Transform[] theTraps, theHealths;
     public GameObject player;
 
-    public Transform[] miniBoss;
+
+    public Transform[] miniBoss, theTraps;
 
     // Start is called before the first frame update
     void Start()
     {
         camController = FindFirstObjectByType<CameraController>();
+        originalCameraSize = camController.GetComponent<Camera>().orthographicSize;
 
         shootStartCounter = waitToStartShooting;
+
+        foreach (Transform tt in theTraps)
+        {
+            tt.gameObject.SetActive(false);
+        }
 
         blockers.transform.SetParent(null);
     }
@@ -65,22 +73,22 @@ public class BossBattleController : MonoBehaviour
         if (bossActive == true)
         {
             camController.transform.position = Vector3.MoveTowards(camController.transform.position, camPoint.position, cameraMoveSpeed * Time.deltaTime);
+            Camera mainCam = camController.GetComponent<Camera>();
+            if (mainCam.orthographicSize != bossCameraSize)
+            {
+                mainCam.orthographicSize = Mathf.MoveTowards(mainCam.orthographicSize, bossCameraSize, sizeChangeSpeed * Time.deltaTime);
+            }
+
+            foreach (Transform tt in theTraps)
+            {
+                tt.gameObject.SetActive(true);
+            }
 
             if (theBoss.localScale != Vector3.one)
             {
                 //Hien Boss
                 theBoss.localScale = Vector3.MoveTowards(theBoss.localScale, Vector3.one, bossGrowSpeed * Time.deltaTime);
 
-                //Hien Traps
-                //foreach (Transform tt in theTraps)
-                //{
-                //    tt.gameObject.SetActive(true);
-                //}
-
-                //foreach (Transform th in theHealths)
-                //{
-                //    th.gameObject.SetActive(true);
-                //}
             }
               
             if (currentPhase == 3)
@@ -150,21 +158,6 @@ public class BossBattleController : MonoBehaviour
                     }
                 }
             }
-
-            //if (isWeak == true && blueBirdSpawned == false)
-            //{
-            //    timeWaitBird -= Time.deltaTime;
-            //    if (timeWaitBird <= 0)
-            //    {
-            //        blueBirdSpawned = true;
-            //        GameObject bird = Instantiate(blueBird, new Vector3(14.2f, 3f, 0f), Quaternion.identity);
-            //        if (bird != null)
-            //        {
-            //            bird.GetComponentInChildren<BlueBirdController>().thePlayer = player;
-            //        }
-            //        timeWaitBird = 1.5f;
-            //    }
-            //}
 
             if (isWeak == true && currentPhase == 3)
             {
@@ -290,14 +283,17 @@ public class BossBattleController : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            //foreach (Transform tt in theTraps)
-            //{
-            //    tt.gameObject.SetActive(false);
-            //}
+            foreach (Transform tt in theTraps)
+            {
+                tt.gameObject.SetActive(false);
+            }
 
             blockers.SetActive(false);
 
             camController.enabled = true;
+            Camera mainCam = camController.GetComponent<Camera>();
+            
+            mainCam.orthographicSize = originalCameraSize;
 
             Instantiate(deathEffect, theBoss.position, Quaternion.identity);
 

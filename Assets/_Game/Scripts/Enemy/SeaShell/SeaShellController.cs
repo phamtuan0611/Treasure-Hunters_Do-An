@@ -48,6 +48,7 @@ public class SeaShellController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         GameObject pearl = Instantiate(pearlBullet, transform.position, Quaternion.identity);
+        pearl.transform.SetParent(transform);
         Destroy(pearl, 1f);
     }
 
