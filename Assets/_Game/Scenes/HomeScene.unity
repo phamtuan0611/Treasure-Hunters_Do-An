@@ -34297,6 +34297,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5481197098255122865, guid: 629260db4c59d8b439185eea0aee31c0, type: 3}
+      propertyPath: loadSceneName
+      value: Level 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481197098255122865, guid: 629260db4c59d8b439185eea0aee31c0, type: 3}
       propertyPath: endSceneTransition
       value: 
       objectReference: {fileID: 773601396}
@@ -37959,6 +37963,7 @@ MonoBehaviour:
   buttonAttack: 0
   left: {fileID: 0}
   right: {fileID: 0}
+  isControl: 0
 --- !u!4 &5252500544167384686
 Transform:
   m_ObjectHideFlags: 0

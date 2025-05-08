@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Image[] heartIcons, skullGates;
     [SerializeField] private Sprite healthFull, healthEmpty;
-    [SerializeField] private TMP_Text liveText, fruitText, diamondText;
+    [SerializeField] public TMP_Text liveText, fruitText, diamondText;
 
     public GameObject highSpeed, lowSpeed, multiplyScore;
     [SerializeField] private TMP_Text highSpeedText, lowSpeedText, multiplyScoreText;

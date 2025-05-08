@@ -5,20 +5,47 @@ using UnityEngine.SceneManagement;
 
 public class CheckEnd : MonoBehaviour
 {
+    public static CheckEnd instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     [SerializeField] private Animator anim;
     [SerializeField] private string nameScene;
+    public bool isWin;
+
+    private void Start()
+    {
+        isWin = false;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             anim.SetTrigger("isPlayer");
-            StartCoroutine(DelayLoadScene());
+            StartCoroutine(DelayWin());
         }
     }
 
-    IEnumerator DelayLoadScene()
+    IEnumerator DelayWin()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(nameScene);
+        isWin = true;
+    }
+
+    public void LoadNextLevel()
+    {
+        if (isWin)
+        {
+            SceneManager.LoadScene(nameScene);
+        }
     }
 }
