@@ -19,10 +19,12 @@ public class LevelSelect : MonoBehaviour
     }
 
     public bool isLevelPopup;
+    public GameObject endTransitionScene;
 
     private void Start()
     {
         isLevelPopup = false;
+        endTransitionScene.SetActive(false);
     }
 
     public void CloseLevelPopup()
@@ -32,11 +34,20 @@ public class LevelSelect : MonoBehaviour
 
     public void LoadHomeScene()
     {
-        SceneManager.LoadScene("HomeScene");
+        StartCoroutine(DelayEndTransition("HomeScene"));
     }
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(LevelPopup.instance.textBoard.text);
+        StartCoroutine(DelayEndTransition(LevelPopup.instance.textBoard.text));
+    }
+
+    IEnumerator DelayEndTransition(string nameScene)
+    {
+        endTransitionScene.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(nameScene);
+        //endTransitionScene.SetActive(false);
     }
 }

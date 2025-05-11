@@ -34,6 +34,8 @@ public class UIController : MonoBehaviour
 
     public bool isBigMap, isPause;
 
+    public GameObject endTransitionScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,8 @@ public class UIController : MonoBehaviour
 
         isBigMap = false;
         isPause = false;
+
+        endTransitionScene.SetActive(false);
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -115,14 +119,16 @@ public class UIController : MonoBehaviour
         multiplyScoreText.text = Mathf.CeilToInt(timeMultiplyScore).ToString();
     }
 
-    public void LoadHomeScene()
-    {
-        SceneManager.LoadScene("HomeScene");
-    }
+    //public void LoadHomeScene()
+    //{
+    //    Time.timeScale = 1f;
+    //    SceneManager.LoadSceneAsync("HomeScene");
+    //}
 
     public void LoadLevelScene()
     {
-        SceneManager.LoadScene("LevelSelect");
+        Time.timeScale = 1f;
+        StartCoroutine(DelayEndTransition("LevelSelect"));
     }
 
     public void OpenBigMap()
@@ -150,6 +156,15 @@ public class UIController : MonoBehaviour
     public void ReStartLevel()
     {
         StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
+    }
+
+    IEnumerator DelayEndTransition(string nameScene)
+    {
+        endTransitionScene.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(nameScene);
+        //endTransitionScene.SetActive(false);
     }
 
     IEnumerator RestartAfterTween(string loadScene)

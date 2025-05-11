@@ -22,9 +22,12 @@ public class CheckEnd : MonoBehaviour
     [SerializeField] private string nameScene;
     public bool isWin;
 
+    public GameObject endTransitionScene;
     private void Start()
     {
         isWin = false;
+
+        endTransitionScene.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -45,7 +48,17 @@ public class CheckEnd : MonoBehaviour
     {
         if (isWin)
         {
-            SceneManager.LoadScene(nameScene);
+            //SceneManager.LoadSceneAsync(nameScene);
+            StartCoroutine(DelayEndTransition(nameScene));
         }
+    }
+
+    IEnumerator DelayEndTransition(string nameScene)
+    {
+        endTransitionScene.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(nameScene);
+        //endTransitionScene.SetActive(false);
     }
 }

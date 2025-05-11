@@ -17482,6 +17482,10 @@ PrefabInstance:
       propertyPath: waitScreen
       value: 
       objectReference: {fileID: 820184505041282864}
+    - target: {fileID: 7166322865907619316, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
+      propertyPath: endTransitionScene
+      value: 
+      objectReference: {fileID: 6689679087810013699}
     - target: {fileID: 7302310854277462942, guid: f29ff66a41c35a84bbb37a985bfc3a8f, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1

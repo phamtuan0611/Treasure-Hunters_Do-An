@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeScene : MonoBehaviour
 {
@@ -21,16 +22,19 @@ public class HomeScene : MonoBehaviour
 
     }
 
-    public bool isInventory, isSetting, isShopping;
+    public bool isSetting, isShopping;
     public GameObject coins;
 
     public bool isPlaying;
+    public GameObject endTransitionScene;
     // Start is called before the first frame update
     void Start()
     {
         isSetting = false;
         isShopping = false;
         isPlaying = false;
+
+        endTransitionScene.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,7 +45,8 @@ public class HomeScene : MonoBehaviour
 
     public void ButtonPlay()
     {
-        isPlaying = true;
+        //isPlaying = true;
+        StartCoroutine(DelayEndTransition("LevelSelect"));
     }
 
     public void ButtonShopOpen()
@@ -60,19 +65,18 @@ public class HomeScene : MonoBehaviour
     {
         isSetting = false;
     }
-
-    public void ButtonInventoryOpen()
-    {
-        isInventory = true;
-    }
-    public void ButtonInventoryClose()
-    {
-        isInventory = false;
-    }
-
     public void ButtonQuit()
     {
         Application.Quit();
         Debug.Log("Quit Game");
+    }
+
+    IEnumerator DelayEndTransition(string nameScene)
+    {
+        endTransitionScene.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(nameScene);
+        //endTransitionScene.SetActive(false);
     }
 }

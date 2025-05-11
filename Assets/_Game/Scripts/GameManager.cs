@@ -6,32 +6,32 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject startSceneTransition;
-    [SerializeField] private GameObject endSceneTransition;
+    //[SerializeField] private GameObject endSceneTransition;
 
-    [SerializeField] private string loadSceneName;
+    //[SerializeField] private string loadSceneName;
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "HomeScene")
-        {
-            return;
-        }
+        //if (SceneManager.GetActiveScene().name == "HomeScene")
+        //{
+        //    return;
+        //}
 
         startSceneTransition.SetActive(true);
         StartCoroutine(DisableStartScene());
     }
 
-    private void Update()
-    {
-        if (HomeScene.instance != null && HomeScene.instance.isPlaying == true)
-        {
-            endSceneTransition.SetActive(true);
+    //private void Update()
+    //{
+    //    if (HomeScene.instance != null && HomeScene.instance.isPlaying == true)
+    //    {
+    //        endSceneTransition.SetActive(true);
 
-            HomeScene.instance.isPlaying = false;
+    //        HomeScene.instance.isPlaying = false;
 
-            StartCoroutine(DisableEndScene());
-        }
-    }
+    //        StartCoroutine(DisableEndScene());
+    //    }
+    //}
 
     IEnumerator DisableStartScene()
     {
@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
         startSceneTransition.SetActive(false);
     }
 
-    IEnumerator DisableEndScene()
-    {
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(loadSceneName);
+    //IEnumerator DisableEndScene()
+    //{
+    //    yield return new WaitForSeconds(1.5f);
+    //    SceneManager.LoadScene(loadSceneName);
 
-    }
+    //}
 }
