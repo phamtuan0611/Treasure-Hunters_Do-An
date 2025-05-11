@@ -26,11 +26,19 @@ public class PlayerMovement : MonoBehaviour
             if (anim != null)
                 anim.SetBool("isRunning", true);
 
-            Vector3 direction = path[1] - path[0]; 
-            FaceDirection(direction);
-
             transform.DOPath(path.ToArray(), path.Count * moveDuration, PathType.Linear)
                 .SetEase(Ease.Linear)
+                .OnWaypointChange(index =>
+                {
+                    if (index + 1 < path.Count)
+                    {
+                        Vector3 dir = path[index + 1] - path[index];
+                        if (dir.x > 0)
+                            transform.localScale = new Vector3(1, 1, 1);
+                        else if (dir.x < 0)
+                            transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                })
                 .OnComplete(() =>
                 {
                     if (anim != null)
@@ -38,16 +46,7 @@ public class PlayerMovement : MonoBehaviour
                 });
         }
     }
-    private void FaceDirection(Vector3 dir)
-    {
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-        {
-            if (dir.x > 0)
-                transform.localScale = new Vector3(1, 1, 1);
-            else
-                transform.localScale = new Vector3(-1, 1, 1);
-        }
-    }
+    
     private WayPoint FindClosestWayPoint()
     {
         WayPoint[] all = GameObject.FindObjectsOfType<WayPoint>();
