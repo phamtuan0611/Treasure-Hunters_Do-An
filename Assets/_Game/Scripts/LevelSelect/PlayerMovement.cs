@@ -43,6 +43,22 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (anim != null)
                         anim.SetBool("isRunning", false);
+
+                    GateLevel gate = null;
+                    foreach (GateLevel g in GameObject.FindObjectsOfType<GateLevel>())
+                    {
+                        if (g.targetWaypoint == target)
+                        {
+                            gate = g;
+                            break;
+                        }
+                    }
+
+                    if (gate != null && gate.nameLevel != "None")
+                    {
+                        LevelSelect.instance.isLevelPopup = true;
+                        LevelPopup.instance.textBoard.text = gate.nameLevel;
+                    }
                 });
         }
     }

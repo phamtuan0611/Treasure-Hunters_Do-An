@@ -5,6 +5,7 @@ using UnityEngine;
 public class GateLevel : MonoBehaviour
 {
     public WayPoint targetWaypoint;
+    public string nameLevel;
 
     public void TriggerMove()
     {

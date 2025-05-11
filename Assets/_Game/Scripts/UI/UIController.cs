@@ -120,6 +120,11 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("HomeScene");
     }
 
+    public void LoadLevelScene()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
+
     public void OpenBigMap()
     {
         isBigMap = true;
@@ -147,11 +152,6 @@ public class UIController : MonoBehaviour
         StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
     }
 
-    public void LoadLevelSelect()
-    {
-        Time.timeScale = 1f;
-        //StartCoroutine(RestartAfterTween("LevelSelect"));
-    }
     IEnumerator RestartAfterTween(string loadScene)
     {
         Time.timeScale = 1f;

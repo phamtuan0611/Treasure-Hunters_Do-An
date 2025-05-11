@@ -8880,7 +8880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4778529340798583331}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: LoadLevelSelect
+        m_MethodName: LoadLevelScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12269,7 +12269,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4778529340798583331}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: LoadLevelSelect
+        m_MethodName: LoadLevelScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16484,7 +16484,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4778529340798583331}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: LoadLevelSelect
+        m_MethodName: LoadLevelScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

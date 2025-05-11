@@ -34298,7 +34298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481197098255122865, guid: 629260db4c59d8b439185eea0aee31c0, type: 3}
       propertyPath: loadSceneName
-      value: Level 0
+      value: LevelSelect
       objectReference: {fileID: 0}
     - target: {fileID: 5481197098255122865, guid: 629260db4c59d8b439185eea0aee31c0, type: 3}
       propertyPath: endSceneTransition

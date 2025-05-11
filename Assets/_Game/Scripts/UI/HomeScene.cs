@@ -41,7 +41,6 @@ public class HomeScene : MonoBehaviour
 
     public void ButtonPlay()
     {
-        Debug.Log("Play");
         isPlaying = true;
     }
 
