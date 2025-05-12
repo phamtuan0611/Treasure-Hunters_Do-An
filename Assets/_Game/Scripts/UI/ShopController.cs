@@ -24,12 +24,6 @@ public class ShopController : MonoBehaviour
         isBuying = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void BuyingInShop()
     {
         isBuying = true;
