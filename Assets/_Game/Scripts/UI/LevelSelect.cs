@@ -19,12 +19,12 @@ public class LevelSelect : MonoBehaviour
     }
 
     public bool isLevelPopup;
-    public GameObject endTransitionScene;
+    public GameObject endTransitionScene, iconLoading;
 
     private void Start()
     {
         isLevelPopup = false;
-        endTransitionScene.SetActive(false);
+        endTransitionScene.SetActive(false); iconLoading.SetActive(false);
     }
 
     public void CloseLevelPopup()
@@ -45,7 +45,7 @@ public class LevelSelect : MonoBehaviour
     IEnumerator DelayEndTransition(string nameScene)
     {
         endTransitionScene.SetActive(true);
-
+        iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
         //endTransitionScene.SetActive(false);

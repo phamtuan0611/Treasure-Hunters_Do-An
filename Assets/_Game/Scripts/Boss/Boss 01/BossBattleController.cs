@@ -54,7 +54,8 @@ public class BossBattleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camController = FindFirstObjectByType<CameraController>();
+        //camController = FindFirstObjectByType<CameraController>();
+        camController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         originalCameraSize = camController.GetComponent<Camera>().orthographicSize;
 
         shootStartCounter = waitToStartShooting;

@@ -26,7 +26,7 @@ public class HomeScene : MonoBehaviour
     public GameObject coins;
 
     public bool isPlaying;
-    public GameObject endTransitionScene;
+    public GameObject endTransitionScene, iconLoading;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +35,7 @@ public class HomeScene : MonoBehaviour
         isPlaying = false;
 
         endTransitionScene.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        iconLoading.SetActive(false);
     }
 
     public void ButtonPlay()
@@ -74,7 +69,7 @@ public class HomeScene : MonoBehaviour
     IEnumerator DelayEndTransition(string nameScene)
     {
         endTransitionScene.SetActive(true);
-
+        iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
         //endTransitionScene.SetActive(false);

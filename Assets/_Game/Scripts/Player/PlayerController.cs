@@ -496,7 +496,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeDirection()
     {
-        if (theRB.velocity.x > 0)
+        if (theRB.velocity.x >= 0)
         {
             transform.localScale = Vector3.one;
         }

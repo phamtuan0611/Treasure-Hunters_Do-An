@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
 
     public bool isBigMap, isPause;
 
-    public GameObject endTransitionScene;
+    public GameObject endTransitionScene, iconLoading;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class UIController : MonoBehaviour
         isBigMap = false;
         isPause = false;
 
-        endTransitionScene.SetActive(false);
+        endTransitionScene.SetActive(false); iconLoading.SetActive(false);
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -163,18 +163,12 @@ public class UIController : MonoBehaviour
     IEnumerator DelayEndTransition(string nameScene)
     {
         endTransitionScene.SetActive(true);
-
+        iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
         //endTransitionScene.SetActive(false);
     }
-
-    IEnumerator RestartAfterTween(string loadScene)
-    {
-        Time.timeScale = 1f;
-        yield return new WaitForSecondsRealtime(0.18f);
-        SceneManager.LoadScene(loadScene);
-    }
+    
     IEnumerator WaitScreen()
     {
         waitScreen.gameObject.SetActive(false);

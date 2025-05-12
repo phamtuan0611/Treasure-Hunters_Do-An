@@ -17,7 +17,8 @@ public class ChestCotroller : MonoBehaviour
     private bool isCamera;
     private void Start()
     {
-        camController = GetComponent<CameraController>();
+        //camController = FindFirstObjectByType<CameraController>();
+        camController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         isCamera = false;
 
         chestImage.SetActive(false);
