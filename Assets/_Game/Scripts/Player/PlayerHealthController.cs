@@ -16,7 +16,7 @@ public class PlayerHealthController : MonoBehaviour
 
     [SerializeField] private Animator anim;
     [SerializeField] private float invincibilityLength = 1f;
-    private float invincibilityCounter;
+    public float invincibilityCounter;
 
     private PlayerController thePlayer;
     private Rigidbody2D theRB;

@@ -155,7 +155,9 @@ public class UIController : MonoBehaviour
 
     public void ReStartLevel()
     {
-        StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
+        //StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
+        Time.timeScale = 1f;
+        StartCoroutine(DelayEndTransition(SceneManager.GetActiveScene().name));
     }
 
     IEnumerator DelayEndTransition(string nameScene)

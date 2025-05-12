@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2130231192079011661, guid: 59128f36a86dfa24491fb65ea7da3468, type: 3}
+      propertyPath: textSmallMap
+      value: Map 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5672456748438098250, guid: 59128f36a86dfa24491fb65ea7da3468, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8295941426908834600, guid: 59128f36a86dfa24491fb65ea7da3468, type: 3}
       propertyPath: m_Name
-      value: SmallMap_01
+      value: SmallMap_02 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

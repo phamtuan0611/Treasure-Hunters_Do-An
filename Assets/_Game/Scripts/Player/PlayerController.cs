@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         moveLeft = false;
         moveRight = false;
 
-        isControl = false;
+        isControl = true;
     }
 
     public void PointerDownLeft()
@@ -537,6 +537,11 @@ public class PlayerController : MonoBehaviour
         theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
         anim.SetTrigger("dead");
         knockbackCounter = knockbackLength;
+        changePhase = 0;
+        btnThrowSword.SetActive(false);
+        btnAttack.SetActive(false);
+
+        PlayerHealthController.instance.invincibilityCounter = 1f;
     }
 
     //Effect Jump
