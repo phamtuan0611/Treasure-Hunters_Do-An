@@ -7,47 +7,62 @@ using UnityEngine.SceneManagement;
 public class ChestCotroller : MonoBehaviour
 {
     [SerializeField] private Animator anim;
-    [SerializeField] private GameObject rewardUI; 
-    [SerializeField] private Sprite rewardSprite; 
+    [SerializeField] private ParticleSystem fireWork_1, fireWork_2;
+    [SerializeField] private GameObject chestImage;
+    public GameObject endTransitionScene;
+
+    public Transform camPoint;
+    public CameraController camController;
+    public float cameraMoveSpeed;
+    private bool isCamera;
+    private void Start()
+    {
+        camController = GetComponent<CameraController>();
+        isCamera = false;
+
+        chestImage.SetActive(false);
+        endTransitionScene.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (isCamera)
+            camController.transform.position = Vector3.MoveTowards(camController.transform.position, camPoint.position, cameraMoveSpeed * Time.deltaTime);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             anim.SetTrigger("isPlayer");
-            ShowRewardFloatingUI();
+            
+            camController.enabled = false;
+            isCamera = true;
+
+            chestImage.SetActive(true);
+
+            StartCoroutine(DelayParticle());
         }
     }
 
-    private void ShowRewardFloatingUI()
+    IEnumerator DelayParticle()
     {
-        //GameObject ui = Instantiate(rewardUI, GameObject.FindObjectOfType<UIController>().transform); // phải có Canvas trong scene
-        //RectTransform rt = ui.GetComponent<RectTransform>();
-        //rt.anchoredPosition = Vector2.zero; // hiện ở giữa màn hình
+        yield return new WaitForSeconds(0.5f);
 
-        //// Gán ảnh và text
-        ////ui.transform.Find("Image").GetComponent<Image>().sprite = rewardSprite;
-        ////ui.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = rewardText;
+        fireWork_1.Play();
 
-        //StartCoroutine(MoveUIToScoreCorner(ui));
-    }
-
-    private IEnumerator MoveUIToScoreCorner(GameObject ui)
-    {
         yield return new WaitForSeconds(1f);
 
-        Vector2 start = ui.GetComponent<RectTransform>().anchoredPosition;
-        Vector2 end = new Vector2(500, 300); // góc phải trên canvas, tùy chỉnh cho khớp điểm số
+        fireWork_2.Play();
 
-        float t = 0f, duration = 0.5f;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            ui.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(start, end, t / duration);
-            yield return null;
-        }
+        yield return new WaitForSeconds(10f);
+        StartCoroutine(DelayEndTransition());
+    }
 
-        // Sau khi bay xong thì cộng điểm và hủy UI
-        CollectiblesManager.instance.GetCollectibleDiamond(10); // hoặc gọi function tùy bạn
-        Destroy(ui);
+    IEnumerator DelayEndTransition()
+    {
+        endTransitionScene.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync("Victory");
     }
 }
