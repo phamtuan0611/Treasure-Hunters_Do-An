@@ -44,6 +44,11 @@ public class HomeScene : MonoBehaviour
         StartCoroutine(DelayEndTransition("LevelSelect"));
     }
 
+    public void ButtonBook()
+    {
+        StartCoroutine(DelayEndTransition("BookScene"));
+    }
+
     public void ButtonShopOpen()
     {
         isShopping = true;
