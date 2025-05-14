@@ -9,6 +9,7 @@ public class BossBattleController : MonoBehaviour
 
     public Transform camPoint;
     private CameraController camController;
+    public Camera theCam;
     public float cameraMoveSpeed;
 
     private float originalCameraSize; 
@@ -55,8 +56,8 @@ public class BossBattleController : MonoBehaviour
     void Start()
     {
         //camController = FindFirstObjectByType<CameraController>();
-        camController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
-        originalCameraSize = camController.GetComponent<Camera>().orthographicSize;
+        camController = theCam.GetComponent<CameraController>();
+        originalCameraSize = theCam.GetComponent<Camera>().orthographicSize;
 
         shootStartCounter = waitToStartShooting;
 

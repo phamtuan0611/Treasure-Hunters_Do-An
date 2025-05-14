@@ -12,13 +12,14 @@ public class ChestCotroller : MonoBehaviour
     public GameObject endTransitionScene;
 
     public Transform camPoint;
-    public CameraController camController;
+    private CameraController camController;
+    public Camera theCam;
     public float cameraMoveSpeed;
     private bool isCamera;
     private void Start()
     {
         //camController = FindFirstObjectByType<CameraController>();
-        camController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        camController = theCam.GetComponent<CameraController>();
         isCamera = false;
 
         chestImage.SetActive(false);
