@@ -33,6 +33,7 @@ public class BookScene : MonoBehaviour
     }
     public void Home()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("HomeScene"));
     }
     IEnumerator DelayEndTransition(string nameScene)
