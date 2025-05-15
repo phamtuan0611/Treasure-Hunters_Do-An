@@ -39,6 +39,7 @@ public class DuckController : MonoBehaviour
             if (waitToDestroy <= 0)
             {
                 Destroy(gameObject);
+                AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
                 // AudioManager.instance.allSFXPlay(5);
             }
             return;

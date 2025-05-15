@@ -23,7 +23,7 @@ public class FruitPickup : MonoBehaviour
             {
                 CollectiblesManager.instance.GetCollectibleFruit(amount);
             }
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.pickUp);
             Destroy(gameObject);
 
             GameObject effect = Instantiate(effectFruit, transform.position, Quaternion.identity);

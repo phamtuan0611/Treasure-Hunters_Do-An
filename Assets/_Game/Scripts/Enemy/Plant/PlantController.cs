@@ -14,6 +14,7 @@ public class PlantController : EnemyController
             if (waitToDestroy <= 0)
             {
                 Destroy(gameObject);
+                AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
             }
         }
     }

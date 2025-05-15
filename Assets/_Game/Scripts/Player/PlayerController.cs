@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     private float horizontalMove;
 
     public bool isControl;
-
     private void Awake()
     {
         attackCollider = attackArea.GetComponent<Collider2D>();
@@ -249,6 +248,7 @@ public class PlayerController : MonoBehaviour
             //Effect Fall
             if (theRB.velocity.y == 0 && checkFall == true && isGrounded == true)
             {
+                AudioManager.instance.PlaySFX(AudioManager.instance.playerFall);
                 GameObject effectFall = Instantiate(effectPlayerFall, new Vector3(transform.position.x, transform.position.y - 0.35f, transform.position.z), Quaternion.identity);
                 Destroy(effectFall, 0.3f);
 
@@ -279,6 +279,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangePhaseButton()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         if (timeChangePhase >= 2f)
         {
 
@@ -308,6 +309,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+        AudioManager.instance.PlaySFX(AudioManager.instance.playerJump);
     }
 
     public void PlayerJump()
@@ -423,6 +425,7 @@ public class PlayerController : MonoBehaviour
 
     public void ButtonAttack()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.playerAttack);
         if (changePhase == 1 && !isAttacking)
         {
             buttonAttack = false;
@@ -459,6 +462,7 @@ public class PlayerController : MonoBehaviour
     {
         if (throwTimer >= 2f && anim.GetFloat("ChangePhase") != 0)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.playerThrowSword);
             anim.SetTrigger("throwSword");
             StartCoroutine(ThrowSword());
         }
@@ -527,6 +531,7 @@ public class PlayerController : MonoBehaviour
     }
     public void isKnock()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.playerHurt);
         theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
         anim.SetTrigger("hit");
         knockbackCounter = knockbackLength;
@@ -534,6 +539,7 @@ public class PlayerController : MonoBehaviour
 
     public void isDead()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.playerDead);
         theRB.velocity = new Vector2(0f, jumpForce * 0.6f);
         anim.SetTrigger("dead");
         knockbackCounter = knockbackLength;

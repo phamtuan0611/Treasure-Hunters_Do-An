@@ -26,6 +26,7 @@ public class ShopManager : MonoBehaviour
 
         if (booster.currentAmount >= booster.maxAmount)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.btnCantBuy);
             Debug.Log("Reached max limit");
             return;
         }
@@ -34,6 +35,7 @@ public class ShopManager : MonoBehaviour
 
         if ((usingGem && gemAmount >= price) || (!usingGem && fruitAmount >= price))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.btnBuyDone);
             if (usingGem)
                 gemAmount -= price;
             else
@@ -45,6 +47,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.btnCantBuy);
             Debug.Log("Not enough currency");
         }
     }

@@ -13,7 +13,7 @@ public class BoxController : MonoBehaviour
         {
             anim.SetTrigger("isHitting");
             FindFirstObjectByType<PlayerController>().Jump();
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.breakBox);
             StartCoroutine(DelaySpawn());
             Destroy(gameObject, 0.2f);
         }

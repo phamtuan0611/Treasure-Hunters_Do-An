@@ -17,7 +17,7 @@ public class BubbleProtected : MonoBehaviour
             {
                 inventory.CollectBubble();
             }
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.usePotion);
             Destroy(gameObject);
 
             GameObject text = Instantiate(textPickUp, transform.position, Quaternion.identity);

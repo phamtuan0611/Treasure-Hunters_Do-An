@@ -17,7 +17,7 @@ public class SkullGate : MonoBehaviour
             {
                 inventory.CollectStone();
             }
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.usePotion);
             Destroy(gameObject);
             GameObject effect = Instantiate(effectSkull, transform.position, Quaternion.identity);
 

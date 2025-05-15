@@ -25,7 +25,7 @@ public class HealthPickup : MonoBehaviour
                 {
                     PlayerHealthController.instance.AddHealth(healthPickup);
                 }
-
+                AudioManager.instance.PlaySFX(AudioManager.instance.usePotion);
                 Destroy(gameObject);
                 GameObject effect = Instantiate(pickEffect, transform.position, transform.rotation);
 

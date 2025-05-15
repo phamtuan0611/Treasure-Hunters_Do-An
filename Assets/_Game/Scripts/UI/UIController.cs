@@ -127,34 +127,40 @@ public class UIController : MonoBehaviour
 
     public void LoadLevelScene()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         Time.timeScale = 1f;
         StartCoroutine(DelayEndTransition("LevelSelect"));
     }
 
     public void OpenBigMap()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isBigMap = true;
     }
 
     public void CloseBigMap()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isBigMap = false;
     }
 
     public void OpenPausePopup()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isPause = true;
         Time.timeScale = 0f;
     }
 
     public void ClosePausePopup()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isPause = false;
         Time.timeScale = 1f;
     }
 
     public void ReStartLevel()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         //StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
         Time.timeScale = 1f;
         StartCoroutine(DelayEndTransition(SceneManager.GetActiveScene().name));

@@ -27,6 +27,8 @@ public class ButtonController : MonoBehaviour
     }
     public void ButtonPotionBoard()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
+
         isOpen = !isOpen;
 
         iconPotion[0].SetActive(isOpen);

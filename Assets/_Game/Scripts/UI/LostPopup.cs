@@ -19,6 +19,7 @@ public class LostPopup : MonoBehaviour
     {
         if (LifeController.instance != null && LifeController.instance.currentLive == 0 && isLost == false)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.loseLevel);
             isLost = true;
             StartCoroutine(DelayLost());
         }

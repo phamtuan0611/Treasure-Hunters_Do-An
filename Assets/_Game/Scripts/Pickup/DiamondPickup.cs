@@ -23,7 +23,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 CollectiblesManager.instance.GetCollectibleDiamond(amount);
             }
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.pickUp);
             Destroy(gameObject);
             GameObject effect = Instantiate(effectDiamond, transform.position, Quaternion.identity);
 

@@ -38,6 +38,7 @@ public class GateController : MonoBehaviour
 
         if (stones >= 3 && !gateFullyOpened)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.openGate);
             gateFullyOpened = true;
         }
     }

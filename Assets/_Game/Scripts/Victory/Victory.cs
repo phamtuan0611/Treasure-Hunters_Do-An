@@ -25,11 +25,13 @@ public class Victory : MonoBehaviour
 
     public void QuitGame()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         Application.Quit();
     }
 
     public void Home()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("HomeScene"));
     }
 

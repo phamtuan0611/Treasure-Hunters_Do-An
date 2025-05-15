@@ -13,6 +13,7 @@ public class PotionController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.usePotion);
             Destroy(gameObject);
             GameObject effect = Instantiate(effectPotion, transform.position, Quaternion.identity);
 

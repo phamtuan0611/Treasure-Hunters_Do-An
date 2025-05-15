@@ -190,7 +190,7 @@ public class BossBattleController : MonoBehaviour
 
             MakeWeak();
         }
-
+        AudioManager.instance.PlaySFX(AudioManager.instance.bossShot);
         //AudioManager.instance.allSFXPlay(2);
     }
 
@@ -244,12 +244,13 @@ public class BossBattleController : MonoBehaviour
             {
                 if (AttackArea.instance != null)
                 {
-                    Debug.Log("Lmao"); 
+                    
                     if (AttackArea.instance.attack)
                     {
-                        Debug.Log("Attack Area Boss");
+                        
                         bossAnim.SetTrigger("Hit");
                         MoveToNextPhase();
+                        AudioManager.instance.PlaySFX(AudioManager.instance.bossHit);
                         //AudioManager.instance.allSFXPlay(6);
                     }
                 }
@@ -258,9 +259,10 @@ public class BossBattleController : MonoBehaviour
                 {
                     if (SwordController.instance.isAttack)
                     {
-                        Debug.Log("Sword Controller Boss");
+                        
                         bossAnim.SetTrigger("Hit");
                         MoveToNextPhase();
+                        AudioManager.instance.PlaySFX(AudioManager.instance.bossHit);
                         //AudioManager.instance.allSFXPlay(6);
                     }
                 }
@@ -269,7 +271,7 @@ public class BossBattleController : MonoBehaviour
     }
     void bossMiniDisable()
     {
-        Debug.Log("Mini Boss destroy");
+        
         foreach (Transform bm in miniBoss)
         {
             bm.localScale = Vector3.MoveTowards(bm.localScale, Vector3.zero, bossGrowSpeed * Time.deltaTime);
@@ -298,7 +300,7 @@ public class BossBattleController : MonoBehaviour
             mainCam.orthographicSize = originalCameraSize;
 
             Instantiate(deathEffect, theBoss.position, Quaternion.identity);
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.bossDeath);
             //AudioManager.instance.allSFXPlay(0);
 
             //AudioManager.instance.levelTracksPlay(FindFirstObjectByType<LevelMusicPlayer>().trackToPlay);

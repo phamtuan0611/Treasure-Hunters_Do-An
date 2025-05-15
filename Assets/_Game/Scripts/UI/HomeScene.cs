@@ -38,35 +38,48 @@ public class HomeScene : MonoBehaviour
         iconLoading.SetActive(false);
     }
 
+    public void ButtonNewGame()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
+        StartCoroutine(DelayEndTransition("BookScene"));
+    }
+
     public void ButtonPlay()
     {
         //isPlaying = true;
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("LevelSelect"));
     }
 
     public void ButtonBook()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("BookScene"));
     }
 
     public void ButtonShopOpen()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isShopping = true;
     }
     public void ButtonShopClose()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isShopping = false;
     }
     public void ButtonSettingOpen()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isSetting = true;
     }
     public void ButtonSettingClose()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isSetting = false;
     }
     public void ButtonQuit()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         Application.Quit();
         Debug.Log("Quit Game");
     }

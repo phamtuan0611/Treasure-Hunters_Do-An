@@ -29,16 +29,19 @@ public class LevelSelect : MonoBehaviour
 
     public void CloseLevelPopup()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isLevelPopup = false;
     }
 
     public void LoadHomeScene()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("HomeScene"));
     }
 
     public void LoadLevel()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition(LevelPopup.instance.textBoard.text));
     }
 

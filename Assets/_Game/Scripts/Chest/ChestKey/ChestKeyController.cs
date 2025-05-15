@@ -25,7 +25,7 @@ public class ChestKeyController : MonoBehaviour
             if (inventory != null && inventory.keyCount >= 1)
             {
                 anim.SetTrigger("isHaveKey");
-                
+                AudioManager.instance.PlaySFX(AudioManager.instance.openChest);
                 Destroy(key.gameObject);
                 boxCollider.enabled = false;
                 inventory.keyCount = 0;

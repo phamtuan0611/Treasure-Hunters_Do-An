@@ -17,7 +17,7 @@ public class SmallMapPickup : MonoBehaviour
             {
                 inventory.CollectSmallMap();
             }
-
+            AudioManager.instance.PlaySFX(AudioManager.instance.pickUp);
             Destroy(gameObject);
             GameObject effect = Instantiate(effectSmallMap, transform.position, Quaternion.identity);
 

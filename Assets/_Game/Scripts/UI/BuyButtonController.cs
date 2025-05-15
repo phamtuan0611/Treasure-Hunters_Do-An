@@ -18,6 +18,7 @@ public class BuyButtonController : MonoBehaviour
 
     public void OnClickBuy()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         // Gửi dữ liệu sang ShopPopup
         shopPopup.SetupPopup(topIconDiamond, descriptionDiamond, topIconFruit, descriptionFruit, btn1Text, btn2Text);
 

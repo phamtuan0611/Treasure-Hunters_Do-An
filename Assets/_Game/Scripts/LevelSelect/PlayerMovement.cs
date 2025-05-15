@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public float moveDuration = 1f;
 
     [SerializeField] private Animator anim;
+    public bool isGate;
 
     private void Awake()
     {
         instance = this;
 
         anim = GetComponent<Animator>();
+        isGate = false;
     }
 
     public void MoveTo(WayPoint target)
@@ -25,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (anim != null)
                 anim.SetBool("isRunning", true);
+
+            AudioManager.instance.sfxSource.loop = true;
+            AudioManager.instance.PlaySFX(AudioManager.instance.playerRun);
+
+            isGate = true;
 
             transform.DOPath(path.ToArray(), path.Count * moveDuration, PathType.Linear)
                 .SetEase(Ease.Linear)
@@ -43,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (anim != null)
                         anim.SetBool("isRunning", false);
+
+                    AudioManager.instance.sfxSource.loop = false;
+                    AudioManager.instance.sfxSource.Stop();
+
+                    isGate = false;
 
                     GateLevel gate = null;
                     foreach (GateLevel g in GameObject.FindObjectsOfType<GateLevel>())

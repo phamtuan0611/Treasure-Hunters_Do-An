@@ -18,6 +18,9 @@ public class SettingPopup : MonoBehaviour
         boardSetting.SetActive(false);
         imageFade.SetActive(false);
 
+        isMusicOn = AudioManager.instance.GetMusicStatus();
+        isSFXOn = AudioManager.instance.GetSFXStatus();
+
         iconMusic[0].SetActive(isMusicOn);
         iconMusic[1].SetActive(!isMusicOn);
 
@@ -66,7 +69,10 @@ public class SettingPopup : MonoBehaviour
 
     public void ButtonMusic()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isMusicOn = !isMusicOn;
+
+        AudioManager.instance.SetMusic(isMusicOn);
 
         iconMusic[0].SetActive(isMusicOn);   
         iconMusic[1].SetActive(!isMusicOn);  
@@ -74,7 +80,10 @@ public class SettingPopup : MonoBehaviour
 
     public void ButtonSFX()
     {
-        isSFXOn = !isSFXOn;
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
+        isSFXOn = !isSFXOn; 
+        
+        AudioManager.instance.SetSFX(isSFXOn);
 
         iconSFX[0].SetActive(isSFXOn);       
         iconSFX[1].SetActive(!isSFXOn);      

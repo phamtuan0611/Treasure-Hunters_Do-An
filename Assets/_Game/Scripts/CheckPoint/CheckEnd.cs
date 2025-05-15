@@ -34,6 +34,7 @@ public class CheckEnd : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             anim.SetTrigger("isPlayer");
+            AudioManager.instance.PlaySFX(AudioManager.instance.checkEnd);
             StartCoroutine(DelayWin());
         }
     }

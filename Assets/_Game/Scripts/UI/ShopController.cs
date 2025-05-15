@@ -31,6 +31,7 @@ public class ShopController : MonoBehaviour
 
     public void NonBuyingInShop()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.button);
         isBuying = false;
     }
 }
