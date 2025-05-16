@@ -41,7 +41,8 @@ public class HomeScene : MonoBehaviour
     public void ButtonNewGame()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
-        StartCoroutine(DelayEndTransition("BookScene"));
+        //StartCoroutine(DelayEndTransition("BookScene"));
+        PlayerPrefs.DeleteAll();
     }
 
     public void ButtonPlay()

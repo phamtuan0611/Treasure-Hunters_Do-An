@@ -1,89 +1,165 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
+[System.Serializable]
+public class BoosterAmountUI
+{
+    public string boosterId;
+    public TMP_Text amountText;
+}
 public class ShopManager : MonoBehaviour
 {
-    public BoosterDatabase database;
-    public int gemAmount;
-    public int fruitAmount;
-
+    public BoosterDatabase boosterDatabase;
     public TMP_Text gemText;
     public TMP_Text fruitText;
 
-    void Start()
+    private int gemAmount;
+    private int fruitAmount;
+
+    private string currentSelectedBoosterId;
+
+    public List<BoosterAmountUI> boosterAmountUIs;
+
+    public GameObject textBuy;
+    private void Start()
     {
-        LoadCurrency();
+        (gemAmount, fruitAmount) = SaveSystem.LoadCurrency();
         UpdateCurrencyUI();
+        UpdateAllBoosterAmountUIs();
     }
 
-    public void TryBuy(string boosterId, bool usingGem)
+    public void OpenBuyPopup(string boosterId) 
     {
-        BoosterData booster = database.GetBooster(boosterId);
+        currentSelectedBoosterId = boosterId;
+    }
 
+    public void BuyWithGem(string boosterId)
+    {
+        if (!string.IsNullOrEmpty(currentSelectedBoosterId))
+            TryBuy(currentSelectedBoosterId, true);
+        else
+            return;
+    }
+
+    public void BuyWithFruit(string boosterId)
+    {
+        if (!string.IsNullOrEmpty(currentSelectedBoosterId))
+            TryBuy(currentSelectedBoosterId, false);
+        else
+            return;
+    }
+
+    private void TryBuy(string id, bool usingGem)
+    {
+        BoosterData booster = boosterDatabase.GetBooster(id);
         if (booster == null) return;
 
-        if (booster.currentAmount >= booster.maxAmount)
-        {
-            AudioManager.instance.PlaySFX(AudioManager.instance.btnCantBuy);
-            Debug.Log("Reached max limit");
-            return;
-        }
-
         int price = usingGem ? booster.priceGem : booster.priceFruit;
+        int currency = usingGem ? gemAmount : fruitAmount;
 
-        if ((usingGem && gemAmount >= price) || (!usingGem && fruitAmount >= price))
+        if (currency >= price && booster.currentAmount < booster.maxAmount)
         {
             AudioManager.instance.PlaySFX(AudioManager.instance.btnBuyDone);
+
             if (usingGem)
                 gemAmount -= price;
             else
                 fruitAmount -= price;
 
             booster.currentAmount++;
+            SaveSystem.SaveCurrency(gemAmount, fruitAmount);
+            SaveSystem.SaveBoosters(boosterDatabase.boosters);
             UpdateCurrencyUI();
-            SaveAll();
+
+            UpdateSingleBoosterAmountUI(id);
+
+            GameObject text = Instantiate(textBuy, ShopController.instance.transform.position, Quaternion.identity);
+            text.transform.SetParent(ShopController.instance.transform);
+            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+            tmp.text = "+1 " + booster.displayName;
+            tmp.alpha = 1f;
+
+            text.transform.localScale = Vector3.zero;
+            text.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            text.transform.DOMoveY(text.transform.position.y + 1.25f, 1f).SetEase(Ease.OutSine);
+
+            tmp.DOFade(0f, 0.5f).SetDelay(0.7f);
+            Destroy(text, 1.3f);
+        }
+        else if (booster.currentAmount >= booster.maxAmount)
+        {
+            AudioManager.instance.PlaySFX(AudioManager.instance.btnCantBuy);
+            GameObject text = Instantiate(textBuy, ShopController.instance.transform.position, Quaternion.identity);
+            text.transform.SetParent(ShopController.instance.transform);
+            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+            tmp.text = "MAX";
+            tmp.color = Color.yellow;
+            tmp.alpha = 1f;
+
+            text.transform.localScale = Vector3.zero;
+            text.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            text.transform.DOMoveY(text.transform.position.y + 1.25f, 1f).SetEase(Ease.OutSine);
+
+            tmp.DOFade(0f, 0.5f).SetDelay(0.7f);
+            Destroy(text, 1.3f);
+
+            return;
         }
         else
         {
             AudioManager.instance.PlaySFX(AudioManager.instance.btnCantBuy);
-            Debug.Log("Not enough currency");
+            GameObject text = Instantiate(textBuy, ShopController.instance.transform.position, Quaternion.identity);
+            text.transform.SetParent(ShopController.instance.transform);
+            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+            tmp.text = "Not enough!";
+            tmp.color = Color.red;
+            tmp.alpha = 1f;
+
+            text.transform.localScale = Vector3.zero;
+            text.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            text.transform.DOMoveY(text.transform.position.y + 1.25f, 1f).SetEase(Ease.OutSine);
+
+            tmp.DOFade(0f, 0.5f).SetDelay(0.7f);
+            Destroy(text, 1.3f);
+
+            return;
         }
     }
-    public void BuyWithGem()
+
+    private void UpdateCurrencyUI()
     {
-        string boosterId = "life"; 
-        TryBuy(boosterId, true);
+        gemText.text = $"{gemAmount}";
+        fruitText.text = $"{fruitAmount}";
     }
 
-    public void BuyWithFruit()
+    private void UpdateAllBoosterAmountUIs()
     {
-        string boosterId = "life"; 
-        TryBuy(boosterId, false); 
+        foreach (var item in boosterAmountUIs)
+        {
+            BoosterData booster = boosterDatabase.GetBooster(item.boosterId);
+            if (booster != null)
+            {
+                item.amountText.text = $"{booster.currentAmount}";
+            }
+        }
     }
 
-    void UpdateCurrencyUI()
+    private void UpdateSingleBoosterAmountUI(string boosterId)
     {
-        gemText.text = gemAmount.ToString();
-        fruitText.text = fruitAmount.ToString();
-    }
-
-    public void SaveAll()
-    {
-        PlayerPrefs.SetInt("gem", gemAmount);
-        PlayerPrefs.SetInt("fruit", fruitAmount);
-
-        BoosterSaveWrapper wrapper = new BoosterSaveWrapper { boosters = database.boosters };
-        string json = JsonUtility.ToJson(wrapper);
-        PlayerPrefs.SetString("booster_save", json);
-
-        PlayerPrefs.Save();
-    }
-
-    void LoadCurrency()
-    {
-        gemAmount = PlayerPrefs.GetInt("gem", 500);
-        fruitAmount = PlayerPrefs.GetInt("fruit", 500);
+        foreach (var item in boosterAmountUIs)
+        {
+            if (item.boosterId == boosterId)
+            {
+                BoosterData booster = boosterDatabase.GetBooster(boosterId);
+                if (booster != null)
+                {
+                    item.amountText.text = $"{booster.currentAmount}";
+                }
+                break;
+            }
+        }
     }
 }

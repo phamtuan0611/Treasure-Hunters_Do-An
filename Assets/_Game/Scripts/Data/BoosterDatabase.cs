@@ -18,22 +18,16 @@ public class BoosterDatabase : MonoBehaviour
                 new BoosterData { id = "pickup", displayName = "x2 Pickup", currentAmount = 0, maxAmount = 3, priceGem = 150, priceFruit = 300 },
                 new BoosterData { id = "jump", displayName = "x1.3 Jump", currentAmount = 0, maxAmount = 3, priceGem = 50, priceFruit = 100 },
             };
+            SaveSystem.SaveBoosters(boosters);
         }
         else
         {
-            LoadData();
+            boosters = SaveSystem.LoadBoosters();
         }
     }
 
     public BoosterData GetBooster(string id)
     {
         return boosters.Find(b => b.id == id);
-    }
-
-    public void LoadData()
-    {
-        string json = PlayerPrefs.GetString("booster_save");
-        BoosterSaveWrapper wrapper = JsonUtility.FromJson<BoosterSaveWrapper>(json);
-        boosters = wrapper.boosters;
     }
 }

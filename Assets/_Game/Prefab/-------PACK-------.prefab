@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 8461542425711393430}
   - component: {fileID: 4554791030414211520}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: PickupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2227,7 +2227,7 @@ GameObject:
   - component: {fileID: 7497438974435375228}
   - component: {fileID: 8690625603349495551}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: SpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2280,7 +2280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
   m_sharedMaterial: {fileID: -350809208511366978, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
@@ -3184,7 +3184,7 @@ GameObject:
   - component: {fileID: 4707934852807104780}
   - component: {fileID: 3633717866868070233}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: BtnShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3292,7 +3292,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7722205195565550805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8464990307897433860}
+        m_TargetAssemblyTypeName: BoardPotion, Assembly-CSharp
+        m_MethodName: UsePotion
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: shield
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3633717866868070233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4429,7 +4441,7 @@ GameObject:
   - component: {fileID: 2445213642065667554}
   - component: {fileID: 8004940741092808840}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: BtnLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4537,7 +4549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2930741670709990718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8464990307897433860}
+        m_TargetAssemblyTypeName: BoardPotion, Assembly-CSharp
+        m_MethodName: UsePotion
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: life
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8004940741092808840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5428,7 +5452,7 @@ GameObject:
   - component: {fileID: 3909968504115926045}
   - component: {fileID: 2468932698669128952}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LifeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5481,7 +5505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
   m_sharedMaterial: {fileID: -350809208511366978, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
@@ -7475,7 +7499,7 @@ GameObject:
   - component: {fileID: 4616322879237923589}
   - component: {fileID: 2869857410103761740}
   m_Layer: 5
-  m_Name: Button (Legacy) (3)
+  m_Name: BtnJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7583,7 +7607,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 566665833568526178}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8464990307897433860}
+        m_TargetAssemblyTypeName: BoardPotion, Assembly-CSharp
+        m_MethodName: UsePotion
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: jump
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2869857410103761740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10407,7 +10443,7 @@ GameObject:
   - component: {fileID: 8699201523543602061}
   - component: {fileID: 2261078899334139614}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: ShieldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10460,7 +10496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
   m_sharedMaterial: {fileID: -350809208511366978, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
@@ -11327,6 +11363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2778608970274591009}
+  - component: {fileID: 8464990307897433860}
   m_Layer: 5
   m_Name: BoardPotion
   m_TagString: Untagged
@@ -11358,6 +11395,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8464990307897433860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321984978469463389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c179ed11b93df409b4d35ccd374ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterDatabase: {fileID: 0}
+  boosterPotionUIs:
+  - boosterPotinId: life
+    amountPotinText: {fileID: 2468932698669128952}
+  - boosterPotinId: shield
+    amountPotinText: {fileID: 2261078899334139614}
+  - boosterPotinId: speed
+    amountPotinText: {fileID: 8690625603349495551}
+  - boosterPotinId: jump
+    amountPotinText: {fileID: 8834179423899326592}
+  - boosterPotinId: pickup
+    amountPotinText: {fileID: 4554791030414211520}
 --- !u!1 &6342310450192336970
 GameObject:
   m_ObjectHideFlags: 0
@@ -15472,7 +15533,7 @@ GameObject:
   - component: {fileID: 7977633373465792245}
   - component: {fileID: 6779071240152149183}
   m_Layer: 5
-  m_Name: Button (Legacy) (4)
+  m_Name: BtnPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15580,7 +15641,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5828897261398653380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8464990307897433860}
+        m_TargetAssemblyTypeName: BoardPotion, Assembly-CSharp
+        m_MethodName: UsePotion
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: pickup
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6779071240152149183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16357,7 +16430,7 @@ GameObject:
   - component: {fileID: 219506414145353444}
   - component: {fileID: 8834179423899326592}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: JumpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16410,7 +16483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
   m_sharedMaterial: {fileID: -350809208511366978, guid: 2cc5b716801df6c4da05f154bcf2905b, type: 2}
@@ -18633,7 +18706,7 @@ GameObject:
   - component: {fileID: 5636684691181185190}
   - component: {fileID: 1932173084785335661}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: BtnSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18741,7 +18814,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8370745418858604848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8464990307897433860}
+        m_TargetAssemblyTypeName: BoardPotion, Assembly-CSharp
+        m_MethodName: UsePotion
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: speed
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1932173084785335661
 MonoBehaviour:
   m_ObjectHideFlags: 0

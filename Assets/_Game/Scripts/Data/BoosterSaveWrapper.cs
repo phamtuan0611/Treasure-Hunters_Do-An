@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class BoosterSaveWrapper
 {
-    public List<BoosterData> boosters;
+    public List<BoosterData> boosters = new List<BoosterData>();
 }
