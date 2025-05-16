@@ -280,12 +280,13 @@ public class PlayerController : MonoBehaviour
     public void ChangePhaseButton()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
-        if (timeChangePhase >= 2f)
-        {
+        //if (timeChangePhase >= 2f)
+        //{
 
-            timeChangePhase = 0f;
-        }
-        SwitchPhase();
+        //    timeChangePhase = 0f;
+        //}
+        if (throwTimer >=2)
+            SwitchPhase();
     }
 
     private void SwitchPhase()

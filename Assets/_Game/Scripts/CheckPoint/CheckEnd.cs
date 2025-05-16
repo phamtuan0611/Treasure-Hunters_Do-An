@@ -22,12 +22,13 @@ public class CheckEnd : MonoBehaviour
     [SerializeField] private string nameScene;
     public bool isWin;
 
-    public GameObject endTransitionScene;
+    public GameObject endTransitionScene, iconLoading;
     private void Start()
     {
         isWin = false;
 
         endTransitionScene.SetActive(false);
+        iconLoading.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -57,7 +58,7 @@ public class CheckEnd : MonoBehaviour
     IEnumerator DelayEndTransition(string nameScene)
     {
         endTransitionScene.SetActive(true);
-
+        iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
         //endTransitionScene.SetActive(false);

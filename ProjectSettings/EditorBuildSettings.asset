@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/TestScene.unity
     guid: 75cb194a4c969b0489e1d52e0c98dc88
   - enabled: 1
-    path: Assets/_Game/Scenes/HomeScene.unity
-    guid: 363786b12e593554ab2c43f71af46ce9
-  - enabled: 1
     path: Assets/_Game/Scenes/BookScene.unity
     guid: c1f301ca51415174b9d781c65c759a35
+  - enabled: 1
+    path: Assets/_Game/Scenes/HomeScene.unity
+    guid: 363786b12e593554ab2c43f71af46ce9
   - enabled: 1
     path: Assets/_Game/Scenes/LevelSelect.unity
     guid: 6cb6aeb550cdff04a84299204585dcad
