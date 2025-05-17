@@ -1,13 +1,26 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BoosterDatabase : MonoBehaviour
 {
+    public static BoosterDatabase instance;
+
     public List<BoosterData> boosters = new List<BoosterData>();
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         if (!PlayerPrefs.HasKey("booster_save"))
         {
             boosters = new List<BoosterData>()

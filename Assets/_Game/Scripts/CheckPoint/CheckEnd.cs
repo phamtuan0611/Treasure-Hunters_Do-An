@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CheckEnd : MonoBehaviour
 {
     public static CheckEnd instance;
+    public int levelIndex;
     private void Awake()
     {
         if (instance != null)
@@ -34,6 +35,13 @@ public class CheckEnd : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            int completed = PlayerPrefs.GetInt("CompletedLevel");
+            if (levelIndex > completed)
+            {
+                PlayerPrefs.SetInt("CompletedLevel", levelIndex);
+                PlayerPrefs.Save();
+            }
+
             anim.SetTrigger("isPlayer");
             AudioManager.instance.PlaySFX(AudioManager.instance.checkEnd);
             StartCoroutine(DelayWin());

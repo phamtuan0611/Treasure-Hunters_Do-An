@@ -35,6 +35,9 @@ public class ChestCotroller : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerPrefs.SetInt("CompletedLevel", 5);
+            PlayerPrefs.Save();
+            
             anim.SetTrigger("isPlayer");
             AudioManager.instance.PlaySFX(AudioManager.instance.openChest);
             camController.enabled = false;

@@ -11,30 +11,22 @@ public class BoosterPotionUI
 }
 public class BoardPotion : MonoBehaviour
 {
-    public BoosterDatabase boosterDatabase;
     public List<BoosterPotionUI> boosterPotionUIs;
 
     public bool isPotion;
     // Start is called before the first frame update
     void Start()
     {
-        if (boosterDatabase == null)
-            boosterDatabase = new BoosterDatabase();
-        boosterDatabase.boosters = SaveSystem.LoadBoosters();
+        if (BoosterDatabase.instance != null)
+            BoosterDatabase.instance.boosters = SaveSystem.LoadBoosters();
         UpdateAllBoosterPotionUIs();
 
         isPotion = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UsePotion(string id)
     {
-        BoosterData booster = boosterDatabase.GetBooster(id);
+        BoosterData booster = BoosterDatabase.instance.GetBooster(id);
         if (booster == null) return;
 
         if (booster.currentAmount > 0)
@@ -48,7 +40,7 @@ public class BoardPotion : MonoBehaviour
             }else
                 booster.currentAmount--;
             
-            SaveSystem.SaveBoosters(boosterDatabase.boosters);
+            SaveSystem.SaveBoosters(BoosterDatabase.instance.boosters);
             UpdateSingleBoosterPotionUI(id);
 
             isPotion = true;
@@ -61,7 +53,7 @@ public class BoardPotion : MonoBehaviour
     {
         foreach (var item in boosterPotionUIs)
         {
-            BoosterData booster = boosterDatabase.GetBooster(item.boosterPotinId);
+            BoosterData booster = BoosterDatabase.instance.GetBooster(item.boosterPotinId);
             if (booster != null)
             {
                 item.amountPotinText.text = $"{booster.currentAmount}";
@@ -75,7 +67,7 @@ public class BoardPotion : MonoBehaviour
         {
             if (item.boosterPotinId == boosterId)
             {
-                BoosterData booster = boosterDatabase.GetBooster(boosterId);
+                BoosterData booster = BoosterDatabase.instance.GetBooster(boosterId);
                 if (booster != null)
                 {
                     item.amountPotinText.text = $"{booster.currentAmount}";
