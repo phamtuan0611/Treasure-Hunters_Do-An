@@ -571,7 +571,7 @@ public class PlayerController : MonoBehaviour
         {
             timePotionSpeed = 10f;
 
-            float highSpeed = moveSpeed;
+            float highSpeed = normalSpeed;
             moveSpeed = highSpeed * 2f;
 
             potionActiveSpeed = true;
@@ -582,7 +582,7 @@ public class PlayerController : MonoBehaviour
         {
             timePotionJump = 10f;
 
-            float highJump = jumpForce;
+            float highJump = normalJump;
             jumpForce = highJump * 1.3f;
 
             potionActiveJump = true;

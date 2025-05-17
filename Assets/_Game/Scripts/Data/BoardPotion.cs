@@ -13,6 +13,8 @@ public class BoardPotion : MonoBehaviour
 {
     public BoosterDatabase boosterDatabase;
     public List<BoosterPotionUI> boosterPotionUIs;
+
+    public bool isPotion;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class BoardPotion : MonoBehaviour
             boosterDatabase = new BoosterDatabase();
         boosterDatabase.boosters = SaveSystem.LoadBoosters();
         UpdateAllBoosterPotionUIs();
+
+        isPotion = false;
     }
 
     // Update is called once per frame
@@ -35,10 +39,22 @@ public class BoardPotion : MonoBehaviour
 
         if (booster.currentAmount > 0)
         {
-            booster.currentAmount--;
+            if (booster.id == "life")
+            {
+                if (PlayerHealthController.instance.currentHealth == PlayerHealthController.instance.maxHealth)
+                    return;
+                else
+                    booster.currentAmount--;
+            }else
+                booster.currentAmount--;
+            
             SaveSystem.SaveBoosters(boosterDatabase.boosters);
             UpdateSingleBoosterPotionUI(id);
+
+            isPotion = true;
         }
+        else
+            isPotion = false;
     }
 
     private void UpdateAllBoosterPotionUIs()

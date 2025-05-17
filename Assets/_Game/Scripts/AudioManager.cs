@@ -23,6 +23,9 @@ public class AudioManager : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        isMusicOn = PlayerPrefs.GetInt("MusicStatus", 1) == 1; 
+        isSFXOn = PlayerPrefs.GetInt("SFXStatus", 1) == 1;
     }
     [Header("---------- Audio Source ----------")]
     public AudioSource musicSource;
@@ -124,15 +127,33 @@ public class AudioManager : MonoBehaviour
     public void SetMusic(bool on)
     {
         isMusicOn = on;
+
+        PlayerPrefs.SetInt("MusicStatus", isMusicOn ? 1 : 0);
+        PlayerPrefs.Save();
+
         if (!isMusicOn)
+        {
             musicSource.Stop();
-        else if (musicSource.clip != null)
-            musicSource.Play();
+        }
+        else
+        {
+            if (musicSource.clip != null)
+            {
+                musicSource.Play();
+            }
+            else
+            {
+                OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+            }
+        }
     }
 
     public void SetSFX(bool on)
     {
         isSFXOn = on;
+
+        PlayerPrefs.SetInt("SFXStatus", isSFXOn ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public bool GetMusicStatus()
