@@ -2564,6 +2564,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2040152322}
     - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
+      propertyPath: index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
       propertyPath: nameLevel
       value: Level 4
       objectReference: {fileID: 0}
@@ -2940,6 +2944,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 339331877}
+    - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
+      propertyPath: index
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
       propertyPath: nameLevel
       value: Level 2
@@ -4579,6 +4587,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 1278306572}
+    - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
+      propertyPath: index
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
       propertyPath: nameLevel
       value: Level 5
@@ -12065,6 +12077,14 @@ MonoBehaviour:
   moveDuration: 0.5
   anim: {fileID: 1029234374}
   isGate: 0
+  positionPoint:
+  - {fileID: 1536722201}
+  - {fileID: 1354457789}
+  - {fileID: 1253178564}
+  - {fileID: 1378570883}
+  - {fileID: 925403456}
+  - {fileID: 746136563}
+  - {fileID: 509901933}
 --- !u!50 &1029234373
 Rigidbody2D:
   serializedVersion: 4
@@ -15152,6 +15172,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 1816470080}
+    - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
+      propertyPath: index
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
       propertyPath: nameLevel
       value: Level 3
@@ -22302,6 +22326,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 473334761}
+    - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4817512975092814800, guid: e6a92db993594684abac3a04f266911d, type: 3}
       propertyPath: nameLevel
       value: Level 1
@@ -34757,6 +34785,7 @@ MonoBehaviour:
   targetWaypoint: {fileID: 1536722200}
   nameLevel: None
   image: {fileID: 1280129623}
+  index: -1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

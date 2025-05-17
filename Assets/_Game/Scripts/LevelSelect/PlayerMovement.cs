@@ -11,12 +11,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator anim;
     public bool isGate;
 
+    public Transform[] positionPoint;
+
     private void Awake()
     {
         instance = this;
 
         anim = GetComponent<Animator>();
         isGate = false;
+
+        if (PlayerPrefs.HasKey("PlayerPosition") == false)
+        {
+            PlayerPrefs.SetInt("PlayerPosition", -1);
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("PlayerPosition") >= 0)
+                transform.position = positionPoint[PlayerPrefs.GetInt("PlayerPosition") + 1].transform.position;
+            else
+                transform.position = positionPoint[0].transform.position;
+        }
     }
 
     public void MoveTo(WayPoint target)
@@ -71,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
                         LevelSelect.instance.isLevelPopup = true;
                         LevelPopup.instance.textBoard.text = gate.nameLevel;
                     }
+
+                    if (gate != null)
+                        PlayerPrefs.SetInt("PlayerPosition", gate.index);
                 });
         }
     }

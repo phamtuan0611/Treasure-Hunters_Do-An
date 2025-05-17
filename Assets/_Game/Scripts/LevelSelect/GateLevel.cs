@@ -8,6 +8,7 @@ public class GateLevel : MonoBehaviour
     public string nameLevel;
     public GameObject image;
 
+    public int index;
     private void Start()
     {
         image.SetActive(false);

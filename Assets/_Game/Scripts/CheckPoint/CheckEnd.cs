@@ -42,6 +42,9 @@ public class CheckEnd : MonoBehaviour
                 PlayerPrefs.Save();
             }
 
+            PlayerPrefs.SetInt("PlayerPosition", levelIndex);
+            PlayerPrefs.Save();
+
             anim.SetTrigger("isPlayer");
             AudioManager.instance.PlaySFX(AudioManager.instance.checkEnd);
             StartCoroutine(DelayWin());
