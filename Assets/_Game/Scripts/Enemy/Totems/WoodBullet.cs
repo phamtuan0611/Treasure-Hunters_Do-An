@@ -14,7 +14,6 @@ public class WoodBullet : MonoBehaviour
 
         Transform scale = GetComponentInParent<TotemController>().transform;
 
-        //transform.position = new Vector2(scale.position.x, scale.position.y - 0.75f);
         rb.velocity = new Vector2(scale.localScale.x * (-1f), 0).normalized * force;
 
         transform.SetParent(null);

@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float activeSpeed;
 
     private bool isGrounded;
-    //private bool wasFalling = false;
 
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
@@ -148,10 +147,6 @@ public class PlayerController : MonoBehaviour
 
                 //Run
                 activeSpeed = moveSpeed;
-                //if (Input.GetKey(KeyCode.LeftShift))
-                //{s
-                //    activeSpeed = normalSpeed;
-                //}
 
                 //Move
                 if (!isControl)
@@ -280,11 +275,7 @@ public class PlayerController : MonoBehaviour
     public void ChangePhaseButton()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
-        //if (timeChangePhase >= 2f)
-        //{
-
-        //    timeChangePhase = 0f;
-        //}
+        
         if (throwTimer >=2)
             SwitchPhase();
     }
@@ -509,11 +500,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-
-        //if (theRB.velocity.y < -0.1f && !isGrounded)
-        //{
-        //    wasFalling = true;
-        //}
     }
     private void MovePlayer()
     {

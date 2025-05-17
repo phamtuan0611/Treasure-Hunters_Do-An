@@ -55,7 +55,6 @@ public class BossBattleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //camController = FindFirstObjectByType<CameraController>();
         camController = theCam.GetComponent<CameraController>();
         originalCameraSize = theCam.GetComponent<Camera>().orthographicSize;
 
@@ -101,7 +100,7 @@ public class BossBattleController : MonoBehaviour
                     bm.localScale = Vector3.MoveTowards(bm.localScale, new Vector3(0.5f, 0.5f, 0f), (bossGrowSpeed / 2f) * Time.deltaTime);
                 }
             }
-            //theBoss.localScale == Vector3.one && 
+
             if (projectileLauncher.localScale != Vector3.one)
             {
                 //Hien Dan 
@@ -163,7 +162,6 @@ public class BossBattleController : MonoBehaviour
 
             if (isWeak == true && currentPhase == 3)
             {
-                Debug.Log("miniBoss");
                 bossMiniDisable();
             }
         }
@@ -173,8 +171,6 @@ public class BossBattleController : MonoBehaviour
         bossActive = true;
         blockers.SetActive(true);
         camController.enabled = false;
-
-        //AudioManager.instance.bossMusicPlay();
     }
 
     void FireShoot()
@@ -191,7 +187,6 @@ public class BossBattleController : MonoBehaviour
             MakeWeak();
         }
         AudioManager.instance.PlaySFX(AudioManager.instance.bossShot);
-        //AudioManager.instance.allSFXPlay(2);
     }
 
     void miniBossFire()
@@ -211,7 +206,6 @@ public class BossBattleController : MonoBehaviour
     {
         bossAnim.SetTrigger("isWeak");
         isWeak = true;
-        //Debug.Log(currentPhase);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -228,7 +222,6 @@ public class BossBattleController : MonoBehaviour
                 {
                     bossAnim.SetTrigger("Hit");
                     FindAnyObjectByType<PlayerController>().Jump();
-                    //blueBirdSpawned = false;
 
                     MoveToNextPhase();
                 }
@@ -251,7 +244,6 @@ public class BossBattleController : MonoBehaviour
                         bossAnim.SetTrigger("Hit");
                         MoveToNextPhase();
                         AudioManager.instance.PlaySFX(AudioManager.instance.bossHit);
-                        //AudioManager.instance.allSFXPlay(6);
                     }
                 }
 
@@ -263,7 +255,6 @@ public class BossBattleController : MonoBehaviour
                         bossAnim.SetTrigger("Hit");
                         MoveToNextPhase();
                         AudioManager.instance.PlaySFX(AudioManager.instance.bossHit);
-                        //AudioManager.instance.allSFXPlay(6);
                     }
                 }
             }
@@ -301,17 +292,10 @@ public class BossBattleController : MonoBehaviour
 
             Instantiate(deathEffect, theBoss.position, Quaternion.identity);
             AudioManager.instance.PlaySFX(AudioManager.instance.bossDeath);
-            //AudioManager.instance.allSFXPlay(0);
-
-            //AudioManager.instance.levelTracksPlay(FindFirstObjectByType<LevelMusicPlayer>().trackToPlay);
         }
         else if (currentPhase >= 2)
         {
             isWeak = false;
-
-            //waitToStartShooting *= 0.5f;
-            //timeBetweenShots *= 0.75f;
-            //bossMoveSpeed *= 1.5f;
 
             shootStartCounter = waitToStartShooting;
 
@@ -323,10 +307,6 @@ public class BossBattleController : MonoBehaviour
             }
 
             currentShoot = 0;
-
-            //AudioManager.instance.allSFXPlay(1);
-
-            //Debug.Log("Mang 3");
         }
         else if (currentPhase >= 0)
         {
@@ -346,8 +326,6 @@ public class BossBattleController : MonoBehaviour
             }
 
             currentShoot = 0;
-
-            //AudioManager.instance.allSFXPlay(1);
         }
     }
 }

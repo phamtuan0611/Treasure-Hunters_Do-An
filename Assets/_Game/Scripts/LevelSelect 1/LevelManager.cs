@@ -12,11 +12,8 @@ public class LevelData
     public GameObject close, done;
     public GameObject blockImage;
 }
-
 public class LevelManager : MonoBehaviour
 {
-
-
     public List<LevelData> levelDatas = new List<LevelData>();
     // Start is called before the first frame update
     void Start()
@@ -34,7 +31,6 @@ public class LevelManager : MonoBehaviour
             OnCompleteLevel(completedLevel);
 
     }
-
     void ApplyLevelStates()
     {
         foreach (var level in levelDatas)

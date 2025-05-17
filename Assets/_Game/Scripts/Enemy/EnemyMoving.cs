@@ -9,7 +9,6 @@ public class EnemyMoving : MonoBehaviour
     [SerializeField] public float moveSpeed;
     [SerializeField] protected float timeAtPoint;
     protected float waitCounter;
-    //public EnemyController theEnemy;
     [SerializeField] protected Animator anim;
 
     // Start is called before the first frame update
@@ -23,7 +22,6 @@ public class EnemyMoving : MonoBehaviour
         waitCounter = timeAtPoint;
 
         anim = GetComponent<Animator>();
-        //anim.SetBool("isMoving", true);
         SetAnimBoolSafe("isMoving", true);
     }
 
@@ -34,7 +32,6 @@ public class EnemyMoving : MonoBehaviour
 
         if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001f)
         {
-            //anim.SetBool("isMoving", false);
             SetAnimBoolSafe("isMoving", false);
             waitCounter -= Time.deltaTime;
 
@@ -46,7 +43,6 @@ public class EnemyMoving : MonoBehaviour
                     currentPoint = 0;
                 }
                 waitCounter = timeAtPoint;
-                //anim.SetBool("isMoving", true);
                 SetAnimBoolSafe("isMoving", true);
                 //Dao huong
                 transform.localScale = new Vector3(transform.localScale.x * (-1f), transform.localScale.y, transform.localScale.z);

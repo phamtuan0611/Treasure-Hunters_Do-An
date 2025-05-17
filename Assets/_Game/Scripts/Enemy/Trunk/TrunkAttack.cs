@@ -48,9 +48,6 @@ public class TrunkAttack : MonoBehaviour
         else
         {
             playerOut -= Time.deltaTime;
-
-            //if (playerOut <= 0)
-                //anim.SetBool("isAttack", false);
         }
     }
 
@@ -73,7 +70,6 @@ public class TrunkAttack : MonoBehaviour
 
     IEnumerator DelayTimeShoot()
     {
-        //anim.SetBool("isAttack", true);
         timer = 0;
         yield return new WaitForSeconds(0.4f);
 

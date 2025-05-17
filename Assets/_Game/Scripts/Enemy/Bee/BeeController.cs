@@ -29,7 +29,6 @@ public class BeeController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
 
@@ -59,7 +58,6 @@ public class BeeController : MonoBehaviour
             {
                 anim.SetTrigger("isHitting");
                 isDefeated = true;
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
 
@@ -69,7 +67,6 @@ public class BeeController : MonoBehaviour
             {
                 anim.SetTrigger("isHitting");
                 isDefeated = true;
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }

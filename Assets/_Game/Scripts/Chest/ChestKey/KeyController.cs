@@ -20,7 +20,6 @@ public class KeyController : MonoBehaviour
         {
             transform.SetParent(targetFollow.transform);
             Vector3 targetPos = targetFollow.position + offset;
-            Debug.Log(targetPos);
 
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
@@ -41,21 +40,13 @@ public class KeyController : MonoBehaviour
                 inventory.CollectKey();
             }
 
-            //Destroy(gameObject);
             targetFollow = other.transform;
             isFollowing = true;
             float direction = Mathf.Sign(other.transform.localScale.x);
             offset.x = Mathf.Abs(offset.x) * -direction;
-            //gameObject.transform.SetParent(other.transform);
 
             GameObject effect = Instantiate(effectKey, transform.position, Quaternion.identity);
             Destroy(effect, 0.5f);
         }
     }
-
-    //private void OnDestroy()
-    //{
-    //    GameObject effect = Instantiate(effectKey, lastPosition, Quaternion.identity);
-    //    Destroy(effect, 0.5f);
-    //}
 }

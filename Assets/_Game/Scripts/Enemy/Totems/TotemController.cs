@@ -40,7 +40,6 @@ public class TotemController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
     }
@@ -73,8 +72,6 @@ public class TotemController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (AttackArea.instance.attack)
@@ -82,8 +79,6 @@ public class TotemController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (SwordController.instance != null)
@@ -93,8 +88,6 @@ public class TotemController : MonoBehaviour
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }

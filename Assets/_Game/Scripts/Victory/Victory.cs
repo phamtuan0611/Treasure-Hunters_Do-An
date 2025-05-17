@@ -41,6 +41,5 @@ public class Victory : MonoBehaviour
         iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
-        //endTransitionScene.SetActive(false);
     }
 }

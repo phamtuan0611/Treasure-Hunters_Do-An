@@ -18,7 +18,6 @@ public class ChestCotroller : MonoBehaviour
     private bool isCamera;
     private void Start()
     {
-        //camController = FindFirstObjectByType<CameraController>();
         camController = theCam.GetComponent<CameraController>();
         isCamera = false;
 
@@ -47,6 +46,7 @@ public class ChestCotroller : MonoBehaviour
             isCamera = true;
 
             chestImage.SetActive(true);
+            PlayerPrefs.SetInt("BtnNewGame", 1);
 
             StartCoroutine(DelayParticle());
         }
@@ -55,14 +55,14 @@ public class ChestCotroller : MonoBehaviour
     IEnumerator DelayParticle()
     {
         yield return new WaitForSeconds(0.5f);
-
         fireWork_1.Play();
         
         yield return new WaitForSeconds(1f);
-        //AudioManager.instance.PlayLoopSFX(AudioManager.instance.fireWork);
         fireWork_2.Play();
+
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayLoopSFX(AudioManager.instance.fireWork);
+
         yield return new WaitForSeconds(7f);
         AudioManager.instance.StopLoopSFX();
         StartCoroutine(DelayEndTransition());

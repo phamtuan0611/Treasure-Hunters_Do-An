@@ -30,7 +30,6 @@ public class PlantAttack : MonoBehaviour
         if (isAttack == true)
         {
             playerIn -= Time.deltaTime;
-            //anim.SetBool("isAttack", false);
 
             if (playerIn <= 0)
             {
@@ -38,10 +37,6 @@ public class PlantAttack : MonoBehaviour
 
                 if (timer > 0.45f)
                 {
-                    //anim.SetBool("isAttack", true);
-                    //timer = 0;
-                    //Shoot();
-                    //Debug.Log(timer);
                     StartCoroutine(DelayTimeShoot());
                     
                     Shoot();

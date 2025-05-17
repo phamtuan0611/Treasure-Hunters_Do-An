@@ -19,7 +19,6 @@ public class CheckPoint : MonoBehaviour
             anim.SetBool("flagActive", true);
             isActive = true;
             AudioManager.instance.PlaySFX(AudioManager.instance.checkPoint);
-            //AudioManager.instance.allSFXPlay(3);
         }
     }
 

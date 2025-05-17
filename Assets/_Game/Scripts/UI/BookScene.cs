@@ -10,8 +10,23 @@ public class BookScene : MonoBehaviour
     [SerializeField] private GameObject waitScreen;
     private CanvasGroup waitCanvasGroup;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
+        if (PlayerPrefs.HasKey("IsFirstTime"))
+        {
+            SceneManager.LoadSceneAsync("HomeScene");
+            return;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("IsFirstTime", 1);
+            PlayerPrefs.Save();
+        }
+    }
+    IEnumerator Start()
+    {
+        yield return null;
         endTransitionScene.SetActive(false);
         iconLoading.SetActive(false);
 

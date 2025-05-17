@@ -17,7 +17,6 @@ public class ButtonScaler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOScale(1.05f, 0.15f).SetUpdate(true))
-            //.Append(transform.DOScale(0.95f, 0.1f).SetUpdate(true))
             .Append(transform.DOScale(1f, 0.1f).SetUpdate(true));
     }
 }

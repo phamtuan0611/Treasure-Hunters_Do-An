@@ -10448,9 +10448,9 @@ MonoBehaviour:
   topIconDiamond: {fileID: 698531468, guid: 24444fb77b6dadd4ebd3bda36b64c4b3, type: 3}
   descriptionDiamond: = 100
   topIconFruit: {fileID: 698531468, guid: 24444fb77b6dadd4ebd3bda36b64c4b3, type: 3}
-  descriptionFruit: = 200
+  descriptionFruit: = 150
   btn1Text: 100
-  btn2Text: 200
+  btn2Text: 150
   shopPopup: {fileID: 863390}
 --- !u!1 &623680398
 GameObject:
@@ -15928,9 +15928,9 @@ MonoBehaviour:
   topIconDiamond: {fileID: 21300000, guid: 4a169f00b0b67ea47a6f8eb75717815c, type: 3}
   descriptionDiamond: = 100
   topIconFruit: {fileID: 21300000, guid: 4a169f00b0b67ea47a6f8eb75717815c, type: 3}
-  descriptionFruit: = 200
+  descriptionFruit: = 150
   btn1Text: 100
-  btn2Text: 200
+  btn2Text: 150
   shopPopup: {fileID: 863390}
 --- !u!1 &935882859
 GameObject:
@@ -26913,9 +26913,9 @@ MonoBehaviour:
   topIconDiamond: {fileID: 21300000, guid: eccaba6724b12584188508e17967ffb7, type: 3}
   descriptionDiamond: = 150
   topIconFruit: {fileID: 21300000, guid: eccaba6724b12584188508e17967ffb7, type: 3}
-  descriptionFruit: = 300
+  descriptionFruit: = 250
   btn1Text: 150
-  btn2Text: 300
+  btn2Text: 250
   shopPopup: {fileID: 863390}
 --- !u!1 &1909981544
 GameObject:
@@ -36086,6 +36086,7 @@ MonoBehaviour:
   isPlaying: 0
   endTransitionScene: {fileID: 773601396}
   iconLoading: {fileID: 1029616033}
+  btnNewGame: {fileID: 1831116052}
 --- !u!1 &8910618238897567884
 GameObject:
   m_ObjectHideFlags: 0

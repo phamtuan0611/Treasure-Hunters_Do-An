@@ -9,7 +9,6 @@ public class BatController : BlueBirdController
     // Start is called before the first frame update
     protected override void Start()
     {
-        //anim = GetComponent<Animator>();
         base.Start();
     }
 
@@ -31,8 +30,6 @@ public class BatController : BlueBirdController
         {
             isAttack = true;
             anim.SetBool("isAttack", true);
-
-            //attackCoroutine = StartCoroutine(DelayCelling());
         }
     }
 

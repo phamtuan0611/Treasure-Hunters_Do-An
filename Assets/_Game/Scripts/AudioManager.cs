@@ -60,7 +60,6 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Tùy theo tên scene mà đổi nhạc
         switch (scene.name)
         {
             case "BookScene":

@@ -42,8 +42,6 @@ public class SpikeHeadPatrol : MonoBehaviour
             
             if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < 0.001f && isAudio == false)
             {
-                //Debug.Log("Audio");
-                //AudioManager.instance.allSFXPlay(4);
                 Instantiate(particleObject, transform.position, Quaternion.identity);
                 isAudio = true;
             }

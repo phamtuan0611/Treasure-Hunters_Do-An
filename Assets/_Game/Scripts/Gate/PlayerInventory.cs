@@ -20,7 +20,6 @@ public class PlayerInventory : MonoBehaviour
     public void CollectSmallMap()
     {
         smallMapCount++;
-        Debug.Log("Collect Small Map " + smallMapCount);
     }
 
     public void CollectKey()

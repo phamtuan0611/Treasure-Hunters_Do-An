@@ -32,7 +32,6 @@ public class AngryBigController : EnemyMoving
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
     }
@@ -72,17 +71,12 @@ public class AngryBigController : EnemyMoving
 
                 FindFirstObjectByType<PlayerController>().Jump();
 
-                //anim.SetBool("isRunning", true);
-
-                //AudioManager.instance.allSFXPlay(6);
                 changePhase = 1;
             }
 
             if (AttackArea.instance.attack)
             {
                 changePhase = 1;
-
-                //AudioManager.instance.allSFXPlay(6);
             }
 
             if (SwordController.instance != null)
@@ -90,8 +84,6 @@ public class AngryBigController : EnemyMoving
                 if (SwordController.instance.isAttack)
                 {
                     changePhase = 1;
-
-                    //AudioManager.instance.allSFXPlay(6);
                 }
             }
         }
@@ -111,8 +103,6 @@ public class AngryBigController : EnemyMoving
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
 
             if (SwordController.instance != null)
@@ -122,8 +112,6 @@ public class AngryBigController : EnemyMoving
                     anim.SetTrigger("isHitting");
 
                     StartCoroutine(WaitAndDestroy());
-
-                    //AudioManager.instance.allSFXPlay(6);
                 }
             }
         }

@@ -46,11 +46,6 @@ public class PlayerHealthController : MonoBehaviour
         if (invincibilityCounter > 0)
         {
             invincibilityCounter -= Time.deltaTime;
-
-            //if (invincibilityCounter <= 0)
-            //{
-            //    anim.SetTrigger("hit");
-            //}
         }
 
         if (thePlayerInventory.bubbleCount >= 1)
@@ -75,14 +70,11 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (invincibilityCounter <= 0)
         {
-            //invincibilityCounter = invincibilityLength;
-
             currentHealth--;
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                //gameObject.SetActive(false);
                 thePlayer.isDead();
 
                 StartCoroutine(Respawn());
@@ -91,10 +83,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 invincibilityCounter = invincibilityLength;
 
-                //theSR.color = fadeColor;
-
                 thePlayer.isKnock();
-                //AudioManager.instance.allSFXPlay(13);
             }
 
             UIController.instance.UpdateHealthDisplay(currentHealth, maxHealth);

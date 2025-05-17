@@ -26,10 +26,18 @@ public class HomeScene : MonoBehaviour
     public GameObject coins;
 
     public bool isPlaying;
-    public GameObject endTransitionScene, iconLoading;
+    public GameObject endTransitionScene, iconLoading, btnNewGame;
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("BtnNewGame") == false)
+            PlayerPrefs.SetInt("BtnNewGame", 0);
+
+        if (PlayerPrefs.GetInt("BtnNewGame") == 0)
+            btnNewGame.SetActive(false);
+        else
+            btnNewGame.SetActive(true);
+        
         isSetting = false;
         isShopping = false;
         isPlaying = false;
@@ -41,13 +49,14 @@ public class HomeScene : MonoBehaviour
     public void ButtonNewGame()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
-        //StartCoroutine(DelayEndTransition("BookScene"));
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        StartCoroutine(DelayNewGame("BookScene"));
     }
 
     public void ButtonPlay()
     {
-        //isPlaying = true;
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
         StartCoroutine(DelayEndTransition("LevelSelect"));
     }
@@ -55,6 +64,8 @@ public class HomeScene : MonoBehaviour
     public void ButtonBook()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
+        PlayerPrefs.DeleteKey("IsFirstTime");
+
         StartCoroutine(DelayEndTransition("BookScene"));
     }
 
@@ -82,15 +93,28 @@ public class HomeScene : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
         Application.Quit();
-        Debug.Log("Quit Game");
     }
 
     IEnumerator DelayEndTransition(string nameScene)
     {
         endTransitionScene.SetActive(true);
         iconLoading.SetActive(true);
+
         yield return new WaitForSeconds(1.5f);
+
         SceneManager.LoadSceneAsync(nameScene);
-        //endTransitionScene.SetActive(false);
+    }
+
+    IEnumerator DelayNewGame(string nameScene)
+    {
+        endTransitionScene.SetActive(true);
+        iconLoading.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadSceneAsync(nameScene);
+
+        yield return new WaitForSeconds(1.5f);
+        PlayerPrefs.SetInt("BtnNewGame", 0);
     }
 }

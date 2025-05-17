@@ -14,23 +14,6 @@ public class CollectiblesManager : MonoBehaviour
     [SerializeField] public int fruitCount, diamondCount;
     [SerializeField] public int extraLifeThreshold;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //collectibleCount = InfoTracker.instance.currentFruits;
-
-        if (UIController.instance != null)
-        {
-            //UIController.instance.UpdateCollectibleDisplay(collectibleCount);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GetCollectibleFruit(int amount)
     {
         fruitCount += amount;
@@ -38,17 +21,7 @@ public class CollectiblesManager : MonoBehaviour
         {
             UIController.instance.UpdateFruitDisplay(fruitCount);
         }
-
-        //if (collectibleCount >= extraLifeThreshold)
-        //{
-        //    collectibleCount -= extraLifeThreshold;
-        //    if (LifeController.instance != null)
-        //    {
-        //        LifeController.instance.AddLife();
-        //    }
-        //}
     }
-
     public void GetCollectibleDiamond(int amount)
     {
         diamondCount += amount;

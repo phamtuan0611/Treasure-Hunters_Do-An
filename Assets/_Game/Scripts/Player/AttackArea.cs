@@ -32,7 +32,6 @@ public class AttackArea : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            //Destroy(other.gameObject);
             if (!hitTargets.Contains(other.gameObject))
             {
                 hitTargets.Add(other.gameObject);
@@ -41,7 +40,6 @@ public class AttackArea : MonoBehaviour
         }
         else
         {
-            //attack = false;
             StartCoroutine(DelayAttackReset());
         }
     }

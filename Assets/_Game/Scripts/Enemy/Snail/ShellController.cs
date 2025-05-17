@@ -7,7 +7,6 @@ public class ShellController : EnemyMoving
     [SerializeField] protected bool isDefeated;
     [SerializeField] private float waitToDestroy;
 
-    //[SerializeField] private Animator anim;
     private Rigidbody2D theRB;
     [SerializeField] private float hitSpeed;
     private int countHit = 0;
@@ -45,8 +44,6 @@ public class ShellController : EnemyMoving
             if (waitToDestroy <= 0)
             {
                 Destroy(gameObject);
-                //Destroy(patrolPoints[0].gameObject);
-                //(patrolPoints[1].gameObject);
             }
         }
     }
@@ -61,7 +58,6 @@ public class ShellController : EnemyMoving
     {
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Top hit");
             anim.SetBool("topHit", true);
 
             FindFirstObjectByType<PlayerController>().Jump();

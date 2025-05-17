@@ -21,7 +21,6 @@ public class FatBirdController : EnemyMoving
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, moveSpeed * Time.deltaTime);
         else if (currentPoint == 1)
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, 5 * moveSpeed * Time.deltaTime);
-        //anim.SetBool("isFalling", false);
 
         if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001f && currentPoint == 0)
         {
@@ -68,7 +67,6 @@ public class FatBirdController : EnemyMoving
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
     }
@@ -88,8 +86,6 @@ public class FatBirdController : EnemyMoving
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (SwordController.instance != null)
@@ -99,8 +95,6 @@ public class FatBirdController : EnemyMoving
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }

@@ -25,7 +25,6 @@ public class EnemyController : EnemyMoving
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
     }
@@ -49,8 +48,6 @@ public class EnemyController : EnemyMoving
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (AttackArea.instance.attack)
@@ -58,8 +55,6 @@ public class EnemyController : EnemyMoving
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (SwordController.instance != null)
@@ -69,8 +64,6 @@ public class EnemyController : EnemyMoving
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }

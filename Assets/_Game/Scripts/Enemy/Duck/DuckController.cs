@@ -40,7 +40,6 @@ public class DuckController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                // AudioManager.instance.allSFXPlay(5);
             }
             return;
         }
@@ -159,7 +158,6 @@ public class DuckController : MonoBehaviour
         {
             anim.SetTrigger("isHitting");
             StartCoroutine(WaitAndDestroy());
-            // AudioManager.instance.allSFXPlay(6);
         }
     }
 

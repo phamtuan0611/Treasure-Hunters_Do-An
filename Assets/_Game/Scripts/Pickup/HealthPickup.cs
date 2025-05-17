@@ -43,7 +43,6 @@ public class HealthPickup : MonoBehaviour
                 Destroy(text, 1.3f);
 
                 Destroy(effect, 0.5f);
-                //AudioManager.instance.allSFXPlay(10);
             }
         }
     }

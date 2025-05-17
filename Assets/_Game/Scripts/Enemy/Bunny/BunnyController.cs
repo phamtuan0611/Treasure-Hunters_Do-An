@@ -35,7 +35,6 @@ public class BunnyController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                // AudioManager.instance.allSFXPlay(5);
             }
             return;
         }
@@ -66,7 +65,6 @@ public class BunnyController : MonoBehaviour
             if (isPlayerInZone)
             {
                 FlipDirection(player.position.x - transform.position.x);
-                //yield return JumpTo(player.position);
             }
             yield return new WaitForSeconds(patrolDelay);
         }
@@ -136,7 +134,6 @@ public class BunnyController : MonoBehaviour
         {
             anim.SetTrigger("isHitting");
             StartCoroutine(WaitAndDestroy());
-            // AudioManager.instance.allSFXPlay(6);
         }
     }
 

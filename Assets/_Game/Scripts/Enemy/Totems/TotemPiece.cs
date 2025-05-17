@@ -31,8 +31,6 @@ public class TotemPiece : MonoBehaviour
 
             pieceAbove = null;
         }
-        
-        //Destroy(gameObject);
     }
 
     public void FallTo(Vector3 targetPosition)

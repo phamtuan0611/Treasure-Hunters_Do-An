@@ -60,7 +60,6 @@ public class TurtleController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
     }
@@ -80,8 +79,6 @@ public class TurtleController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
     }
 
@@ -93,8 +90,6 @@ public class TurtleController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (gameObject.tag != "Turtle")
@@ -105,8 +100,6 @@ public class TurtleController : MonoBehaviour
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
 
@@ -117,8 +110,6 @@ public class TurtleController : MonoBehaviour
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }

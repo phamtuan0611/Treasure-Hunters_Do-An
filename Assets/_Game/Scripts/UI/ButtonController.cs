@@ -19,12 +19,6 @@ public class ButtonController : MonoBehaviour
 
         originalPosition = boardPotionBonus.transform.localPosition;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ButtonPotionBoard()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);

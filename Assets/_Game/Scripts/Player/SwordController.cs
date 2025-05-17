@@ -63,7 +63,6 @@ public class SwordController : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            //Destroy(other.gameObject);
             if (!hitTargets.Contains(other.gameObject))
             {
                 hitTargets.Add(other.gameObject);

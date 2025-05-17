@@ -12,8 +12,8 @@ public static class SaveSystem
 
     public static (int gem, int fruit) LoadCurrency()
     {
-        int gem = PlayerPrefs.GetInt("gem", 1000);
-        int fruit = PlayerPrefs.GetInt("fruit", 1000);
+        int gem = PlayerPrefs.GetInt("gem", 100);
+        int fruit = PlayerPrefs.GetInt("fruit", 150);
         return (gem, fruit);
     }
 

@@ -35,13 +35,8 @@ public class BossProjectile : MonoBehaviour
 
         if (other.CompareTag("Sword"))
         {
-            Debug.Log("Attack Area Destroy");
-            Debug.Log(AttackArea.instance.attack);
             if (!AttackArea.instance.attack)
             {
-                Debug.Log("Bullet Attack Destroy");
-                //Destroy(gameObject);
-                //AudioManager.instance.allSFXPlay(6);
                 direction = -direction;
                 speed *= 1.5f;
             }
@@ -50,9 +45,7 @@ public class BossProjectile : MonoBehaviour
             {
                 if (SwordController.instance.isAttack)
                 {
-                    Debug.Log("Sword Bullet");
                     Destroy(gameObject);
-                    //AudioManager.instance.allSFXPlay(6);
                 }
             }
         }

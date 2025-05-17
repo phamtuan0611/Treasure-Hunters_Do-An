@@ -43,14 +43,12 @@ public class CrabbyAttack : MonoBehaviour
             }
             else
             {
-                //attackCollider.enabled = false;
                 anim.SetBool("isMoving", true);
             }
         }
         else
         {
             GetComponentInParent<EnemyController>().moveSpeed = originSpeed;
-            //anim.SetBool("isMoving", true);
         }
     }
 

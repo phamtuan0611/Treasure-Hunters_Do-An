@@ -36,7 +36,7 @@ public class MyPool
             }
             else
             {
-                Debug.LogWarning($"game object with key {baseObj.name} has been destroyed!");
+                Debug.LogWarning("Destroy");
             }
         }
         tmp = GameObject.Instantiate(baseObj);

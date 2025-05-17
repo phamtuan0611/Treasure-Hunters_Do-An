@@ -118,13 +118,6 @@ public class UIController : MonoBehaviour
         multiplyScore.SetActive(true);
         multiplyScoreText.text = Mathf.CeilToInt(timeMultiplyScore).ToString();
     }
-
-    //public void LoadHomeScene()
-    //{
-    //    Time.timeScale = 1f;
-    //    SceneManager.LoadSceneAsync("HomeScene");
-    //}
-
     public void LoadLevelScene()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
@@ -161,7 +154,6 @@ public class UIController : MonoBehaviour
     public void ReStartLevel()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.button);
-        //StartCoroutine(RestartAfterTween(SceneManager.GetActiveScene().name));
         Time.timeScale = 1f;
         StartCoroutine(DelayEndTransition(SceneManager.GetActiveScene().name));
     }
@@ -172,7 +164,6 @@ public class UIController : MonoBehaviour
         iconLoading.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(nameScene);
-        //endTransitionScene.SetActive(false);
     }
     
     IEnumerator WaitScreen()

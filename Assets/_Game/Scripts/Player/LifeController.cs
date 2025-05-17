@@ -21,15 +21,7 @@ public class LifeController : MonoBehaviour
     {
         thePlayer = FindFirstObjectByType<PlayerController>();
 
-        //currentLive = InfoTracker.instance.currentLives;
-
         UpdateDisplay();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Respawn()
@@ -52,7 +44,6 @@ public class LifeController : MonoBehaviour
         UpdateDisplay();
 
         Instantiate(deathEffect, thePlayer.transform.position, deathEffect.transform.rotation);
-        //AudioManager.instance.allSFXPlay(11);
     }
 
     public IEnumerator RespawnCo()
@@ -63,24 +54,18 @@ public class LifeController : MonoBehaviour
         PlayerHealthController.instance.AddHealth(PlayerHealthController.instance.maxHealth);
 
         thePlayer.gameObject.SetActive(true);
-        Instantiate(respawnEffect, thePlayer.transform.position, Quaternion.identity); //Quaternion.identity la dat huong ve mac dinh
+        Instantiate(respawnEffect, thePlayer.transform.position, Quaternion.identity);
     }
 
     public IEnumerator GameOver()
     {
         yield return new WaitForSeconds(timeRespawn);
-
-        //if (UIController.instance != null)
-        //{
-        //    UIController.instance.ShowGameOver();
-        //}
     }
 
     public void AddLife()
     {
         currentLive++;
         UpdateDisplay();
-        //AudioManager.instance.allSFXPlay(8);
     }
 
     public void UpdateDisplay()

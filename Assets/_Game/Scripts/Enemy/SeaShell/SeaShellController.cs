@@ -28,14 +28,12 @@ public class SeaShellController : MonoBehaviour
             {
                 Destroy(gameObject);
                 AudioManager.instance.PlaySFX(AudioManager.instance.enemyHit);
-                //AudioManager.instance.allSFXPlay(5);
             }
         }
 
         timeShoot -= Time.deltaTime;
         if (timeShoot <= 0)
         {
-            //anim.SetBool("isOpening", false);
             anim.SetTrigger("isAttack");
 
             StartCoroutine(DelayShoot());
@@ -71,8 +69,6 @@ public class SeaShellController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (AttackArea.instance.attack)
@@ -80,8 +76,6 @@ public class SeaShellController : MonoBehaviour
             anim.SetTrigger("isHitting");
 
             StartCoroutine(WaitAndDestroy());
-
-            //AudioManager.instance.allSFXPlay(6);
         }
 
         if (SwordController.instance != null)
@@ -91,8 +85,6 @@ public class SeaShellController : MonoBehaviour
                 anim.SetTrigger("isHitting");
 
                 StartCoroutine(WaitAndDestroy());
-
-                //AudioManager.instance.allSFXPlay(6);
             }
         }
     }
