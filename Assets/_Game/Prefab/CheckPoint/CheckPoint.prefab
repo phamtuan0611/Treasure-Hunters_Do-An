@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7398333644731057192}
   - component: {fileID: 6942542175242327067}
   - component: {fileID: 5052286018533731058}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Checkpoint Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5422065533413471919}
   - component: {fileID: 6425045300625727858}
   - component: {fileID: 7693715702131263634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Checkpoint Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 6215817304486549817}
   - component: {fileID: 5789343101038391522}
   - component: {fileID: 4785700987362614420}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 526645041565149508}
   - component: {fileID: 6874642752950288881}
   - component: {fileID: 8090625470041413562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

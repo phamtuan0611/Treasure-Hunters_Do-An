@@ -52,6 +52,7 @@ public class SwordController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             anim.SetBool("isGrounded", true);
+            gameObject.transform.SetParent(other.gameObject.transform);
         }
 
         if (other.CompareTag("Turtle"))
@@ -59,6 +60,8 @@ public class SwordController : MonoBehaviour
             float speed = FindFirstObjectByType<PlayerController>().throwForce;
             Transform player = FindFirstObjectByType<PlayerController>().transform;
             rb.velocity = new Vector2(speed * (-1f) * player.lossyScale.x, 0);
+
+            gameObject.transform.localScale = new Vector2((-1f) * player.lossyScale.x, 1);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
